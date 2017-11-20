@@ -43,5 +43,6 @@ public class CmsController {
     public List<Project> greeting() {
         List<Project> list = (List<Project>) repo.findAll();
         return list;
+//        repo.findOne(id);
     }
 }
