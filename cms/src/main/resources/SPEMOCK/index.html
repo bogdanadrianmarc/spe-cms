@@ -3,37 +3,33 @@
 <head>
   <title>Projects</title>
   <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
   <link rel = "stylesheet" type = "text/css" href = "css/styles.min.css" />
   <link rel = "stylesheet" type = "text/css" href = "css/normalize.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
-
-  <!-- This needs to be a big component with a lot of v-ifs for permissions -->
-  <div id = "navigation-bar">
-    <a href = "http://www.cs.bris.ac.uk/"><img alt = "University of Bristol logo" src = "img/logo-white.png" /></a>
-    <div class = "navigation-items">
-      <a href = "./dashboard"><span>Dashboard</span></a>
-      <a href = "./about"><span>About</span></a>
-      <span class = "navigation-items-selected">Projects</span>
+  <div id = "app">
+    <!-- This needs to be a big component with a lot of v-ifs for permissions -->
+    <div id = "navigation-bar">
+      <router-link to = "/"><img alt = "University of Bristol logo" src = "img/logo-white.png" /></router-link>
+      <div class = "navigation-items">
+        <router-link to = "/dashboard"><span>Dashboard</span></router-link>
+        <router-link to = "/projects"><span class = "navigation-items-selected">Projects</span></router-link>
+      </div>
     </div>
-  </div>
 
-  <div id="app">
-    <h1>Available Projects</h1>
-    <projects-filters></projects-filters>
-    <transition-group name="sort-list">
-      <projects-list
-        v-for = "project in projectList"
-        v-bind:projects = "project"
-        v-bind:key = "project.id">
-      </projects-list>
-    </transition-group>
-  </div>
+    <router-view></router-view>
 
-  <script src="js/projects-filters.js"></script>
-  <script src="js/projects-list.js"></script>
-  <script src="js/projects.js"></script>
+</div>
+
+<script src="js/default_page.js"></script>
+<script src="js/user_dashboard.js"></script>
+<script src="js/projects_list.js"></script>
+<script src="js/projects_list_filters.js"></script>
+<script src="js/projects_list_item.js"></script>
+<script src="js/single_project.js"></script>
+<script src="js/projects.js"></script>
 
 
 </body>

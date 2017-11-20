@@ -1,0 +1,99 @@
+const projects_list = {
+  data:function(){
+    return {
+      projectList: [],
+      projectListCopy: [],
+      // 1 for descending, -1 for ascending
+      sortOrder: 1
+    }
+  },
+  created: function(){
+    let self = this;
+    self.$parent.loading = true;
+    $.ajax({
+      url: 'http://localhost:8080/projects',
+      method: 'GET',
+      success: function (data) {
+        self.projectList = data;
+        self.projectListCopy = data;
+        self.$parent.loading = false;
+      },
+      error: function (error) {
+        console.log(error);
+        self.$parent.loading = false;
+      }
+    });
+  },
+  methods: {
+    sortApplicants: function() {
+      if(this.sortOrder === 1)
+      this.projectList.sort(this.applicantsAscending);
+      else
+      this.projectList.sort(this.applicantsDescending);
+      this.sortOrder = this.sortOrder * (-1);
+    },
+    applicantsAscending(a, b){
+      return a.applicantsNr > b.applicantsNr ? 1 : -1;
+    },
+    applicantsDescending(a, b){
+      return a.applicantsNr < b.applicantsNr ? 1 : -1;
+    },
+    sortTags: function(){
+      const field = document.querySelector("input[name=tags-input]").value;
+
+      this.projectList = this.projectListCopy.filter(function(project){
+        if(field === "")
+        return project;
+        // split tags by comma, remove whitespaces
+        let searchingFor = field.replace(/ /g,'').split(',').map((word) => {
+          return word.toUpperCase();
+        });
+        const searchingIn = project.tags.split(',').map((word) => {
+          return word.toUpperCase();
+        });
+
+        let notFound = false;
+        let notFoundAtAll = true;
+        for(let i = 0; i < searchingFor.length; i++){
+          notFoundAtAll = true;
+          for(let j = 0; j < searchingIn.length; j++){
+            if(searchingIn[j].startsWith(searchingFor[i]))
+            notFoundAtAll = false;
+          }
+          if(notFoundAtAll){
+            notFound = true;
+            break;
+          }
+        }
+        if(!notFound)
+        return project;
+      });
+    }
+  },
+  template: `
+  <div id = "projects-list">
+    <!-- loader -->
+    <transition name = "fade" mode = "out-in">
+      <div v-if = "this.$parent.loading" class = "loader" key="loading">
+        <div class="spinner">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+      </div>
+      <div v-else key="loaded">
+        <h1>Available Projects</h1>
+        <projects_list_filters></projects_list_filters>
+        <transition-group name="sort-list">
+          <projects_list_item
+            v-for = "project in this.projectList"
+            v-bind:projects = "project"
+            v-bind:key = "project.id">
+          </projects_list_item>
+        </transition-group>
+      </div>
+    </transition>
+  </div>`
+};
