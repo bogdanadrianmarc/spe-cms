@@ -1,0 +1,270 @@
+// Partials
+@import "_fonts.scss";
+@import "_colors.scss";
+
+*{
+  transition: 0.2s ease-in-out;
+}
+body{
+  background-color: $dark-black;
+  overflow-y: scroll;
+}
+#navigation-bar{
+  background-color : $bristol-red;
+  height: 100px;
+  width: 100%;
+  padding: 0px !important;
+  margin: 0px !important;
+  img {
+    max-height: 100%;
+    height: 40px;
+    margin-top: 25px;
+    margin-left: 50px;
+    float: left;
+  }
+  .navigation-items{
+    a{
+      text-decoration: none;
+    }
+    float: right;
+    span{
+      text-transform: uppercase;
+      color: $sky-white;
+      line-height: 100px;
+      margin-right: 50px;
+      font-family: $font-primary;
+      font-weight: 300;
+      letter-spacing: 3px;
+      font-size: 0.75em;
+      &:hover{
+        cursor: pointer;
+        cursor: hand;
+        color: $dark-black;
+      }
+    }
+    .navigation-items-selected {
+      font-weight: 600;
+      border: 2px solid $sky-white;
+      padding: 0.5em 1em;
+      &:hover{
+        cursor: pointer;
+        cursor: hand;
+        color: $dark-black;
+        border: 2px solid $dark-black;
+      }
+    }
+  }
+}
+#app{
+  // animates sorting
+  .sort-list-move{
+    transition: transform 0.5s;
+  }
+  .sort-list-enter, .sort-list-leave-to
+  /* .sort-list-leave-active below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .sort-list-leave-active {
+    position: absolute;
+  }
+  // direct child, hence '>' combinator
+  > h1{
+    margin-left: 50px !important;
+    font-family: $font-primary;
+    color: $sky-white;
+    font-size: 1.25em !important;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 1.5em 0 0;
+  }
+  #filter-bar{
+    margin: 0 50px 2.5em;
+    button{
+      background: none;
+      padding: 0.5em 1em;
+      border: 2px solid $sky-white;
+      color: $sky-white;
+      font-family: $font-primary;
+      text-transform: uppercase;
+      font-weight: 300;
+      font-size: 0.8em;
+      &:hover{
+        cursor: pointer;
+        cursor: hand;
+        color: $bristol-red;
+        border: 2px solid $bristol-red;
+      }
+      &:focus{
+        outline: 0;
+        border: 2px solid $bristol-red;
+      }
+      span{
+        transition: 0s !important;
+      }
+    }
+    input{
+      margin-left: 0.5em;
+      background: none;
+      padding: 0.5em 1em;
+      border: 2px solid $sky-white;
+      color: $sky-white;
+      font-family: $font-primary;
+      text-transform: uppercase;
+      font-weight: 300;
+      font-size: 0.8em;
+      width: 15.5em;
+      &:hover{
+        cursor: pointer;
+        cursor: hand;
+        color: $bristol-red;
+        border: 2px solid $bristol-red;
+      }
+      &:focus{
+        outline: 0;
+        border: 2px solid $bristol-red;
+      }
+      &::placeholder{
+        color: $light-grey;
+      }
+    }
+  }
+  .project-list-item{
+    background-color: $sky-white;
+    height: 25em;
+    margin: 0 50px 2em;
+    .project-list-item-image{
+      float: left;
+      display: inline-block;
+      height: 100%;
+      width: 40%;
+    }
+
+    .project-list-item-content{
+      display: inline-block;
+      float: right;
+      width: 52%;
+      padding-right: 50px;
+      height: 100%;
+      padding-top: 2em;
+
+      h1{
+        font-family: $font-primary;
+        font-size: 1.75em;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: $dark-black;
+        margin-bottom: 0.5em;
+      }
+      p{
+        font-family: $font-secondary;
+        font-size: 0.75em;
+        line-height: 1.5em;
+        color: $light-grey;
+        margin-bottom: 1.5em;
+      }
+      hr{
+        margin-top: 1.5em;
+      }
+      .tag-container{
+        display: inline-block;
+        .tag{
+          display: inline-block;
+          padding: 0.4em 0em;
+          width: 6em;
+          border-radius: 8px;
+          font-size: 0.7em;
+          text-transform: uppercase;
+          font-family: $font-primary;
+          color: $sky-white;
+          margin-right: 5px;
+          text-align: center;
+        }
+        .orange{
+          background-color : $tag-orange;
+        }
+        .lime{
+          background-color: $tag-lime;
+        }
+        .php-purple{
+          background-color: $tag-purple;
+        }
+        .pink{
+          background-color: $tag-pink;
+
+        }
+        .baby-blue{
+          background-color: $tag-babyBlue;
+          width: 5em;
+        }
+      }
+      .applicants{
+        background-color: $transparent;
+        border: 1px solid $dark-grey;
+        color: $dark-grey!important;
+        border-radius: 7px;
+        padding-left: 1.5em !important;
+        padding-right: 1.5em !important;
+        margin-left: 0.75em;
+        padding-top: 0.3em;
+        padding-bottom: 0.3em;
+      }
+      .project-list-item-applicants {
+        font-family: $font-primary;
+        color: $sky-white;
+        font-size: 0.7em !important;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: $dark-grey;
+        letter-spacing: 1px;
+      }
+      .project-list-item-id {
+        line-height: 1em;
+        float: right;
+        display: block;
+        font-family: $font-primary;
+        font-size: 1.75em;
+        color: $dark-black;
+      }
+      .project-list-item-license{
+        display: inline-block;
+        float: left;
+        p{
+          display: inline-block;
+          margin-top: 1.3em;
+          font-family: $font-primary;
+          color: $light-grey;
+          font-weight: 300;
+          font-size: 0.9em;
+          padding-bottom: 0.5em;
+          margin-left: 1em;
+        }
+        img{
+          vertical-align: middle;
+          height: 20px;
+          display: inline-block;
+        }
+      }
+      .learn-more-btn{
+        display: inline-block;
+        float: right;
+        border: 3px solid $bristol-red;
+        border-radius: 18px;
+        color: $dark-black;
+        padding: 0.75em 1.75em;
+        letter-spacing: 1px;
+        font-family: $font-primary;
+        text-transform: uppercase;
+        font-size: 0.8em;
+        margin-top: 1em;
+        &:hover{
+          background-color: $bristol-red;
+          color: $sky-white;
+          cursor: pointer;
+          cursor: hand;
+        }
+      }
+    }
+  }
+}

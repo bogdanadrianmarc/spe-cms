@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Projects</title>
+  <script src="https://unpkg.com/vue"></script>
+  <link rel = "stylesheet" type = "text/css" href = "css/styles.min.css" />
+  <link rel = "stylesheet" type = "text/css" href = "css/normalize.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+
+  <!-- This needs to be a big component with a lot of v-ifs for permissions -->
+  <div id = "navigation-bar">
+    <a href = "http://www.cs.bris.ac.uk/"><img alt = "University of Bristol logo" src = "img/logo-white.png" /></a>
+    <div class = "navigation-items">
+      <a href = "./dashboard"><span>Dashboard</span></a>
+      <a href = "./about"><span>About</span></a>
+      <span class = "navigation-items-selected">Projects</span>
+    </div>
+  </div>
+
+  <div id="app">
+    <h1>Available Projects</h1>
+    <projects-filters></projects-filters>
+    <transition-group name="sort-list">
+      <projects-list
+        v-for = "project in projectList"
+        v-bind:projects = "project"
+        v-bind:key = "project.id">
+      </projects-list>
+    </transition-group>
+  </div>
+
+  <script src="js/projects-filters.js"></script>
+  <script src="js/projects-list.js"></script>
+  <script src="js/projects.js"></script>
+
+
+</body>
+</html>
