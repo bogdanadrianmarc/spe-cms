@@ -2,23 +2,22 @@ package com.spe;
 
 import com.spe.domain.Project;
 import com.spe.repository.ProjectDBRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 public class CmsController {
 
-    @Autowired
     ProjectDBRepo repo;
 
     @PostConstruct
@@ -39,10 +38,14 @@ public class CmsController {
     }
 
     @CrossOrigin
-    @RequestMapping("/projects")
-    public List<Project> greeting() {
-        List<Project> list = (List<Project>) repo.findAll();
-        return list;
-//        repo.findOne(id);
+    @RequestMapping(value = "/projects", method = GET)
+    public List<Project> projects() {
+        return (List<Project>) repo.findAll();
+    }
+
+    @CrossOrigin
+    @RequestMapping(value = "/project", method = GET)
+    public Project project(@RequestParam(value="id") Integer id) {
+        return repo.findOne(id);
     }
 }

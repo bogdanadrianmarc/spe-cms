@@ -6,14 +6,14 @@ package com.spe.domain;
 public class Preference {
 
 //    FIELDS
-    private int studentId;
-    private int projectIdFirst;
-    private int projectIdSecond;
-    private int projectIdThird;
+    private Integer studentId;
+    private Integer projectIdFirst;
+    private Integer projectIdSecond;
+    private Integer projectIdThird;
     private Iterable<Integer> projectIds;
 
 //    CONSTRUCTORS
-    public Preference(int studentId, int projectIdFirst, int projectIdSecond, int projectIdThird, Iterable<Integer> projectIds) {
+    public Preference(Integer studentId, Integer projectIdFirst, Integer projectIdSecond, Integer projectIdThird, Iterable<Integer> projectIds) {
         this.studentId = studentId;
         this.projectIdFirst = projectIdFirst;
         this.projectIdSecond = projectIdSecond;
@@ -22,35 +22,35 @@ public class Preference {
     }
 
 //    GETTERS AND SETTERS
-    public int getStudentId() {
+    public Integer getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(int studentId) {
+    public void setStudentId(Integer studentId) {
         this.studentId = studentId;
     }
 
-    public int getProjectIdFirst() {
+    public Integer getProjectIdFirst() {
         return projectIdFirst;
     }
 
-    public void setProjectIdFirst(int projectIdFirst) {
+    public void setProjectIdFirst(Integer projectIdFirst) {
         this.projectIdFirst = projectIdFirst;
     }
 
-    public int getProjectIdSecond() {
+    public Integer getProjectIdSecond() {
         return projectIdSecond;
     }
 
-    public void setProjectIdSecond(int projectIdSecond) {
+    public void setProjectIdSecond(Integer projectIdSecond) {
         this.projectIdSecond = projectIdSecond;
     }
 
-    public int getProjectIdThird() {
+    public Integer getProjectIdThird() {
         return projectIdThird;
     }
 
-    public void setProjectIdThird(int projectIdThird) {
+    public void setProjectIdThird(Integer projectIdThird) {
         this.projectIdThird = projectIdThird;
     }
 

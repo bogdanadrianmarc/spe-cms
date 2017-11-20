@@ -3,26 +3,26 @@ package com.spe.domain;
 /**
  * Created by marc on 20/11/2017.
  */
-public class Teacher {
+public class Teacher implements IEntity<Integer> {
 
 //    FIELDS
-    private int id;
+    private Integer id;
     private String fullName;
     private String email;
 
 //    CONSTRUCTORS
-    public Teacher(int id, String fullName, String email) {
+    public Teacher(Integer id, String fullName, String email) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
     }
 
 //    GETTERS AND SETTERS
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

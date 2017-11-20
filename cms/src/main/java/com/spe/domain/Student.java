@@ -3,16 +3,16 @@ package com.spe.domain;
 /**
  * Created by marc on 20/11/2017.
  */
-public class Student {
+public class Student implements IEntity<Integer> {
 
 //    FIELDS
-    private int id; //the index we will use to iterate on, just a simple id
+    private Integer id; //the index we will use to iterate on, just a simple id
     private String uniId; //the student's uni id: ab12345
     private String fakeId; //the id we are going to display
     private String fullName; //first and last name and middle name and nickname, ...
 
 //    CONSTRUCTORS
-    public Student(int id, String uniId, String fakeId, String fullName) {
+    public Student(Integer id, String uniId, String fakeId, String fullName) {
         this.id = id;
         this.uniId = uniId;
         this.fakeId = fakeId;
@@ -20,11 +20,11 @@ public class Student {
     }
 
 //    GETTERS AND SETTERS
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -1,7 +1,6 @@
 package com.spe.repository;
 
 import com.spe.domain.Project;
-import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,8 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-@Component
-public class ProjectDBRepo {
+public class ProjectDBRepo implements IDBRepo<Integer, Project> {
 
     private DBUtils dbUtils;
 
@@ -20,7 +18,7 @@ public class ProjectDBRepo {
         dbUtils = new DBUtils(props);
     }
 
-//    @Override
+    @Override
     public int size() {
         Connection con = dbUtils.getConnection();
         try (PreparedStatement preStmt = con.prepareStatement("SELECT COUNT (*) AS [SIZE] FROM Projects")) {
@@ -35,7 +33,7 @@ public class ProjectDBRepo {
         return 0;
     }
 
-//    @Override
+    @Override
     public void save(Project entity) {
         Connection con = dbUtils.getConnection();
         try (PreparedStatement preStmt = con.prepareStatement("INSERT INTO Projects VALUES (?,?,?,?,?,?,?)")) {
@@ -52,34 +50,35 @@ public class ProjectDBRepo {
         }
     }
 
-//    @Override
-//    public void delete(Integer integer) {
-//        Connection con = dbUtils.getConnection();
-//        try (PreparedStatement preStmt = con.prepareStatement("DELETE FROM Flights WHERE flight_number=?")) {
-//            preStmt.setInt(1, integer);
-//            int result = preStmt.executeUpdate();
-//        } catch (SQLException ex) {
-//            System.out.println("Error DB " + ex);
-//        }
-//    }
+    @Override
+    public void delete(Integer integer) {
+        Connection con = dbUtils.getConnection();
+        try (PreparedStatement preStmt = con.prepareStatement("DELETE FROM Projects WHERE id=?")) {
+            preStmt.setInt(1, integer);
+            int result = preStmt.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("Error DB " + ex);
+        }
+    }
 
-//    @Override
-//    public void update(Integer integer, Flight entity) {
-//        Connection con = dbUtils.getConnection();
-//        try (PreparedStatement preStmt = con.prepareStatement("UPDATE Flights SET destination=?,boarding_date=?,boarding_hour=?,airport=?,free_seats=? WHERE flight_number=?")) {
-//            preStmt.setString(1, entity.getDestination());
-//            preStmt.setString(2, entity.getBoarding_date());
-//            preStmt.setString(3, entity.getBoarding_hour());
-//            preStmt.setString(4, entity.getAirport());
-//            preStmt.setInt(5, entity.getFree_seats());
-//            preStmt.setInt(6, integer);
-//            int result = preStmt.executeUpdate();
-//        } catch (SQLException ex) {
-//            System.out.println("Error DB " + ex);
-//        }
-//    }
+    @Override
+    public void update(Integer integer, Project entity) {
+        Connection con = dbUtils.getConnection();
+        try (PreparedStatement preStmt = con.prepareStatement("UPDATE Projects SET tags=?,title=?,content=?,applicantsNr=?,imgUrl=?,projectUrl=? WHERE id=?")) {
+            preStmt.setString(1, entity.getTags());
+            preStmt.setString(2, entity.getTitle());
+            preStmt.setString(3, entity.getContent());
+            preStmt.setInt(4, entity.getapplicantsNr());
+            preStmt.setString(5, entity.getImgUrl());
+            preStmt.setString(6, entity.getProjectUrl());
+            preStmt.setInt(7, integer);
+            int result = preStmt.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("Error DB " + ex);
+        }
+    }
 
-//    @Override
+    @Override
     public Project findOne(Integer integer) {
         Connection con = dbUtils.getConnection();
 
@@ -104,7 +103,7 @@ public class ProjectDBRepo {
         return null;
     }
 
-//    @Override
+    @Override
     public Iterable<Project> findAll() {
         Connection con = dbUtils.getConnection();
         List<Project> projects = new ArrayList<>();

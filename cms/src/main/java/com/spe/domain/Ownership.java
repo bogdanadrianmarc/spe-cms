@@ -6,29 +6,29 @@ package com.spe.domain;
 public class Ownership {
 
 //    FIELDS
-    private int clientId; //future primary key in db
-    private int projectId;
+    private Integer clientId; //future primary key in db
+    private Integer projectId;
 
 //    CONSTRUCTORS
-    public Ownership(int clientId, int projectId) {
+    public Ownership(Integer clientId, Integer projectId) {
         this.clientId = clientId;
         this.projectId = projectId;
     }
 
 //    GETTERS AND SETTERS
-    public int getClientId() {
+    public Integer getClientId() {
         return clientId;
     }
 
-    public void setClientId(int clientId) {
+    public void setClientId(Integer clientId) {
         this.clientId = clientId;
     }
 
-    public int getProjectId() {
+    public Integer getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(int projectId) {
+    public void setProjectId(Integer projectId) {
         this.projectId = projectId;
     }
 }

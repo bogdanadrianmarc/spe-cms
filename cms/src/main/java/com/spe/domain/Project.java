@@ -3,19 +3,19 @@ package com.spe.domain;
 /**
  * Created by marc on 20/11/2017.
  */
-public class Project {
+public class Project implements IEntity<Integer> {
 
 //    FIELDS
-    private int id;
+    private Integer id;
     private String tags;
     private String title;
     private String content;
-    private int applicantsNr;
+    private Integer applicantsNr;
     private String imgUrl;
     private String projectUrl;
 
 //    CONSTRUCTORS
-    public Project(int id, String tags, String title, String content, int applicantsNr, String imgUrl, String projectUrl) {
+    public Project(Integer id, String tags, String title, String content, Integer applicantsNr, String imgUrl, String projectUrl) {
         this.id = id;
         this.tags = tags;
         this.title = title;
@@ -26,7 +26,7 @@ public class Project {
     }
 
 //    GETTERS
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -42,7 +42,7 @@ public class Project {
         return content;
     }
 
-    public int getapplicantsNr() {
+    public Integer getapplicantsNr() {
         return applicantsNr;
     }
 
@@ -51,7 +51,7 @@ public class Project {
     public String getProjectUrl() { return projectUrl; }
 
 //    SETTERS
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -67,7 +67,7 @@ public class Project {
         this.content = content;
     }
 
-    public void setApplicantsNr(int applicantsNr) {
+    public void setApplicantsNr(Integer applicantsNr) {
         this.applicantsNr = applicantsNr;
     }
 

@@ -3,10 +3,10 @@ package com.spe.domain;
 /**
  * Created by marc on 20/11/2017.
  */
-public class Client {
+public class Client implements IEntity<Integer> {
 
 //    FIELDS
-    private int id;
+    private Integer id;
     private String orgName;
     private String orgAddress;
     private String orgPhone;
@@ -15,7 +15,7 @@ public class Client {
     private String persEmail;
 
 //    CONSTRUCTORS
-    public Client(int id, String orgName, String orgAddress, String orgPhone, String persName, String persPhone, String persEmail) {
+    public Client(Integer id, String orgName, String orgAddress, String orgPhone, String persName, String persPhone, String persEmail) {
         this.id = id;
         this.orgName = orgName;
         this.orgAddress = orgAddress;
@@ -26,11 +26,11 @@ public class Client {
     }
 
 //    GETTERS AND SETTERS
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
