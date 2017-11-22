@@ -37,4 +37,4 @@ Vue.component('projects_list_item', {
     </router-link>
   </div>
 </div>`
-});
+}); 

@@ -17,18 +17,20 @@
     margin-top: 10px;
     color: $sky-white;
   }
-  p{
+  .single-project-content{
     padding-top: 35px !important;
-    font-family: $font-secondary;
-    font-size: 0.9em;
-    line-height: 1.8em;
     margin-top: 0px;
+    div{
+      font-family: $font-secondary;
+      font-size: 1em;
+      line-height: 2em;
+    }
   }
   .project-list-item-applicants{
     padding-top: 15px;
     padding-bottom: 35px;
     color: $light-grey !important;
-    span .applicants{
+    .applicants{
       color: $light-grey !important;
       border-color: $light-grey !important;
     }

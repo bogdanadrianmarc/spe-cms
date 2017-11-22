@@ -17,6 +17,7 @@ const single_project = {
       success: function (data) {
         self.project = data;
         self.$parent.getTagColors(self.project,self);
+        self.project.lines = self.project.content.split('\n');
       },
       error: function (error) {
         console.log(error);
@@ -38,7 +39,9 @@ const single_project = {
         No. of applicants <span class = "applicants"> {{ project.applicantsNr }}</span>
       </div>
     </div>
-    <p>{{project.content}}</p>
+    <div class = "single-project-content">
+      <div v-for="line in project.lines">{{line}}<br /></div>
+    </div>
     <div class = "single-project-CTA">
       <h1>Like this project?<br /> Choose it!</h1>
       <router-link to="/dashboard">
