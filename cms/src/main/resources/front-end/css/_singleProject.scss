@@ -1,9 +1,10 @@
+ // main: styles.scss
 @import "_colors.scss";
 @import "_fonts.scss";
 
 .single-project{
   background-color: $sky-white;
-  margin: 25px 50px;
+  margin: 40px 50px;
   padding: 0px 0px 0px;
   > :not(.single-project-CTA){
     padding: 0px 50px;
@@ -36,7 +37,7 @@
     }
   }
   .single-project-header{
-    background-color: $light-black;
+    background-color: $dark-black;
     .tag-container{
       margin-top: 35px;
     }

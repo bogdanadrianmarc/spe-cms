@@ -38,6 +38,17 @@ const projects_list = {
     applicantsDescending(a, b){
       return a.applicantsNr < b.applicantsNr ? 1 : -1;
     },
+    sortTitle: function(){
+      const field = document.querySelector("input[name=title-input]").value.replace(/ /g,'').toUpperCase();
+      this.projectList = this.projectListCopy.filter(function(project){
+        if(field === "")
+        return project;
+        let title = project.title.replace(/ /g,'');
+        title = title.toUpperCase();
+        if(title.startsWith(field))
+        return project;
+      });
+    },
     sortTags: function(){
       const field = document.querySelector("input[name=tags-input]").value;
 
@@ -75,16 +86,9 @@ const projects_list = {
     <!-- loader -->
     <transition name = "fade" mode = "out-in">
       <div v-if = "this.$parent.loading" class = "loader" key="loading">
-        <div class="spinner">
-          <div class="rect1"></div>
-          <div class="rect2"></div>
-          <div class="rect3"></div>
-          <div class="rect4"></div>
-          <div class="rect5"></div>
-        </div>
+        <loader_spinner></loader_spinner>
       </div>
       <div v-else key="loaded">
-        <h1>Available Projects</h1>
         <projects_list_filters></projects_list_filters>
         <transition-group name="sort-list">
           <projects_list_item
