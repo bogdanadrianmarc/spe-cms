@@ -22,5 +22,15 @@ const app = new Vue({
     return{
       loading: false
     }
+  },
+  methods:{
+    getTagColors: function (projects,self){
+      const tagsList   = ["Webapp", "Spring", "PHP", "JS", "React"];
+      const colors     = ["orange", "lime", "php-purple", "pink", "baby-blue"];
+
+      const projectTags = projects.tags.split(',');
+      for(let i = 0; i < projectTags.length; i++)
+      self.tagColors.push(colors[tagsList.indexOf(projectTags[i])]);
+    }
   }
 });

@@ -6,17 +6,7 @@ Vue.component('projects_list_item', {
     }
   },
   created: function(){
-    this.getTagColors(this.projects);
-  },
-  methods: {
-    getTagColors: function (projects){
-      const tagsList   = ["Webapp", "Spring", "PHP", "JS", "React"];
-      const colors     = ["orange", "lime", "php-purple", "pink", "baby-blue"];
-
-      const projectTags = projects.tags.split(',');
-      for(let i = 0; i < projectTags.length; i++)
-      this.tagColors.push(colors[tagsList.indexOf(projectTags[i])]);
-    }
+    this.$parent.$parent.$parent.getTagColors(this.projects,this);
   },
   template: `<div class = "project-list-item">
   <img class = "project-list-item-image" alt = "Project Image" v-bind:src="projects.imgUrl" />

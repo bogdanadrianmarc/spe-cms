@@ -4,7 +4,8 @@ const single_project = {
     return {
       project: {
         tags: ""
-      }
+      },
+      tagColors: []
     }
   },
   created: function(){
@@ -15,11 +16,13 @@ const single_project = {
       method: 'GET',
       success: function (data) {
         self.project = data;
+        self.$parent.getTagColors(self.project,self);
       },
       error: function (error) {
         console.log(error);
       }
     });
+
   },
   template: `
   <div class = "single-project">
@@ -27,8 +30,7 @@ const single_project = {
     <div class = "single-project-header">
       <div>
         <span class = "tag-container" v-for = "(tag,index) in project.tags.split(',')">
-          <!--            <div class = "tag" v-bind:class="tagColors[index]"> {{tag}} </div> -->
-          <span class = "tag orange">{{tag}}</span>
+          <div class = "tag" v-bind:class="tagColors[index]"> {{tag}} </div>
         </span>
       </div>
       <h1>Project #{{project.id}} : {{project.title}}</h1>
