@@ -68,9 +68,11 @@ const user_dashboard = {
         <div id = "fixed-footer">
           <h1>Max Demian</h1>
           <h2 style = "display: inline-block">Ordered preferences: </h2>
-          <span v-for="project in order">
-            <span v-if="!isUndefined(project)">#{{project.id}} </span>
-          </span>
+          <transition-group name = "food">
+            <span v-for="project in order" v-if="!isUndefined(project)"  v-bind:key="project.id">
+              <span>#{{project.id}} </span>
+            </span>
+          </transition-group>
         </div>
         <div id = "condensed-projects">
           <div v-for="(project, index) in projectList" class = "condensed-project">
