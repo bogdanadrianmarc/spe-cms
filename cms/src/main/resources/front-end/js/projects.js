@@ -3,7 +3,8 @@ const routes = [
   { path: '/projects',    component: projects_list },
   { path: '/dashboard',   component: user_dashboard},
   { path: '/',            component: default_page},
-  { path: '/project/:id', component: single_project, props: true}
+  { path: '/project/:id', component: single_project, props: true},
+  { path: '/selections',  component: selections}
 ];
 
 const router = new VueRouter({

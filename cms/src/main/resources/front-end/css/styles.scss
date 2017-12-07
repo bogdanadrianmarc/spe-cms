@@ -11,6 +11,8 @@
 body{
   background-color: $light-black;
   overflow-y: scroll;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 #navigation-bar{
   background-color : $bristol-red;
@@ -420,7 +422,77 @@ body{
   }
 }
 }
+#selections-page{
+  #box-selections > .selection{
+    background: $sky-white;
+    padding: 1em 0em;
+    width: 100px;
+    margin: 1em;
+    color: $dark-black;
+    text-align: center;
+  }
+}
 
+#inner-dropzone {
+  height: 100px;
+}
+
+.dropzone {
+  background-color: $light-grey;
+  border: dashed 4px transparent;
+  border-radius: 4px;
+  margin: 10px auto 30px;
+  padding: 10px;
+  width: 900px;
+  transition: background-color 0.15s;
+  text-align: center;
+}
+
+.drop-active {
+  border-color: #aaa;
+}
+
+.drop-target {
+  background-color: $dark-black;
+  border-color: $sky-white;
+  border-style: solid;
+}
+
+.drag-drop {
+  display: inline-block;
+  width: 800px;
+  padding: 2em 0.5em;
+  text-align: center;
+  color: #fff;
+  background-color: #29e;
+  border: solid 2px #fff;
+
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+
+  transition: background-color 0.3s;
+}
+
+.drag-drop.can-drop {
+  color: #000;
+  background-color: $bristol-red;
+}
+
+
+#selections-page{
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 100vh;
+  .draggable{
+    -webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+  }
+}
 
 @media screen
 and (min-device-width: 1200px)
