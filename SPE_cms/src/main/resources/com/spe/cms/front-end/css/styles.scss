@@ -14,6 +14,12 @@ body{
   max-width: 100%;
   overflow-x: hidden;
 }
+a:active, a:focus {
+  outline: 0;
+  border: none;
+  -moz-outline-style: none
+}
+
 #navigation-bar{
   background-color : $bristol-red;
   height: 100px;
@@ -480,17 +486,23 @@ body{
 
 
 #selections-page{
-  max-width: 100%;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  height: 100vh;
-  .draggable{
-    -webkit-touch-callout: none;
--webkit-user-select: none;
--khtml-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
+  h1, h2{
+    text-align: center;
+  }
+  #items{
+    margin: 0;
+    padding: 0;
+    li{
+      border: 3px solid $sky-white;
+      list-style: none;
+      margin: 2em auto;
+      padding: 2em;
+      width: 30em;
+      background-color: $bristol-red;
+    }
+    .sortable-chosen{
+      background-color: green;
+    }
   }
 }
 

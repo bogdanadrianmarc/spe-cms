@@ -1,0 +1,22 @@
+{
+  "name": "spe",
+  "version": "1.0.0",
+  "description": "Vue.js front-end for SPE unit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bogdanadrianmarc/spe-cms.git"
+  },
+  "author": "Marc Tannous",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bogdanadrianmarc/spe-cms/issues"
+  },
+  "homepage": "https://github.com/bogdanadrianmarc/spe-cms#readme",
+  "dependencies": {
+    "sortablejs": "^1.7.0"
+  }
+}
