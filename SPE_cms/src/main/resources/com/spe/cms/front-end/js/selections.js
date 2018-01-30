@@ -4,16 +4,49 @@
 const selections = {
   template: `
   <div id = "selections-page">
-  <h1>Project selection order</h1>
-  <h2>Drag and drop items in the order that you like.</h2>
-  <ol id="items">
-  <li>'The rock outside MVB' inc.</li>
-  <li>Green Foundation</li>
-  <li>Oracle Waiter</li>
-  <li>IBM Server Monitoring</li>
-  <li>University of Bristol RFID Laptops</li>
-  <li>Sailing Society Dashboard</li>
-  </ol>
+    <h1>Project selection order</h1>
+    <ol id="items">
+      <li>
+        'The rock outside MVB' inc.
+        <i class="fa fa-arrows" aria-hidden="true"></i>
+      </li>
+      <li>
+        Green Foundation
+        <i class="fa fa-arrows" aria-hidden="true"></i>
+      </li>
+      <li>
+        Oracle Waiter
+        <i class="fa fa-arrows" aria-hidden="true"></i>
+      </li>
+      <li>
+        IBM Server Monitoring
+        <i class="fa fa-arrows" aria-hidden="true"></i>
+      </li>
+      <li>
+        University of Bristol RFID Laptops
+        <i class="fa fa-arrows" aria-hidden="true"></i>
+      </li>
+      <li>
+        Sailing Society Dashboard
+        <i class="fa fa-arrows" aria-hidden="true"></i>
+      </li>
+      <li>
+        Oracle Waiter
+        <i class="fa fa-arrows" aria-hidden="true"></i>
+      </li>
+      <li>
+        IBM Server Monitoring
+        <i class="fa fa-arrows" aria-hidden="true"></i>
+      </li>
+      <li>
+        University of Bristol RFID Laptops
+        <i class="fa fa-arrows" aria-hidden="true"></i>
+      </li>
+      <li>
+        Sailing Society Dashboard
+        <i class="fa fa-arrows" aria-hidden="true"></i>
+      </li>
+    </ol>
   </div>`,
   data: function () {
     return {

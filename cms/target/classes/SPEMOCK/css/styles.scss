@@ -11,15 +11,7 @@
 body{
   background-color: $light-black;
   overflow-y: scroll;
-  max-width: 100%;
-  overflow-x: hidden;
 }
-a:active, a:focus {
-  outline: 0;
-  border: none;
-  -moz-outline-style: none
-}
-
 #navigation-bar{
   background-color : $bristol-red;
   height: 100px;
@@ -428,131 +420,7 @@ a:active, a:focus {
   }
 }
 }
-#selections-page{
-  #box-selections > .selection{
-    background: $sky-white;
-    padding: 1em 0em;
-    width: 100px;
-    margin: 1em;
-    color: $dark-black;
-    text-align: center;
-  }
-}
 
-#inner-dropzone {
-  height: 100px;
-}
-
-.dropzone {
-  background-color: $light-grey;
-  border: dashed 4px transparent;
-  border-radius: 4px;
-  margin: 10px auto 30px;
-  padding: 10px;
-  width: 900px;
-  transition: background-color 0.15s;
-  text-align: center;
-}
-
-.drop-active {
-  border-color: #aaa;
-}
-
-.drop-target {
-  background-color: $dark-black;
-  border-color: $sky-white;
-  border-style: solid;
-}
-
-.drag-drop {
-  display: inline-block;
-  width: 800px;
-  padding: 2em 0.5em;
-  text-align: center;
-  color: #fff;
-  background-color: #29e;
-  border: solid 2px #fff;
-
-  -webkit-transform: translate(0px, 0px);
-          transform: translate(0px, 0px);
-
-  transition: background-color 0.3s;
-}
-
-.drag-drop.can-drop {
-  color: #000;
-  background-color: $bristol-red;
-}
-
-
-#selections-page{
-  h1{
-    font-family: $font-primary;
-    color: $sky-white;
-    font-size: 1.25em !important;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 0px;
-    margin: 0 auto;
-    width: 65%;
-  }
-  #items{
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    counter-reset: elementcounter;
-    padding-left: 0;
-    li:before{
-        content: "Choice #" counter(elementcounter);
-        counter-increment:elementcounter;
-        font-family: $font-primary;
-        font-weight: 700;
-        text-transform: uppercase;
-        border-right: 1px solid $dark-grey;
-        display: inline-block;
-        padding: 0.5em 0;
-        text-align: center;
-        width:10em;
-        margin-right: 1em;
-    }
-    li{
-      font-size: 1.25em;
-      margin: 0 auto;
-      border-bottom: 2px solid $dark-grey;
-      padding: 1em 2em 1em 0;
-      width: 65%;
-      background-color: $sky-white;
-      color: $dark-grey;
-      transition: background-color 0.15s ease-in-out;
-      &:nth-child(3){
-        border-bottom: 5px solid $bristol-red;
-      }
-      i{
-        float: right;
-        color: $dark-grey;
-        display: inline-block;
-        padding: 0.5em 0;
-      }
-      &:hover{
-      cursor: move; /* fallback if grab cursor is unsupported */
-      cursor: grab;
-      cursor: -moz-grab;
-      cursor: -webkit-grab;
-      }
-
-       /* (Optional) Apply a "closed-hand" cursor during drag operation. */
-      &:active {
-          cursor: grabbing;
-          cursor: -moz-grabbing;
-          cursor: -webkit-grabbing;
-      }
-    }
-    .sortable-chosen{
-      background-color: $light-grey;
-    }
-  }
-}
 
 @media screen
 and (min-device-width: 1200px)

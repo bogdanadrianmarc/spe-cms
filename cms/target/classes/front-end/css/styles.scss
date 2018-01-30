@@ -14,12 +14,6 @@ body{
   max-width: 100%;
   overflow-x: hidden;
 }
-a:active, a:focus {
-  outline: 0;
-  border: none;
-  -moz-outline-style: none
-}
-
 #navigation-bar{
   background-color : $bristol-red;
   height: 100px;
@@ -486,71 +480,17 @@ a:active, a:focus {
 
 
 #selections-page{
-  h1{
-    font-family: $font-primary;
-    color: $sky-white;
-    font-size: 1.25em !important;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 0px;
-    margin: 0 auto;
-    width: 65%;
-  }
-  #items{
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    counter-reset: elementcounter;
-    padding-left: 0;
-    li:before{
-        content: "Choice #" counter(elementcounter);
-        counter-increment:elementcounter;
-        font-family: $font-primary;
-        font-weight: 700;
-        text-transform: uppercase;
-        border-right: 1px solid $dark-grey;
-        display: inline-block;
-        padding: 0.5em 0;
-        text-align: center;
-        width:10em;
-        margin-right: 1em;
-    }
-    li{
-      font-size: 1.25em;
-      margin: 0 auto;
-      border-bottom: 2px solid $dark-grey;
-      padding: 1em 2em 1em 0;
-      width: 65%;
-      background-color: $sky-white;
-      color: $dark-grey;
-      transition: background-color 0.15s ease-in-out;
-      &:nth-child(3){
-        border-bottom: 5px solid $bristol-red;
-      }
-      i{
-        float: right;
-        color: $dark-grey;
-        display: inline-block;
-        padding: 0.5em 0;
-      }
-      &:hover{
-      cursor: move; /* fallback if grab cursor is unsupported */
-      cursor: grab;
-      cursor: -moz-grab;
-      cursor: -webkit-grab;
-      }
-
-       /* (Optional) Apply a "closed-hand" cursor during drag operation. */
-      &:active {
-          cursor: grabbing;
-          cursor: -moz-grabbing;
-          cursor: -webkit-grabbing;
-      }
-    }
-    .sortable-chosen{
-      background-color: $light-grey;
-    }
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 100vh;
+  .draggable{
+    -webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
   }
 }
 
