@@ -11,7 +11,6 @@ Vue.component('projects_list_item', {
   template: `<div class = "project-list-item">
   <img class = "project-list-item-image" alt = "Project Image" v-bind:src="projects.imgUrl" />
   <div class = "project-list-item-content">
-    <!-- MAKE THIS A COMPONENT OYU LAZY FUCK -->
     <div class = "tag-container" v-for = "(tag, index) in projects.tags.split(',')">
       <div class = "tag" v-bind:class="tagColors[index]"> {{tag}} </div>
     </div>
@@ -37,4 +36,4 @@ Vue.component('projects_list_item', {
     </router-link>
   </div>
 </div>`
-}); 
+});

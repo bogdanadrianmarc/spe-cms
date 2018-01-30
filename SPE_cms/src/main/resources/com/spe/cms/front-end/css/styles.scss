@@ -44,7 +44,7 @@ a:active, a:focus {
       line-height: 100px;
       margin-right: 50px;
       font-family: $font-primary;
-      font-weight: 300;
+      font-weight: 400;
       letter-spacing: 3px;
       font-size: 0.75em;
       padding: 0.5em 1em;
@@ -85,6 +85,7 @@ a:active, a:focus {
       margin-right: 5px;
       text-align: center;
       transition: 0s all !important;
+      font-weight: 600;
     }
     .orange{
       background-color : $tag-orange;
@@ -208,7 +209,7 @@ a:active, a:focus {
 // direct child, hence '>' combinator
 
 #filter-bar{
-  margin: 0 50px 2.5em;
+  margin: 0.5em 50px 2.5em;
   h1{
     font-family: $font-primary;
     color: $sky-white;
@@ -218,6 +219,7 @@ a:active, a:focus {
     text-transform: uppercase;
     padding: 0.5em 0;
     margin-bottom: 0px;
+    margin-top: 0px;
   }
   button{
     background: none;
@@ -486,16 +488,27 @@ a:active, a:focus {
 
 
 #selections-page{
+  width: 65vw;
+  margin: 1.25em auto 3em;
   h1{
     font-family: $font-primary;
     color: $sky-white;
-    font-size: 1.25em !important;
+    font-size: 1.25em;
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 0px;
     margin: 0 auto;
-    width: 65%;
+    padding-bottom: 0.5em;
+  }
+  p{
+    margin: 0;
+    padding: 0;
+    padding-bottom: 1em;
+    font-family: $font-secondary;
+    font-size: 1em;
+    line-height: 1.5em;
+    color: $light-grey;
   }
   #items{
     margin: 0;
@@ -521,18 +534,29 @@ a:active, a:focus {
       margin: 0 auto;
       border-bottom: 2px solid $dark-grey;
       padding: 1em 2em 1em 0;
-      width: 65%;
       background-color: $sky-white;
       color: $dark-grey;
       transition: background-color 0.15s ease-in-out;
       &:nth-child(3){
         border-bottom: 5px solid $bristol-red;
       }
-      i{
+      button{
+        margin-top: 0.25em;
         float: right;
-        color: $dark-grey;
         display: inline-block;
-        padding: 0.5em 0;
+        padding: 0.5em 0.75em;
+        background: $bristol-red;
+        border: none;
+        text-transform: uppercase;
+        font-family: $font-primary;
+        color: $sky-white;
+        font-size: 0.75em;
+        font-weight: 600;
+        border-radius: 10px;
+        &:hover{
+          cursor: pointer;
+          cursor: hand;
+        }
       }
       &:hover{
       cursor: move; /* fallback if grab cursor is unsupported */
@@ -549,9 +573,30 @@ a:active, a:focus {
       }
     }
     .sortable-chosen{
-      background-color: $light-grey;
+      background-color: #ccc;
     }
+    }
+
   }
+  .add{
+    text-align: center;
+    background-color: $transparent;
+    border: 3px dashed $sky-white;
+    padding: 1em 2em 1em 0;
+    margin: 0.5em auto 0;
+    font-size: 1.5em;
+    transition: all 0.15s ease-in-out;
+    i{
+      float: none;
+      color: $sky-white;
+    }
+    &:hover{
+      background-color: $bristol-red;
+      border-style: solid;
+      cursor: pointer;
+      cursor: hand;
+      border-color: $bristol-red;
+    }
 }
 
 @media screen

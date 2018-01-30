@@ -4,49 +4,46 @@
 const selections = {
   template: `
   <div id = "selections-page">
-    <h1>Project selection order</h1>
+    <h1>Project selection</h1>
+    <p>
+    Sort projects you would like to work on in your preferred order.<br />
+    The first three projects will have the highest priority, but all other submitted choices will be taken into account as well.
+    </p>
     <ol id="items">
       <li>
         'The rock outside MVB' inc.
-        <i class="fa fa-arrows" aria-hidden="true"></i>
+        <button><i class="fa fa-times" aria-hidden="true"></i></button>
       </li>
       <li>
         Green Foundation
-        <i class="fa fa-arrows" aria-hidden="true"></i>
+        <button><i class="fa fa-times" aria-hidden="true"></i></button>
       </li>
       <li>
         Oracle Waiter
-        <i class="fa fa-arrows" aria-hidden="true"></i>
+        <button><i class="fa fa-times" aria-hidden="true"></i></button>
       </li>
       <li>
         IBM Server Monitoring
-        <i class="fa fa-arrows" aria-hidden="true"></i>
+        <button><i class="fa fa-times" aria-hidden="true"></i></button>
       </li>
       <li>
         University of Bristol RFID Laptops
-        <i class="fa fa-arrows" aria-hidden="true"></i>
+        <button><i class="fa fa-times" aria-hidden="true"></i></button>
       </li>
       <li>
         Sailing Society Dashboard
-        <i class="fa fa-arrows" aria-hidden="true"></i>
+        <button><i class="fa fa-times" aria-hidden="true"></i></button>
       </li>
       <li>
-        Oracle Waiter
-        <i class="fa fa-arrows" aria-hidden="true"></i>
-      </li>
-      <li>
-        IBM Server Monitoring
-        <i class="fa fa-arrows" aria-hidden="true"></i>
-      </li>
-      <li>
-        University of Bristol RFID Laptops
-        <i class="fa fa-arrows" aria-hidden="true"></i>
-      </li>
-      <li>
-        Sailing Society Dashboard
-        <i class="fa fa-arrows" aria-hidden="true"></i>
+        Museum Augmented Reality
+        <button><i class="fa fa-times" aria-hidden="true"></i></button>
       </li>
     </ol>
+    <router-link to = "/projects">
+      <div class = "add">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </div>
+    </router-link>
   </div>`,
   data: function () {
     return {
