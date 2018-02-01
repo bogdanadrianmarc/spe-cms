@@ -2,10 +2,7 @@ package com.spe.cms;
 
 import com.spe.cms.domain.Project;
 import com.spe.cms.repository.ProjectDBRepo;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.io.FileReader;
@@ -14,6 +11,7 @@ import java.util.List;
 import java.util.Properties;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 public class CmsController {
@@ -47,5 +45,13 @@ public class CmsController {
     @RequestMapping(value = "/project", method = GET)
     public Project project(@RequestParam(value="id") Integer id) {
         return repo.findOne(id);
+    }
+
+    @CrossOrigin
+    @RequestMapping(value = "/selections_save", method = POST)
+    public String selections_save(@RequestParam(value="id") Integer id, @RequestBody List<Project> projects)
+    {
+        //SAVING PART COMES IN HERE, GOTTA DO THE REPO TOO
+        return "OK";
     }
 }
