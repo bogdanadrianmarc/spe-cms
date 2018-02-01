@@ -8,6 +8,14 @@ Vue.component('projects_list_item', {
   created: function(){
     this.$parent.$parent.$parent.getTagColors(this.projects,this);
   },
+  methods: {
+    clickBTN: function(index){
+      console.log(index)
+    },
+    isUndefined: function(item){
+      return typeof item === "undefined";
+    }
+  },
   template: `<div class = "project-list-item">
   <img class = "project-list-item-image" alt = "Project Image" v-bind:src="projects.imgUrl" />
   <div class = "project-list-item-content">
@@ -29,6 +37,10 @@ Vue.component('projects_list_item', {
     <div class = "project-list-item-license">
       <img src = "img/mit-license.png" />
       <p>MIT License</p>
+    </div>
+
+    <div class = "select-project-btn">
+      <button v-on:click="clickBTN(index)"> <i class = "fa fa-plus"></i></button>
     </div>
 
     <router-link v-bind:to="projects.projectUrl">
