@@ -599,6 +599,32 @@ a:active, a:focus {
     }
 }
 
+.select-project-btn{
+  button{
+    background-color: $sky-white;
+    display: inline-block;
+    float: right;
+    border: 3px solid $bristol-red;
+    border-radius: 18px;
+    color: $dark-black;
+    padding: 0.75em 1.75em;
+    letter-spacing: 1px;
+    font-family: $font-primary;
+    font-size: 0.8em;
+    margin-top: 1em;
+    transition-duration: 0.25s !important;
+    i {
+      color: $dark-black;
+    }
+    &:hover{
+      background-color: $bristol-red;
+      color: $sky-white;
+      cursor: pointer;
+      cursor: hand;
+    }
+  }
+}
+
 @media screen
 and (min-device-width: 1200px)
 and (max-device-width: 1600px)
