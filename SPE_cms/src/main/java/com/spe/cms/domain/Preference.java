@@ -7,12 +7,12 @@ public class Preference {
 
 //    FIELDS
     private Integer id; //primary key in the database
-    private Integer studentId;
+    private String studentId;
     private Integer projectId;
     private Integer priority;
 
 //    CONSTRUCTORS
-    public Preference(Integer id, Integer studentId, Integer projectId, Integer priority) {
+    public Preference(Integer id, String studentId, Integer projectId, Integer priority) {
         this.id = id;
         this.studentId = studentId;
         this.projectId = projectId;
@@ -30,11 +30,11 @@ public class Preference {
         this.id = id;
     }
 
-    public Integer getStudentId() {
+    public String getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(Integer studentId) {
+    public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
 

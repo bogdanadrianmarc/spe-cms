@@ -6,8 +6,8 @@ package com.spe.cms.domain;
 public class Ownership {
 
 //    FIELDS
-    private Integer clientId; //future primary key in db
-    private Integer projectId;
+    private Integer projectId; //primary key in db
+    private Integer clientId;
 
 //    CONSTRUCTORS
     public Ownership(Integer clientId, Integer projectId) {

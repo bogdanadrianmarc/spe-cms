@@ -80,12 +80,12 @@ public class CmsController {
      */
     @CrossOrigin
     @RequestMapping(value = "/selections_id", method = GET)
-    public List<Preference> selections_id(@RequestParam(value = "id") Integer id) {
+    public List<Preference> selections_id(@RequestParam(value = "id") String id) {
         List<Preference> preferences = (List<Preference>) preferenceDBRepo.findAll();
         List<Preference> idPreferences = new ArrayList<>();
         for (Preference p : preferences)
         {
-            if (p.getStudentId() == id)
+            if (p.getStudentId().equals(id))
                 idPreferences.add(p);
         }
         return idPreferences;
@@ -101,7 +101,7 @@ public class CmsController {
      */
     @CrossOrigin
     @RequestMapping(value = "/selection_save", method = POST)
-    public String selection_save(@RequestParam(value = "studentId") Integer studentId, @RequestParam(value = "projectId") Integer projectId, @RequestParam(value = "priority") Integer priority)
+    public String selection_save(@RequestParam(value = "studentId") String studentId, @RequestParam(value = "projectId") Integer projectId, @RequestParam(value = "priority") Integer priority)
     {
         Preference p = new Preference(preferenceDBRepo.size()+1, studentId, projectId, priority);
         preferenceDBRepo.save(p);

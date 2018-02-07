@@ -3,27 +3,37 @@ package com.spe.cms.domain;
 /**
  * Created by marc on 20/11/2017.
  */
-public class Teacher implements IEntity<Integer> {
+public class Teacher implements IEntity<String> {
 
 //    FIELDS
-    private Integer id;
+    private String id;
+    private String password;
     private String fullName;
     private String email;
 
 //    CONSTRUCTORS
-    public Teacher(Integer id, String fullName, String email) {
+    public Teacher(String id, String password, String fullName, String email) {
         this.id = id;
+        this.password = password;
         this.fullName = fullName;
         this.email = email;
     }
 
 //    GETTERS AND SETTERS
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFullName() {

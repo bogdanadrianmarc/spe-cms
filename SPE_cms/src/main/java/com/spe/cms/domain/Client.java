@@ -7,6 +7,7 @@ public class Client implements IEntity<Integer> {
 
 //    FIELDS
     private Integer id;
+    private String password;
     private String orgName;
     private String orgAddress;
     private String orgPhone;
@@ -15,8 +16,9 @@ public class Client implements IEntity<Integer> {
     private String persEmail;
 
 //    CONSTRUCTORS
-    public Client(Integer id, String orgName, String orgAddress, String orgPhone, String persName, String persPhone, String persEmail) {
+    public Client(Integer id, String password, String orgName, String orgAddress, String orgPhone, String persName, String persPhone, String persEmail) {
         this.id = id;
+        this.password = password;
         this.orgName = orgName;
         this.orgAddress = orgAddress;
         this.orgPhone = orgPhone;
@@ -32,6 +34,14 @@ public class Client implements IEntity<Integer> {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getOrgName() {

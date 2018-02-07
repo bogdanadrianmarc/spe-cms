@@ -39,7 +39,7 @@ public class PreferenceDBRepo implements IDBRepo<Integer, Preference> {
         Connection con = dbUtils.getConnection();
         try (PreparedStatement preStmt = con.prepareStatement("INSERT INTO Preferences VALUES (?,?,?,?)")) {
             preStmt.setInt(1, entity.getId());
-            preStmt.setInt(2, entity.getStudentId());
+            preStmt.setString(2, entity.getStudentId());
             preStmt.setInt(3, entity.getProjectId());
             preStmt.setInt(4, entity.getPriority());
             int result = preStmt.executeUpdate();
@@ -63,7 +63,7 @@ public class PreferenceDBRepo implements IDBRepo<Integer, Preference> {
     public void update(Integer integer, Preference entity) {
         Connection con = dbUtils.getConnection();
         try (PreparedStatement preStmt = con.prepareStatement("UPDATE Preferences SET studentId=?,projectId=?,priority=? WHERE id=?")) {
-            preStmt.setInt(1, entity.getStudentId());
+            preStmt.setString(1, entity.getStudentId());
             preStmt.setInt(2, entity.getProjectId());
             preStmt.setInt(3, entity.getPriority());
             preStmt.setInt(4, integer);
@@ -82,7 +82,7 @@ public class PreferenceDBRepo implements IDBRepo<Integer, Preference> {
             try (ResultSet result = preStmt.executeQuery()) {
                 if (result.next()) {
                     int id = result.getInt("id");
-                    int studentId = result.getInt("studentId");
+                    String studentId = result.getString("studentId");
                     int projectId = result.getInt("projectId");
                     int priority = result.getInt("priority");
                     Preference p = new Preference(id, studentId, projectId, priority);
@@ -103,7 +103,7 @@ public class PreferenceDBRepo implements IDBRepo<Integer, Preference> {
             try (ResultSet result = preStmt.executeQuery()) {
                 while (result.next()) {
                     int id = result.getInt("id");
-                    int studentId = result.getInt("studentId");
+                    String studentId = result.getString("studentId");
                     int projectId = result.getInt("projectId");
                     int priority = result.getInt("priority");
                     Preference p = new Preference(id, studentId, projectId, priority);
