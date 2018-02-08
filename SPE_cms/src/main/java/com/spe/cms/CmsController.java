@@ -1,43 +1,31 @@
 package com.spe.cms;
 
-import com.spe.cms.domain.Preference;
-import com.spe.cms.domain.Project;
-import com.spe.cms.repository.PreferenceDBRepo;
-import com.spe.cms.repository.ProjectDBRepo;
+import com.spe.cms.controller.*;
+import com.spe.cms.domain.*;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 public class CmsController {
 
-    ProjectDBRepo projectDBRepo;
-    PreferenceDBRepo preferenceDBRepo;
+    ProjectController projectController;
+    PreferenceController preferenceController;
+    StudentController studentController;
+    TeacherController teacherController;
+    ClientController clientController;
 
     @PostConstruct
     public void initialize() {
-        ///repo
-        Properties serverProps = new Properties();
-        try {
-            serverProps.load(new FileReader("bd.config"));
-            //System.setProperties(serverProps);
-
-            System.out.println("Properties set. ");
-            //System.getProperties().list(System.out);
-            serverProps.list(System.out);
-        } catch (IOException e) {
-            System.out.println("Cannot find bd.config " + e);
-        }
-        projectDBRepo = new ProjectDBRepo(serverProps);
-        preferenceDBRepo = new PreferenceDBRepo(serverProps);
+        projectController = new ProjectController();
+        preferenceController = new PreferenceController();
+        studentController = new StudentController();
+        teacherController = new TeacherController();
+        clientController = new ClientController();
     }
 
 
@@ -46,9 +34,19 @@ public class CmsController {
      * @return : all the projects
      */
     @CrossOrigin
-    @RequestMapping(value = "/projects", method = GET)
-    public List<Project> projects() {
-        return (List<Project>) projectDBRepo.findAll();
+    @RequestMapping(value = "/projects", method = POST)
+    public List<Project> projects(@RequestParam(value = "user") String user, @RequestParam(value = "password") String password) {
+        if (studentController.isUserAndPassCorrect(user,password) == 0)
+            return projectController.getAllProjects();
+        else
+            if (teacherController.isUserAndPassCorrect(user,password) == 0)
+                return projectController.getAllProjects();
+            else
+//                OPTIONAL
+//                if (clientController.isUserAndPassCorrect(user,password) == 0)
+//                    return projectController.getAllProjects();
+//                else
+                    return new ArrayList<>();
     }
 
 
@@ -58,9 +56,19 @@ public class CmsController {
      * @return : the project with that id
      */
     @CrossOrigin
-    @RequestMapping(value = "/project", method = GET)
-    public Project project(@RequestParam(value = "id") Integer id) {
-        return projectDBRepo.findOne(id);
+    @RequestMapping(value = "/project", method = POST)
+    public Project project(@RequestParam(value = "id") Integer id, @RequestParam(value = "user") String user, @RequestParam(value = "password") String password) {
+        if (studentController.isUserAndPassCorrect(user,password) == 0)
+            return projectController.getProjectById(id);
+        else
+        if (teacherController.isUserAndPassCorrect(user,password) == 0)
+            return projectController.getProjectById(id);
+        else
+//                OPTIONAL
+//                if (clientController.isUserAndPassCorrect(user,password) == 0)
+//                    return projectController.getAllProjects();
+//                else
+            return new Project(-1,"","","",-1,"","");
     }
 
 
@@ -69,9 +77,12 @@ public class CmsController {
      * @return : all the selections by all the students
      */
     @CrossOrigin
-    @RequestMapping(value = "/selections", method = GET)
-    public List<Preference> selections() {
-        return (List<Preference>) preferenceDBRepo.findAll();
+    @RequestMapping(value = "/selections", method = POST)
+    public List<Preference> selections(@RequestParam(value = "user") String user, @RequestParam(value = "password") String password) {
+        if (teacherController.isUserAndPassCorrect(user,password) == 0)
+            return preferenceController.getAllPreferences();
+        else
+            return new ArrayList<>();
     }
 
     /**
@@ -79,16 +90,15 @@ public class CmsController {
      * @return : all the selections for that id
      */
     @CrossOrigin
-    @RequestMapping(value = "/selections_id", method = GET)
-    public List<Preference> selections_id(@RequestParam(value = "id") String id) {
-        List<Preference> preferences = (List<Preference>) preferenceDBRepo.findAll();
-        List<Preference> idPreferences = new ArrayList<>();
-        for (Preference p : preferences)
-        {
-            if (p.getStudentId().equals(id))
-                idPreferences.add(p);
-        }
-        return idPreferences;
+    @RequestMapping(value = "/selections_id", method = POST)
+    public List<Preference> selections_id(@RequestParam(value = "id") String id, @RequestParam(value = "user") String user, @RequestParam(value = "password") String password) {
+        if (studentController.isUserAndPassCorrect(user,password) == 0)
+            return preferenceController.getPreferencesByStudentId(id);
+        else
+            if (teacherController.isUserAndPassCorrect(user,password) == 0)
+                return preferenceController.getPreferencesByStudentId(id);
+            else
+                return new ArrayList<>();
     }
 
 
@@ -101,11 +111,72 @@ public class CmsController {
      */
     @CrossOrigin
     @RequestMapping(value = "/selection_save", method = POST)
-    public String selection_save(@RequestParam(value = "studentId") String studentId, @RequestParam(value = "projectId") Integer projectId, @RequestParam(value = "priority") Integer priority)
+    public String selection_save(@RequestParam(value = "studentId") String studentId, @RequestParam(value = "projectId") Integer projectId, @RequestParam(value = "priority") Integer priority, @RequestParam(value = "user") String user, @RequestParam(value = "password") String password)
     {
-        Preference p = new Preference(preferenceDBRepo.size()+1, studentId, projectId, priority);
-        preferenceDBRepo.save(p);
-        return "OK";
+        if (studentController.isUserAndPassCorrect(user,password) == 0)
+        {
+            Preference p = new Preference(-1, studentId, projectId, priority);
+            preferenceController.setPreference(p);
+            return "OK";
+        }
+        else
+            return "NOT LOGGED IN";
+    }
+
+
+//    LOGIN
+    @CrossOrigin
+    @RequestMapping(value = "/login", method = POST)
+    public String login(@RequestParam(value = "type") String type, @RequestParam(value = "user") String user, @RequestParam(value = "password") String password)
+    {
+        if (type.equals("student"))
+            if (studentController.isUserAndPassCorrect(user,password) == 0)
+                return "OK";
+            else
+                return "INCORRECT DETAILS";
+        else
+            if (type.equals("teacher"))
+                if (teacherController.isUserAndPassCorrect(user,password) == 0)
+                    return "OK";
+                else
+                    return "INCORRECT DETAILS";
+            else
+                if (type.equals("client"))
+                    if (clientController.isUserAndPassCorrect(user,password) == 0)
+                        return "OK";
+                    else
+                        return "INCORRECT DETAILS";
+                else
+                    return "INCORRECT TYPE";
+    }
+
+//    REGISTER
+    @CrossOrigin
+    @RequestMapping(value = "/register", method = POST)
+    public String register(@RequestParam(value = "type") String type, @RequestParam(value = "attributes") List<String> attributes)
+    {
+        if (type.equals("student"))
+        {
+            Student s = new Student(attributes.get(0), attributes.get(1), attributes.get(2));
+            studentController.setStudent(s);
+            return "OK";
+        }
+        else
+            if (type.equals("teacher"))
+            {
+                Teacher t = new Teacher(attributes.get(0), attributes.get(1), attributes.get(2), attributes.get(3));
+                teacherController.setTeacher(t);
+                return "OK";
+            }
+            else
+                if (type.equals("client"))
+                {
+                    Client c = new Client(attributes.get(0), attributes.get(1), attributes.get(2), attributes.get(3), attributes.get(4), attributes.get(5), attributes.get(6), attributes.get(7));
+                    clientController.setClient(c);
+                    return "OK";
+                }
+                else
+                    return "INCORRECT TYPE";
     }
 
 }
