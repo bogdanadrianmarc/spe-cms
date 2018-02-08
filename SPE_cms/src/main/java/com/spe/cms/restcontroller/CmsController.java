@@ -1,4 +1,4 @@
-package com.spe.cms;
+package com.spe.cms.restcontroller;
 
 import com.spe.cms.controller.*;
 import com.spe.cms.domain.*;
@@ -68,7 +68,7 @@ public class CmsController {
 //                if (clientController.isUserAndPassCorrect(user,password) == 0)
 //                    return projectController.getAllProjects();
 //                else
-            return new Project(-1,"","","",-1,"","");
+            return new Project(-1,"","","",-1,"","","");
     }
 
 

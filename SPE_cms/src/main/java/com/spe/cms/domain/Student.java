@@ -1,5 +1,7 @@
 package com.spe.cms.domain;
 
+import com.spe.cms.domain.general.IEntity;
+
 /**
  * Created by marc on 20/11/2017.
  */

@@ -1,4 +1,4 @@
-package com.spe.cms.repository;
+package com.spe.cms.repository.utils;
 
 import java.io.FileReader;
 import java.io.IOException;

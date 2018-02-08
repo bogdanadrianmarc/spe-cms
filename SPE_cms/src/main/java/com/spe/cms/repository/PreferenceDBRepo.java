@@ -1,7 +1,8 @@
 package com.spe.cms.repository;
 
 import com.spe.cms.domain.Preference;
-import com.spe.cms.domain.Project;
+import com.spe.cms.repository.general.IDBRepo;
+import com.spe.cms.repository.utils.DBUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

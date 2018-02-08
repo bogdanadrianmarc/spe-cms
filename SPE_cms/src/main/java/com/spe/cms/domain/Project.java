@@ -1,21 +1,24 @@
 package com.spe.cms.domain;
 
+import com.spe.cms.domain.general.IEntity;
+
 /**
  * Created by marc on 20/11/2017.
  */
 public class Project implements IEntity<Integer> {
 
 //    FIELDS
-    private Integer id;
+    private Integer id; //primary key in db
     private String tags;
     private String title;
     private String content;
     private Integer applicantsNr;
     private String imgUrl;
     private String projectUrl;
+    private String clientId;
 
 //    CONSTRUCTORS
-    public Project(Integer id, String tags, String title, String content, Integer applicantsNr, String imgUrl, String projectUrl) {
+    public Project(Integer id, String tags, String title, String content, Integer applicantsNr, String imgUrl, String projectUrl, String clientId) {
         this.id = id;
         this.tags = tags;
         this.title = title;
@@ -23,6 +26,7 @@ public class Project implements IEntity<Integer> {
         this.applicantsNr = applicantsNr;
         this.imgUrl = imgUrl;
         this.projectUrl = projectUrl;
+        this.clientId = clientId;
     }
 
 //    GETTERS
@@ -42,13 +46,17 @@ public class Project implements IEntity<Integer> {
         return content;
     }
 
-    public Integer getapplicantsNr() {
+    public Integer getApplicantsNr() {
         return applicantsNr;
     }
 
     public String getImgUrl() { return imgUrl; }
 
     public String getProjectUrl() { return projectUrl; }
+
+    public String getClientId() {
+        return clientId;
+    }
 
 //    SETTERS
     public void setId(Integer id) {
@@ -77,5 +85,9 @@ public class Project implements IEntity<Integer> {
 
     public void setProjectUrl(String projectUrl) {
         this.projectUrl = projectUrl;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
     }
 }

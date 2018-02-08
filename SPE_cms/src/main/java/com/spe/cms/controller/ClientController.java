@@ -2,7 +2,7 @@ package com.spe.cms.controller;
 
 import com.spe.cms.domain.Client;
 import com.spe.cms.repository.ClientDBRepo;
-import com.spe.cms.repository.DBInit;
+import com.spe.cms.repository.utils.DBInit;
 
 import java.util.List;
 

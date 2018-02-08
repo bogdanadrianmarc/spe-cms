@@ -1,7 +1,7 @@
 package com.spe.cms.controller;
 
 import com.spe.cms.domain.Student;
-import com.spe.cms.repository.DBInit;
+import com.spe.cms.repository.utils.DBInit;
 import com.spe.cms.repository.StudentDBRepo;
 
 import java.util.List;

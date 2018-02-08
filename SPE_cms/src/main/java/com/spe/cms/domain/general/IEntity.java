@@ -1,4 +1,4 @@
-package com.spe.cms.domain;
+package com.spe.cms.domain.general;
 
 public interface IEntity <ID> {
 

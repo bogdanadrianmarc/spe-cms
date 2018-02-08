@@ -1,12 +1,14 @@
 package com.spe.cms.domain;
 
+import com.spe.cms.domain.general.IEntity;
+
 /**
  * Created by marc on 20/11/2017.
  */
 public class Teacher implements IEntity<String> {
 
 //    FIELDS
-    private String id;
+    private String id; //primary key in db
     private String password;
     private String fullName;
     private String email;

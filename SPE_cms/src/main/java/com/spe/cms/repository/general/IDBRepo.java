@@ -1,4 +1,4 @@
-package com.spe.cms.repository;
+package com.spe.cms.repository.general;
 
 public interface IDBRepo <ID, T> {
 

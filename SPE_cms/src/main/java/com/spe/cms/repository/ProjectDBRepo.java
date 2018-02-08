@@ -1,6 +1,8 @@
 package com.spe.cms.repository;
 
 import com.spe.cms.domain.Project;
+import com.spe.cms.repository.general.IDBRepo;
+import com.spe.cms.repository.utils.DBUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,14 +38,15 @@ public class ProjectDBRepo implements IDBRepo<Integer, Project> {
     @Override
     public void save(Project entity) {
         Connection con = dbUtils.getConnection();
-        try (PreparedStatement preStmt = con.prepareStatement("INSERT INTO Projects VALUES (?,?,?,?,?,?,?)")) {
+        try (PreparedStatement preStmt = con.prepareStatement("INSERT INTO Projects VALUES (?,?,?,?,?,?,?,?)")) {
             preStmt.setInt(1, entity.getId());
             preStmt.setString(2, entity.getTags());
             preStmt.setString(3, entity.getTitle());
             preStmt.setString(4, entity.getContent());
-            preStmt.setInt(5, entity.getapplicantsNr());
+            preStmt.setInt(5, entity.getApplicantsNr());
             preStmt.setString(6, entity.getImgUrl());
             preStmt.setString(7, entity.getProjectUrl());
+            preStmt.setString(8, entity.getClientId());
             int result = preStmt.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("Error DB " + ex);
@@ -64,14 +67,15 @@ public class ProjectDBRepo implements IDBRepo<Integer, Project> {
     @Override
     public void update(Integer integer, Project entity) {
         Connection con = dbUtils.getConnection();
-        try (PreparedStatement preStmt = con.prepareStatement("UPDATE Projects SET tags=?,title=?,content=?,applicantsNr=?,imgUrl=?,projectUrl=? WHERE id=?")) {
+        try (PreparedStatement preStmt = con.prepareStatement("UPDATE Projects SET tags=?,title=?,content=?,applicantsNr=?,imgUrl=?,projectUrl=?,clientId=? WHERE id=?")) {
             preStmt.setString(1, entity.getTags());
             preStmt.setString(2, entity.getTitle());
             preStmt.setString(3, entity.getContent());
-            preStmt.setInt(4, entity.getapplicantsNr());
+            preStmt.setInt(4, entity.getApplicantsNr());
             preStmt.setString(5, entity.getImgUrl());
             preStmt.setString(6, entity.getProjectUrl());
-            preStmt.setInt(7, integer);
+            preStmt.setString(7, entity.getClientId());
+            preStmt.setInt(8, integer);
             int result = preStmt.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("Error DB " + ex);
@@ -93,7 +97,8 @@ public class ProjectDBRepo implements IDBRepo<Integer, Project> {
                     int applicantsNr = result.getInt("applicantsNr");
                     String imgUrl = result.getString("imgUrl");
                     String projectUrl = result.getString("projectUrl");
-                    Project p = new Project(id, tags, title, content, applicantsNr, imgUrl, projectUrl);
+                    String clientId = result.getString("clientId");
+                    Project p = new Project(id, tags, title, content, applicantsNr, imgUrl, projectUrl, clientId);
                     return p;
                 }
             }
@@ -117,7 +122,33 @@ public class ProjectDBRepo implements IDBRepo<Integer, Project> {
                     int applicantsNr = result.getInt("applicantsNr");
                     String imgUrl = result.getString("imgUrl");
                     String projectUrl = result.getString("projectUrl");
-                    Project p = new Project(id, tags, title, content, applicantsNr, imgUrl, projectUrl);
+                    String clientId = result.getString("clientId");
+                    Project p = new Project(id, tags, title, content, applicantsNr, imgUrl, projectUrl, clientId);
+                    projects.add(p);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error DB " + e);
+        }
+        return projects;
+    }
+
+    public Iterable<Project> findAllByClientId(String integer) {
+        Connection con = dbUtils.getConnection();
+        List<Project> projects = new ArrayList<>();
+        try (PreparedStatement preStmt = con.prepareStatement("SELECT * FROM Projects WHERE clientId=?")) {
+            preStmt.setString(1, integer);
+            try (ResultSet result = preStmt.executeQuery()) {
+                while (result.next()) {
+                    int id = result.getInt("id");
+                    String tags = result.getString("tags");
+                    String title = result.getString("title");
+                    String content = result.getString("content");
+                    int applicantsNr = result.getInt("applicantsNr");
+                    String imgUrl = result.getString("imgUrl");
+                    String projectUrl = result.getString("projectUrl");
+                    String clientId = result.getString("clientId");
+                    Project p = new Project(id, tags, title, content, applicantsNr, imgUrl, projectUrl, clientId);
                     projects.add(p);
                 }
             }
