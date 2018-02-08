@@ -12,7 +12,7 @@ const selections = {
     <ol id="items">
       <li>
         'The rock outside MVB' inc.
-        <button><i class="fa fa-times" aria-hidden="true"></i></button>
+        <button><i class="fa fa-minus" aria-hidden="true"></i></button>
       </li>
       <li>
         Green Foundation

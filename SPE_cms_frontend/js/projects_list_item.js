@@ -10,6 +10,7 @@ Vue.component('projects_list_item', {
   },
   methods: {
     clickBTN: function(index){
+
       console.log(index)
     },
     isUndefined: function(item){
