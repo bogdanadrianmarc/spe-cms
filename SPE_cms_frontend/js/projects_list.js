@@ -12,7 +12,11 @@ const projects_list = {
     self.$parent.loading = true;
     $.ajax({
       url: 'http://localhost:8080/projects',
-      method: 'GET',
+      method: 'POST',
+      data: {
+        user: "test_student",
+        password: "test_student"
+      },
       success: function (data) {
         self.projectList = data;
         self.projectListCopy = data;

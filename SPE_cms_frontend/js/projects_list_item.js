@@ -2,7 +2,8 @@ Vue.component('projects_list_item', {
   props: ['projects'],
   data: function(){
     return {
-      tagColors: []
+      tagColors: [],
+      currPriority: 1
     }
   },
   created: function(){
@@ -10,8 +11,25 @@ Vue.component('projects_list_item', {
   },
   methods: {
     clickBTN: function(index){
-
-      console.log(index)
+      let self = this;
+      $.ajax({
+        url: 'http://localhost:8080/selection_save',
+        method: 'POST',
+        data: {
+          studentId: 0,
+          projectId: index,
+          priority: self.currPriority,
+          user: "test_student",
+          password: "test_student"
+        },
+        success: function (data) {
+          console.log(data);
+        },
+        error: function (error) {
+          console.log(error);
+        }
+      });
+      this.currPriority += 1;
     },
     isUndefined: function(item){
       return typeof item === "undefined";
@@ -41,7 +59,7 @@ Vue.component('projects_list_item', {
     </div>
 
     <div class = "select-project-btn">
-      <button v-on:click="clickBTN(index)"> <i class = "fa fa-plus"></i></button>
+      <button v-on:click="clickBTN(projects.id)"> <i class = "fa fa-plus"></i></button>
     </div>
 
     <router-link v-bind:to="projects.projectUrl">
