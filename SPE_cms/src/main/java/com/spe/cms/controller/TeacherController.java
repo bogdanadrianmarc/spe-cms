@@ -28,7 +28,10 @@ public class TeacherController {
     public Integer isUserAndPassCorrect(String user, String password)
     {
         if (teacherDBRepo.findOne(user) == null)
-            return 1; //if incorrect
+            return 1; //if incorrect user
+        else
+        if (!teacherDBRepo.findOne(user).getPassword().equals(password))
+            return 2; //if incorrect password
         else
             return 0; //if correct
     }

@@ -117,6 +117,7 @@ public class CmsController {
         {
             Preference p = new Preference(-1, studentId, projectId, priority);
             preferenceController.setPreference(p);
+            System.out.println(studentId);
             return "OK";
         }
         else
