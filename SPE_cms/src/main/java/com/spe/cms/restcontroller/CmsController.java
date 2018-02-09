@@ -68,7 +68,7 @@ public class CmsController {
 //                if (clientController.isUserAndPassCorrect(user,password) == 0)
 //                    return projectController.getAllProjects();
 //                else
-            return new Project(-1,"","","",-1,"","","");
+            return new Project(-1,"","","",-1,"","","","");
     }
 
 

@@ -38,7 +38,7 @@ public class ProjectDBRepo implements IDBRepo<Integer, Project> {
     @Override
     public void save(Project entity) {
         Connection con = dbUtils.getConnection();
-        try (PreparedStatement preStmt = con.prepareStatement("INSERT INTO Projects VALUES (?,?,?,?,?,?,?,?)")) {
+        try (PreparedStatement preStmt = con.prepareStatement("INSERT INTO Projects VALUES (?,?,?,?,?,?,?,?,?)")) {
             preStmt.setInt(1, entity.getId());
             preStmt.setString(2, entity.getTags());
             preStmt.setString(3, entity.getTitle());
@@ -47,6 +47,7 @@ public class ProjectDBRepo implements IDBRepo<Integer, Project> {
             preStmt.setString(6, entity.getImgUrl());
             preStmt.setString(7, entity.getProjectUrl());
             preStmt.setString(8, entity.getClientId());
+            preStmt.setString(9, entity.getLicense());
             int result = preStmt.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("Error DB " + ex);
@@ -67,7 +68,7 @@ public class ProjectDBRepo implements IDBRepo<Integer, Project> {
     @Override
     public void update(Integer integer, Project entity) {
         Connection con = dbUtils.getConnection();
-        try (PreparedStatement preStmt = con.prepareStatement("UPDATE Projects SET tags=?,title=?,content=?,applicantsNr=?,imgUrl=?,projectUrl=?,clientId=? WHERE id=?")) {
+        try (PreparedStatement preStmt = con.prepareStatement("UPDATE Projects SET tags=?,title=?,content=?,applicantsNr=?,imgUrl=?,projectUrl=?,clientId=?,license=? WHERE id=?")) {
             preStmt.setString(1, entity.getTags());
             preStmt.setString(2, entity.getTitle());
             preStmt.setString(3, entity.getContent());
@@ -75,7 +76,8 @@ public class ProjectDBRepo implements IDBRepo<Integer, Project> {
             preStmt.setString(5, entity.getImgUrl());
             preStmt.setString(6, entity.getProjectUrl());
             preStmt.setString(7, entity.getClientId());
-            preStmt.setInt(8, integer);
+            preStmt.setString(8, entity.getLicense());
+            preStmt.setInt(9, integer);
             int result = preStmt.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("Error DB " + ex);
@@ -98,7 +100,8 @@ public class ProjectDBRepo implements IDBRepo<Integer, Project> {
                     String imgUrl = result.getString("imgUrl");
                     String projectUrl = result.getString("projectUrl");
                     String clientId = result.getString("clientId");
-                    Project p = new Project(id, tags, title, content, applicantsNr, imgUrl, projectUrl, clientId);
+                    String license = result.getString("license");
+                    Project p = new Project(id, tags, title, content, applicantsNr, imgUrl, projectUrl, clientId, license);
                     return p;
                 }
             }
@@ -123,7 +126,8 @@ public class ProjectDBRepo implements IDBRepo<Integer, Project> {
                     String imgUrl = result.getString("imgUrl");
                     String projectUrl = result.getString("projectUrl");
                     String clientId = result.getString("clientId");
-                    Project p = new Project(id, tags, title, content, applicantsNr, imgUrl, projectUrl, clientId);
+                    String license = result.getString("license");
+                    Project p = new Project(id, tags, title, content, applicantsNr, imgUrl, projectUrl, clientId, license);
                     projects.add(p);
                 }
             }
@@ -148,7 +152,8 @@ public class ProjectDBRepo implements IDBRepo<Integer, Project> {
                     String imgUrl = result.getString("imgUrl");
                     String projectUrl = result.getString("projectUrl");
                     String clientId = result.getString("clientId");
-                    Project p = new Project(id, tags, title, content, applicantsNr, imgUrl, projectUrl, clientId);
+                    String license = result.getString("license");
+                    Project p = new Project(id, tags, title, content, applicantsNr, imgUrl, projectUrl, clientId, license);
                     projects.add(p);
                 }
             }

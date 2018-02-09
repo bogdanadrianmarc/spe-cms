@@ -16,9 +16,10 @@ public class Project implements IEntity<Integer> {
     private String imgUrl;
     private String projectUrl;
     private String clientId;
+    private String license;
 
 //    CONSTRUCTORS
-    public Project(Integer id, String tags, String title, String content, Integer applicantsNr, String imgUrl, String projectUrl, String clientId) {
+    public Project(Integer id, String tags, String title, String content, Integer applicantsNr, String imgUrl, String projectUrl, String clientId, String license) {
         this.id = id;
         this.tags = tags;
         this.title = title;
@@ -27,6 +28,7 @@ public class Project implements IEntity<Integer> {
         this.imgUrl = imgUrl;
         this.projectUrl = projectUrl;
         this.clientId = clientId;
+        this.license = license;
     }
 
 //    GETTERS
@@ -56,6 +58,10 @@ public class Project implements IEntity<Integer> {
 
     public String getClientId() {
         return clientId;
+    }
+
+    public String getLicense() {
+        return license;
     }
 
 //    SETTERS
@@ -89,5 +95,9 @@ public class Project implements IEntity<Integer> {
 
     public void setClientId(String clientId) {
         this.clientId = clientId;
+    }
+
+    public void setLicense(String license) {
+        this.license = license;
     }
 }
