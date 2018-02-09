@@ -25,12 +25,12 @@ public class TeacherController {
         return teacherDBRepo.findOne(id);
     }
 
-    public Integer isUserAndPassCorrect(String user, String password)
+    public Integer isUserAndPassCorrect(String username, String password)
     {
-        if (teacherDBRepo.findOne(user) == null)
+        if (teacherDBRepo.findOne(username) == null)
             return 1; //if incorrect user
         else
-        if (!teacherDBRepo.findOne(user).getPassword().equals(password))
+        if (!teacherDBRepo.findOne(username).getPassword().equals(password))
             return 2; //if incorrect password
         else
             return 0; //if correct

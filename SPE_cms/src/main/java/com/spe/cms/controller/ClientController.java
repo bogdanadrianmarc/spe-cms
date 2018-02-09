@@ -25,12 +25,12 @@ public class ClientController {
         return clientDBRepo.findOne(id);
     }
 
-    public Integer isUserAndPassCorrect(String user, String password)
+    public Integer isUserAndPassCorrect(String username, String password)
     {
-        if (clientDBRepo.findOne(user) == null)
+        if (clientDBRepo.findOne(username) == null)
             return 1; //if incorrect user
         else
-            if (!clientDBRepo.findOne(user).getPassword().equals(password))
+            if (!clientDBRepo.findOne(username).getPassword().equals(password))
                 return 2; //if incorrect password
             else
                 return 0; //if correct

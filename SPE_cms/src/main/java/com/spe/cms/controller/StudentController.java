@@ -25,12 +25,12 @@ public class StudentController {
         return studentDBRepo.findOne(id);
     }
 
-    public Integer isUserAndPassCorrect(String user, String password)
+    public Integer isUserAndPassCorrect(String username, String password)
     {
-        if (studentDBRepo.findOne(user) == null)
+        if (studentDBRepo.findOne(username) == null)
             return 1; //if incorrect user
         else
-        if (!studentDBRepo.findOne(user).getPassword().equals(password))
+        if (!studentDBRepo.findOne(username).getPassword().equals(password))
             return 2; //if incorrect password
         else
             return 0; //if correct
