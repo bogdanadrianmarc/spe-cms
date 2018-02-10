@@ -21,7 +21,6 @@ const projects_list = {
        password: "test_student"
      },
      success: function (data) {
-       console.log("TOKEN:" + data);
        self.login_token = data;
        // console.log(data);
        $.ajax({
@@ -38,6 +37,21 @@ const projects_list = {
          error: function (error) {
            console.log(error);
            self.$parent.loading = false;
+         }
+       });
+
+       $.ajax({
+         url: 'http://localhost:8080/selections_id',
+         method: 'POST',
+         data: {
+           id: "test_student",
+           login_token: "whvwbvwxghqw!whvwbvwxghqw"
+         },
+         success: function (dataSelections) {
+           self.currPriority = dataSelections.length +1;
+         },
+         error: function (error) {
+           console.log(error);
          }
        });
  }
