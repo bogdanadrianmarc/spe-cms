@@ -60,6 +60,17 @@ public class PreferenceDBRepo implements IDBRepo<Integer, Preference> {
         }
     }
 
+    public void deleteByStudentAndProjectId(String studentId, Integer projectId) {
+        Connection con = dbUtils.getConnection();
+        try (PreparedStatement preStmt = con.prepareStatement("DELETE FROM Preferences WHERE studentId=? AND projectId=?")) {
+            preStmt.setString(1, studentId);
+            preStmt.setInt(2, projectId);
+            int result = preStmt.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("Error DB " + ex);
+        }
+    }
+
     @Override
     public void update(Integer integer, Preference entity) {
         Connection con = dbUtils.getConnection();
@@ -101,6 +112,27 @@ public class PreferenceDBRepo implements IDBRepo<Integer, Preference> {
         Connection con = dbUtils.getConnection();
         List<Preference> preferences = new ArrayList<>();
         try (PreparedStatement preStmt = con.prepareStatement("SELECT * FROM Preferences")) {
+            try (ResultSet result = preStmt.executeQuery()) {
+                while (result.next()) {
+                    int id = result.getInt("id");
+                    String studentId = result.getString("studentId");
+                    int projectId = result.getInt("projectId");
+                    int priority = result.getInt("priority");
+                    Preference p = new Preference(id, studentId, projectId, priority);
+                    preferences.add(p);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error DB " + e);
+        }
+        return preferences;
+    }
+
+    public Iterable<Preference> findAllByStudentId(String integer) {
+        Connection con = dbUtils.getConnection();
+        List<Preference> preferences = new ArrayList<>();
+        try (PreparedStatement preStmt = con.prepareStatement("SELECT * FROM Preferences WHERE studentId=?")) {
+            preStmt.setString(1, integer);
             try (ResultSet result = preStmt.executeQuery()) {
                 while (result.next()) {
                     int id = result.getInt("id");

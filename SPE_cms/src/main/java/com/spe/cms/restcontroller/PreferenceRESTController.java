@@ -77,4 +77,21 @@ public class PreferenceRESTController {
             return "NOT LOGGED IN";
     }
 
+
+//   ### DELETE SELECTION ###
+    @CrossOrigin
+    @RequestMapping(value = "/selection_delete", method = POST)
+    public String selection_delete(@RequestParam(value = "studentId") String studentId, @RequestParam(value = "projectId") Integer projectId, @RequestParam(value = "login_token") String login_token)
+    {
+        String user = Cryption.decrypt(login_token.split("!")[0]);
+        String password = Cryption.decrypt(login_token.split("!")[1]);
+        if (studentController.isUserAndPassCorrect(user,password) == 0)
+        {
+            preferenceController.deletePreferenceByStudentAndProjectId(studentId, projectId);
+            return "OK";
+        }
+        else
+            return "NOT LOGGED IN";
+    }
+
 }

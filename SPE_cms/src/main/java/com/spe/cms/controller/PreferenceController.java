@@ -23,19 +23,17 @@ public class PreferenceController {
 
     public List<Preference> getPreferencesByStudentId(String id)
     {
-        List<Preference> preferences = (List<Preference>) preferenceDBRepo.findAll();
-        List<Preference> idPreferences = new ArrayList<>();
-        for (Preference p : preferences)
-        {
-            if (p.getStudentId().equals(id))
-                idPreferences.add(p);
-        }
-        return idPreferences;
+        return (List<Preference>) preferenceDBRepo.findAllByStudentId(id);
     }
 
     public void setPreference(Preference p)
     {
         p.setId(preferenceDBRepo.size()+1);
         preferenceDBRepo.save(p);
+    }
+
+    public void deletePreferenceByStudentAndProjectId(String studentId, Integer projectId)
+    {
+        preferenceDBRepo.deleteByStudentAndProjectId(studentId, projectId);
     }
 }
