@@ -28,7 +28,6 @@ public class PreferenceController {
 
     public void setPreference(Preference p)
     {
-        p.setId(preferenceDBRepo.size()+1);
         preferenceDBRepo.save(p);
     }
 

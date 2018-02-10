@@ -6,7 +6,7 @@ package com.spe.cms.domain;
 public class Preference {
 
 //    FIELDS
-    private Integer id; //primary key in the database
+    private Integer id; //primary key in the database, auto incremented, doesn't matter what is in here for saving
     private String studentId;
     private Integer projectId;
     private Integer priority;
