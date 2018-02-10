@@ -38,10 +38,10 @@ public class PreferenceDBRepo implements IDBRepo<Integer, Preference> {
     @Override
     public void save(Preference entity) {
         Connection con = dbUtils.getConnection();
-        try (PreparedStatement preStmt = con.prepareStatement("INSERT INTO Preferences VALUES (?,?,?)")) {
-            preStmt.setString(1, entity.getStudentId());
-            preStmt.setInt(2, entity.getProjectId());
-            preStmt.setInt(3, entity.getPriority());
+        try (PreparedStatement preStmt = con.prepareStatement("INSERT INTO Preferences VALUES (?,?,?,?)")) {
+            preStmt.setString(2, entity.getStudentId());
+            preStmt.setInt(3, entity.getProjectId());
+            preStmt.setInt(4, entity.getPriority());
             int result = preStmt.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("Error DB " + ex);
