@@ -3,6 +3,7 @@ const projects_list = {
     return {
       projectList: [],
       projectListCopy: [],
+      login_token: "",
       // 1 for descending, -1 for ascending
       sortOrder: 1
     }
@@ -11,22 +12,34 @@ const projects_list = {
     let self = this;
     self.$parent.loading = true;
     $.ajax({
-      url: 'http://localhost:8080/projects',
-      method: 'POST',
-      data: {
-        user: "test_student",
-        password: "test_student"
-      },
-      success: function (data) {
-        self.projectList = data;
-        self.projectListCopy = data;
-        self.$parent.loading = false;
-      },
-      error: function (error) {
-        console.log(error);
-        self.$parent.loading = false;
-      }
-    });
+     url: 'http://localhost:8080/login',
+     method: 'POST',
+     data: {
+       type: "student",
+       username: "test_student",
+       password: "test_student"
+     },
+     success: function (data) {
+       self.login_token = data;
+       // console.log(data);
+       $.ajax({
+         url: 'http://localhost:8080/projects',
+         method: 'POST',
+         data: {
+           login_token: data
+         },
+         success: function (data) {
+           self.projectList = data;
+           self.projectListCopy = data;
+           self.$parent.loading = false;
+         },
+         error: function (error) {
+           console.log(error);
+           self.$parent.loading = false;
+         }
+       });
+ }
+});
   },
   methods: {
     sortApplicants: function() {
