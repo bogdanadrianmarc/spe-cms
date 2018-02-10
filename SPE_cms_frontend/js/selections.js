@@ -10,33 +10,9 @@ const selections = {
     The first three projects will have the highest priority, but all other submitted choices will be taken into account as well.
     </p>
     <ol id="items">
-      <li>
-        'The rock outside MVB' inc.
-        <button><i class="fa fa-minus" aria-hidden="true"></i></button>
-      </li>
-      <li>
-        Green Foundation
-        <button><i class="fa fa-times" aria-hidden="true"></i></button>
-      </li>
-      <li>
-        Oracle Waiter
-        <button><i class="fa fa-times" aria-hidden="true"></i></button>
-      </li>
-      <li>
-        IBM Server Monitoring
-        <button><i class="fa fa-times" aria-hidden="true"></i></button>
-      </li>
-      <li>
-        University of Bristol RFID Laptops
-        <button><i class="fa fa-times" aria-hidden="true"></i></button>
-      </li>
-      <li>
-        Sailing Society Dashboard
-        <button><i class="fa fa-times" aria-hidden="true"></i></button>
-      </li>
-      <li>
-        Museum Augmented Reality
-        <button><i class="fa fa-times" aria-hidden="true"></i></button>
+      <li v-for = "selection in selections" v-bind:key = "selection.priority">
+        {{ selection.title }}
+        <button  v-on:click = "removeSelection(selection.id)"><i class="fa fa-times" aria-hidden="true"></i></button>
       </li>
     </ol>
     <router-link to = "/projects">
@@ -56,7 +32,7 @@ const selections = {
       url: 'http://localhost:8080/selections_id',
       method: 'POST',
       data: {
-        id: 1,
+        id: "test_student",
         login_token: "whvwbvwxghqw!whvwbvwxghqw"
       },
       success: function (dataSelections) {
@@ -68,8 +44,7 @@ const selections = {
             login_token: "whvwbvwxghqw!whvwbvwxghqw"
           },
           success: function (dataProjects) {
-            self.selections = dataSelections.map(select => dataProjects[select.projectId].title);
-            console.log("Selectii: " + JSON.stringify(self.selections));
+            self.selections = dataSelections.map(select => dataProjects[select.projectId]);
           },
           error: function (error) {
             console.log(error);
@@ -99,5 +74,31 @@ const selections = {
   beforeRouteLeave (to, from, next) {
     console.log(this.selections);
     next();
+  },
+  methods: {
+    removeSelection: function(id){
+      this.selections = this.selections.filter(function(project){
+        if(project.id !== id){
+          return project;
+        }
+      });
+      let self = this;
+      $.ajax({
+        url: 'http://localhost:8080/selection_delete',
+        method: 'POST',
+        data: {
+          studentId: "test_student",
+          // -1 accounts for difference in zero-indexing on backend and one-indexing on frontend
+          projectId: id-1,
+          login_token: "whvwbvwxghqw!whvwbvwxghqw"
+        },
+        success: function (data) {
+          console.log(data);
+        },
+        error: function (error) {
+          console.log(error);
+        }
+      });
+    }
   }
 };

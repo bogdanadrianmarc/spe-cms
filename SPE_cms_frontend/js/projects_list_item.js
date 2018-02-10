@@ -1,9 +1,9 @@
 Vue.component('projects_list_item', {
-  props: ['projects'],
+  props: ['projects','priority'],
   data: function(){
     return {
       tagColors: [],
-      currPriority: 1
+
     }
   },
   created: function(){
@@ -16,20 +16,20 @@ Vue.component('projects_list_item', {
         url: 'http://localhost:8080/selection_save',
         method: 'POST',
         data: {
-          studentId: 0,
-          projectId: index,
-          priority: self.currPriority,
+          studentId: "test_student",
+          // -1 accounts for difference in zero-indexing on backend and one-indexing on frontend
+          projectId: index-1,
+          priority: self.priority,
           login_token: "whvwbvwxghqw!whvwbvwxghqw"
         },
         success: function (data) {
+          self.$parent.$parent.incrementPriority();
           console.log(data);
         },
         error: function (error) {
           console.log(error);
         }
-      }).done(function(){
-           self.currPriority += 1;
-      });;
+      });
       //this.currPriority += 1;
     },
     isUndefined: function(item){

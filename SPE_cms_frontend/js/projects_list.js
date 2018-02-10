@@ -5,7 +5,8 @@ const projects_list = {
       projectListCopy: [],
       login_token: "",
       // 1 for descending, -1 for ascending
-      sortOrder: 1
+      sortOrder: 1,
+      currPriority: 1
     }
   },
   created: function(){
@@ -67,6 +68,9 @@ const projects_list = {
         return project;
       });
     },
+    incrementPriority: function(){
+      this.currPriority += 1;
+    },
     sortTags: function(){
       const field = document.querySelector("input[name=tags-input]").value;
 
@@ -112,7 +116,8 @@ const projects_list = {
           <projects_list_item
             v-for = "project in this.projectList"
             v-bind:projects = "project"
-            v-bind:key = "project.id">
+            v-bind:key = "project.id"
+            :priority = "currPriority">
           </projects_list_item>
         </transition-group>
       </div>
