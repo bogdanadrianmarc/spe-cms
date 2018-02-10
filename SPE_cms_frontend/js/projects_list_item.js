@@ -19,8 +19,7 @@ Vue.component('projects_list_item', {
           studentId: 0,
           projectId: index,
           priority: self.currPriority,
-          user: "test_student",
-          password: "test_student"
+          login_token: "whvwbvwxghqw!whvwbvwxghqw"
         },
         success: function (data) {
           console.log(data);
@@ -28,8 +27,10 @@ Vue.component('projects_list_item', {
         error: function (error) {
           console.log(error);
         }
-      });
-      this.currPriority += 1;
+      }).done(function(){
+           self.currPriority += 1;
+      });;
+      //this.currPriority += 1;
     },
     isUndefined: function(item){
       return typeof item === "undefined";

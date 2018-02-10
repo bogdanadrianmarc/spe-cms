@@ -56,21 +56,20 @@ const selections = {
       url: 'http://localhost:8080/selections_id',
       method: 'POST',
       data: {
-        id: 0,
-        user: "test_student",
-        password: "test_student"
+        id: 1,
+        login_token: "whvwbvwxghqw!whvwbvwxghqw"
       },
       success: function (dataSelections) {
+        console.log("DataS:" + dataSelections);
         $.ajax({
           url: 'http://localhost:8080/projects',
           method: 'POST',
           data: {
-            user: "test_student",
-            password: "test_student"
+            login_token: "whvwbvwxghqw!whvwbvwxghqw"
           },
           success: function (dataProjects) {
             self.selections = dataSelections.map(select => dataProjects[select.projectId].title);
-            console.log(JSON.stringify(self.selections));
+            console.log("Selectii: " + JSON.stringify(self.selections));
           },
           error: function (error) {
             console.log(error);

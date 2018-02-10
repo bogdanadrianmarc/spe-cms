@@ -20,6 +20,7 @@ const projects_list = {
        password: "test_student"
      },
      success: function (data) {
+       console.log("TOKEN:" + data);
        self.login_token = data;
        // console.log(data);
        $.ajax({
