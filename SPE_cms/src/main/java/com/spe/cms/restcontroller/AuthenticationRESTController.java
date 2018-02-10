@@ -7,10 +7,8 @@ import com.spe.cms.domain.Client;
 import com.spe.cms.domain.Student;
 import com.spe.cms.domain.Teacher;
 import com.spe.cms.restcontroller.utils.Cryption;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -30,7 +28,6 @@ public class AuthenticationRESTController {
         teacherController = new TeacherController();
         clientController = new ClientController();
     }
-
 
 //   ### LOGIN ###
     @CrossOrigin
