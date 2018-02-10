@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SPE_cms/SPE_cms.iml" filepath="$PROJECT_DIR$/SPE_cms/SPE_cms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SPE_cms_frontend.iml" filepath="$PROJECT_DIR$/.idea/SPE_cms_frontend.iml" />
     </modules>
   </component>
 </project>
