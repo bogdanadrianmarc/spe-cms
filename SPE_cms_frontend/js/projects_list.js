@@ -5,7 +5,8 @@ const projects_list = {
       projectListCopy: [],
       login_token: "",
       // 1 for descending, -1 for ascending
-      sortOrder: 1
+      sortOrder: 1,
+      currPriority: 1
     }
   },
   created: function(){
@@ -20,7 +21,6 @@ const projects_list = {
        password: "test_student"
      },
      success: function (data) {
-       console.log("TOKEN:" + data);
        self.login_token = data;
        // console.log(data);
        $.ajax({
@@ -37,6 +37,21 @@ const projects_list = {
          error: function (error) {
            console.log(error);
            self.$parent.loading = false;
+         }
+       });
+
+       $.ajax({
+         url: 'http://localhost:8080/selections_id',
+         method: 'POST',
+         data: {
+           id: "test_student",
+           login_token: "whvwbvwxghqw!whvwbvwxghqw"
+         },
+         success: function (dataSelections) {
+           self.currPriority = dataSelections.length +1;
+         },
+         error: function (error) {
+           console.log(error);
          }
        });
  }
@@ -66,6 +81,9 @@ const projects_list = {
         if(title.startsWith(field))
         return project;
       });
+    },
+    incrementPriority: function(){
+      this.currPriority += 1;
     },
     sortTags: function(){
       const field = document.querySelector("input[name=tags-input]").value;
@@ -112,7 +130,8 @@ const projects_list = {
           <projects_list_item
             v-for = "project in this.projectList"
             v-bind:projects = "project"
-            v-bind:key = "project.id">
+            v-bind:key = "project.id"
+            :priority = "currPriority">
           </projects_list_item>
         </transition-group>
       </div>
