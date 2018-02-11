@@ -106,6 +106,28 @@ public class PreferenceDBRepo implements IDBRepo<Integer, Preference> {
         return null;
     }
 
+    public Preference findOneByStudentAndProjectId(String studentId, Integer projectId) {
+        Connection con = dbUtils.getConnection();
+
+        try (PreparedStatement preStmt = con.prepareStatement("SELECT * FROM Preferences WHERE studentId=? AND projectId=?")) {
+            preStmt.setString(1, studentId);
+            preStmt.setInt(2, projectId);
+            try (ResultSet result = preStmt.executeQuery()) {
+                if (result.next()) {
+                    int id = result.getInt("id");
+                    String studentIdd = result.getString("studentId");
+                    int projectIdd = result.getInt("projectId");
+                    int priority = result.getInt("priority");
+                    Preference p = new Preference(id, studentIdd, projectIdd, priority);
+                    return p;
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error DB " + ex);
+        }
+        return null;
+    }
+
     @Override
     public Iterable<Preference> findAll() {
         Connection con = dbUtils.getConnection();
