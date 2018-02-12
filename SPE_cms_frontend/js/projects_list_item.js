@@ -60,11 +60,11 @@ Vue.component('projects_list_item', {
     </div>
 
     <div class = "select-project-btn">
-      <button v-on:click="clickBTN(projects.id)"> <i class = "fa fa-plus"></i></button>
+      <button v-on:click="clickBTN(projects.id)">Choose</button>
     </div>
 
     <router-link v-bind:to="projects.projectUrl">
-      <div class = "learn-more-btn">Learn More</div>
+      </i><div class = "learn-more-btn">Details</div>
     </router-link>
   </div>
 </div>`
