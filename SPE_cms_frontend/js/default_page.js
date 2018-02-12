@@ -28,7 +28,7 @@ const default_page = {
       and get feedback from lecturers.</p>
        <div class = "browse-students">
          <h2>Browse projects and start deciding.</h2>
-         <router-link to = "/projects_list">
+         <router-link to = "/projects">
            <div class = "browse-btn">Projects</div>
          </router-link>
        </div>
