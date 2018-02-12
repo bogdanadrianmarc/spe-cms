@@ -85,6 +85,9 @@ const projects_list = {
     incrementPriority: function(){
       this.currPriority += 1;
     },
+    decreasePriority: function(){
+      this.currPriority -= 1;
+    },
     sortTags: function(){
       const field = document.querySelector("input[name=tags-input]").value;
 

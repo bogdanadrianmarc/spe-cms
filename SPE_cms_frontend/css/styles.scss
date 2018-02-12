@@ -410,15 +410,15 @@ a:active, a:focus {
     .learn-more-btn{
       display: inline-block;
       float: right;
-      border: 3px solid $bristol-red;
-      border-radius: 18px;
+      border: 2px solid $bristol-red;
+      border-radius: 5px;
       color: $dark-black;
       padding: 0.75em 1.75em;
       letter-spacing: 1px;
       font-family: $font-primary;
-      text-transform: uppercase;
       font-size: 0.8em;
       margin-top: 1em;
+      margin-right: 0.5em;
       transition-duration: 0.25s !important;
       &:hover{
         background-color: $bristol-red;
@@ -604,9 +604,11 @@ a:active, a:focus {
     background-color: $sky-white;
     display: inline-block;
     float: right;
-    border: 3px solid $bristol-red;
-    border-radius: 18px;
-    color: $dark-black;
+    border: 2px solid $bristol-red;
+    border-radius: 5px;
+    background-color: $bristol-red;
+
+    color: $sky-white;
     padding: 0.75em 1.75em;
     letter-spacing: 1px;
     font-family: $font-primary;
@@ -779,6 +781,9 @@ a:active, a:focus {
   padding-bottom: 50px;
   background-color: $dark-black;
   align-items: center;
+  h2{
+    padding-left: 0;
+  }
 }
 .browse-projects{
   text-align: center;
@@ -786,6 +791,9 @@ a:active, a:focus {
   padding-bottom: 50px;
   background-color: $bristol-red;
   align-items: center;
+  h2{
+    padding-left: 0;
+  }
 }
 .browse-btn{
   display: inline-block;
