@@ -11,7 +11,7 @@ const selections = {
   The first three projects will have the highest priority, but all other submitted choices will be taken into account as well.
   </p>
   <ol id="items">
-  <transition-group name="slide-fade">
+  <transition-group name="slide" id="items-transition">
   <li v-for = "selection in selections" v-bind:key = "selection.priority" :id ="selection.id">
   {{ selection.title }}
   <button  v-on:click = "removeSelection(selection.id)"><i class="fa fa-times" aria-hidden="true"></i></button>
@@ -70,7 +70,7 @@ const selections = {
 
   },
   mounted: function(){
-    var el = document.getElementById('items');
+    var el = document.getElementById('items-transition');
     let self = this;
     var sortable = Sortable.create(el,{
       animation: 0,

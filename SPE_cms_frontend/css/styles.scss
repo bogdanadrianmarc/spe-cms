@@ -485,6 +485,18 @@ a:active, a:focus {
   color: #000;
   background-color: $bristol-red;
 }
+.slide-leave-active,
+.slide-enter-active {
+  transition: all 1s ease;
+}
+.slide-enter {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+.slide-leave-to {
+  transform: translate(5%, 0);
+  opacity: 0;
+}
 #selections-page{
   width: 65vw;
   margin: 1.25em auto 3em;
@@ -534,7 +546,6 @@ a:active, a:focus {
       padding: 1em 2em 1em 0;
       background-color: $sky-white;
       color: $dark-grey;
-      transition: all 0.3s ease-in-out;
       &:nth-child(3){
         border-bottom: 5px solid $bristol-red;
       }
@@ -834,23 +845,7 @@ a:active, a:focus {
   }
 }
 
-.slide-fade-enter-active {
-  transition: all .3s ease;
-}
-.slide-fade-leave-active {
-  transition: all .8s ease-in-out;
-}
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active below version 2.1.8 */ {
-  transform: translateY(-10px);
-  opacity: 0;
-}
-#items{
-  transition: all 0.5s ease-in-out;
-  *{
-    transition: all 0.5s ease-in-out;
-  }
-}
+
 
 #students-list{
   width: 65vw;
