@@ -12,42 +12,32 @@ const default_page = {
     clickBTN: function(username, password){
       let self = this;
       console.log(username, password)
-      $.ajax({
-        url: 'http://localhost:8080/projects',
-        method: 'POST',
-        data: {username, password},
-        success: function (data) {
-          console.log(data);
-        },
-        error: function (error) {
-          console.log(error);
-        }
-      });
     },
     isUndefined: function(item){
       return typeof item === "undefined";
     }
   },
   template: `
-  <div id = "user-dashboard">
-
-    <div id = "welcome-image">
-      <h1>SPE 2018</h1>
-      <img src = "img/university-on-film.jpg"/>
+  <div class = "default-page">
+    <div class = "welcome-image">
+      <h2>Dear Student,</h2>
+      <h1>Welcome to SPE 2018</h1>
+      <p> This is the place where you can browse and select projects posted by clients,<br>
+      sort your choices in order of preference and submit your decision,</br>
+      message your clients as well as your group partners, <br>
+      and get feedback from lecturers.</p>
+       <div class = "browse-students">
+         <h2>Browse projects and start deciding.</h2>
+         <router-link to = "/projects">
+           <div class = "browse-btn">Projects</div>
+         </router-link>
+       </div>
+       <div class = "browse-projects">
+         <h2>Manage your preferences.</h2>
+         <router-link to = "/selections">
+           <div class = "browse-projects-btn">Selections</div>
+         </router-link>
+       </div>
     </div>
-
-    <div id = "login-info">
-      <label class="control-label" for="username">Username</label>
-      <input v-model="username" type="text" id = "username" placeholder="edit me">
-      <label class="control-label" for="password">Password</label>
-      <input v-model="password" type="text" id = "password" placeholder="edit me">
-      <p>Username is: {{ username }}</p>
-      <p>Password is: {{ password }}</p>
-    </div>
-
-    <div class = "select-project-btn">
-      <button v-on:click="clickBTN(username, password)"><span>Log in</span> </button>
-    </div>
-
   </div>`
 };

@@ -781,6 +781,9 @@ a:active, a:focus {
   padding-bottom: 50px;
   background-color: $dark-black;
   align-items: center;
+  h2{
+    padding-left: 0;
+  }
 }
 .browse-projects{
   text-align: center;
@@ -788,6 +791,9 @@ a:active, a:focus {
   padding-bottom: 50px;
   background-color: $bristol-red;
   align-items: center;
+  h2{
+    padding-left: 0;
+  }
 }
 .browse-btn{
   display: inline-block;

@@ -78,7 +78,7 @@ public class PreferenceRESTController {
     }
 
 
-//   ### DELETE SELECTION ###
+//   ### DELETE SELECTION + REPRIORITIZING ###
     @CrossOrigin
     @RequestMapping(value = "/selection_delete", method = POST)
     public String selection_delete(@RequestParam(value = "studentId") String studentId, @RequestParam(value = "projectId") Integer projectId, @RequestParam(value = "login_token") String login_token)
@@ -88,6 +88,22 @@ public class PreferenceRESTController {
         if (studentController.isUserAndPassCorrect(user,password) == 0)
         {
             preferenceController.deletePreferenceByStudentAndProjectId(studentId, projectId);
+            return "OK";
+        }
+        else
+            return "NOT LOGGED IN";
+    }
+
+//    ### UPDATE SELECTION + REPRIORITIZING ###
+    @CrossOrigin
+    @RequestMapping(value = "/selection_update", method = POST)
+    public String selection_update(@RequestParam(value = "studentId") String studentId, @RequestParam(value = "projectId") Integer projectId, @RequestParam(value = "oldPriority") Integer oldPriority, @RequestParam(value = "newPriority") Integer newPriority, @RequestParam(value = "login_token") String login_token)
+    {
+        String user = Cryption.decrypt(login_token.split("!")[0]);
+        String password = Cryption.decrypt(login_token.split("!")[1]);
+        if (studentController.isUserAndPassCorrect(user,password) == 0)
+        {
+            preferenceController.updatePreferenceByStudentAndProjectId(studentId, projectId, oldPriority, newPriority);
             return "OK";
         }
         else

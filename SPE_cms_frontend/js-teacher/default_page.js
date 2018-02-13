@@ -34,7 +34,7 @@ const default_page = {
        </div>
        <div class = "browse-projects">
          <h2>Browse and delete projects.</h2>
-         <router-link to = "/projects_list">
+         <router-link to = "/projects">
            <div class = "browse-projects-btn">Projects</div>
          </router-link>
        </div>
