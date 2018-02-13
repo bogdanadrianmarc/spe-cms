@@ -13,8 +13,12 @@ const single_project = {
     let self = this;
     console.log(self.project.tags);
     $.ajax({
-      url: 'http://localhost:8080/project?id=' + self.id,
-      method: 'GET',
+      url: 'http://localhost:8080/project',
+      method: 'POST',
+      data: {
+        id: self.id,
+        login_token: "whvwbvwxghqw!whvwbvwxghqw"
+      },
       success: function (data) {
         self.project = data;
         self.$parent.getTagColors(self.project,self);

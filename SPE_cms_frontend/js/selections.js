@@ -3,6 +3,7 @@
 
 const selections = {
   template: `
+
   <div id = "selections-page">
   <h1>Project selection</h1>
   <p>
@@ -10,17 +11,20 @@ const selections = {
   The first three projects will have the highest priority, but all other submitted choices will be taken into account as well.
   </p>
   <ol id="items">
+  <transition-group name="slide-fade">
   <li v-for = "selection in selections" v-bind:key = "selection.priority" :id ="selection.id">
   {{ selection.title }}
   <button  v-on:click = "removeSelection(selection.id)"><i class="fa fa-times" aria-hidden="true"></i></button>
   </li>
+  </transition-group>
   </ol>
   <router-link to = "/projects">
   <div class = "add">
   <i class="fa fa-plus" aria-hidden="true"></i>
   </div>
   </router-link>
-  </div>`,
+  </div>`
+  ,
   data: function () {
     return {
       selections: []
@@ -72,7 +76,7 @@ const selections = {
       animation: 0,
       sort: true,
       onEnd: function (evt) {
-        console.log(evt.item.attributes.id.value - 1);
+        console.log("ProjectID:" + (evt.item.attributes.id.value - 1) + " Old:" + evt.oldIndex + " New:" + evt.newIndex);
         $.ajax({
           url: 'http://localhost:8080/selection_update',
           method: 'POST',
@@ -80,8 +84,8 @@ const selections = {
             studentId: "test_student",
             projectId: evt.item.attributes.id.value - 1,
             login_token: "whvwbvwxghqw!whvwbvwxghqw",
-            oldPriority: evt.oldIndex,
-            newPriority: evt.newIndex
+            oldPriority: evt.oldIndex + 1,
+            newPriority: evt.newIndex + 1
           },
           success: function (data) {
             console.log(data);
