@@ -10,7 +10,7 @@ const selections = {
   The first three projects will have the highest priority, but all other submitted choices will be taken into account as well.
   </p>
   <ol id="items">
-  <li v-for = "selection in selections" v-bind:key = "selection.priority">
+  <li v-for = "selection in selections" v-bind:key = "selection.priority" :id ="selection.id">
   {{ selection.title }}
   <button  v-on:click = "removeSelection(selection.id)"><i class="fa fa-times" aria-hidden="true"></i></button>
   </li>
@@ -72,15 +72,16 @@ const selections = {
       animation: 0,
       sort: true,
       onEnd: function (evt) {
-        //TODO: TO BE IMPLEMENTED ON BACKEND!
+        console.log(evt.item.attributes.id.value - 1);
         $.ajax({
-          url: 'http://localhost:8080/selection_swap',
+          url: 'http://localhost:8080/selection_update',
           method: 'POST',
           data: {
             studentId: "test_student",
+            projectId: evt.item.attributes.id.value - 1,
             login_token: "whvwbvwxghqw!whvwbvwxghqw",
-            oldPos: evt.oldIndex,
-            newPos: evt.newIndex
+            oldPriority: evt.oldIndex,
+            newPriority: evt.newIndex
           },
           success: function (data) {
             console.log(data);
