@@ -1,5 +1,5 @@
 const routes = [
-  { path: '/projects',    component: projects_list },
+  { path: '/projects',    component: projects_list, props: true},
   { path: '/',            component: default_page},
   { path: '/default_page',component: default_page},
   { path: '/project/:id', component: single_project, props: true},

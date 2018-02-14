@@ -1,18 +1,20 @@
 Vue.component('projects_list_item', {
-  props: ['projects','priority'],
+  props: ['projects','priority', 'list'],
   data: function(){
+
     return {
       tagColors: [],
+      times: 0,
     }
   },
   created: function(){
     this.$parent.$parent.$parent.getTagColors(this.projects,this);
     let self = this;
     $.ajax({
-      url: 'http://localhost:8080/selections_id',
+      url: 'http://localhost:8080/project_id',
       method: 'POST',
       data: {
-        id: "test_student",
+        id: this.projects.id,
         login_token: "whvwbvwxghqw!whvwbvwxghqw"
       },
       error: function (error) {
@@ -23,25 +25,20 @@ Vue.component('projects_list_item', {
   methods: {
     clickBTN: function(index){
       let self = this;
-      //projects_list.projectList.splice(index, 1);
-        $.ajax({
-          url: 'http://localhost:8080/project_delete',
-          method: 'POST',
-          data: {
-            studentId: "test_student",
-            // -1 accounts for difference in zero-indexing on backend and one-indexing on frontend
-            projectId: index-1,
-            login_token: "whvwbvwxghqw!whvwbvwxghqw"
-          },
-          success: function (data) {
-            self.$parent.$parent.decreasePriority();
-            console.log(data);
-          },
-          error: function (error) {
-            console.log(error);
-          }
-        });
-      //this.currPriority += 1;
+      this.times += 1;
+      this.$delete(this.list, index - 1); //-1 because projects start at 0.
+      $.ajax({
+        url: 'http://localhost:8080/project_delete',
+        method: 'POST',
+        data: {
+          projectId: index-1,
+          login_token: "whvwbvwxghqw!whvwbvwxghqw"
+        },
+        error: function (error) {
+          console.log(error);
+        }
+      });
+      console.log(index);
     },
     isUndefined: function(item){
       return typeof item === "undefined";

@@ -53,7 +53,7 @@ public class ProjectRESTController {
 
 //   ### PROJECT BY ID ###
     @CrossOrigin
-    @RequestMapping(value = "/project", method = POST)
+    @RequestMapping(value = "/project_id", method = POST)
     public Project project(@RequestParam(value = "id") Integer id, @RequestParam(value = "login_token") String login_token) {
         String user = Cryption.decrypt(login_token.split("!")[0]);
         String password = Cryption.decrypt(login_token.split("!")[1]);
@@ -71,13 +71,13 @@ public class ProjectRESTController {
 
 //   ### DELETE PROJECT BY ID ###
     @CrossOrigin
-    @RequestMapping(value = "/projects", method = GET)
-    public String project_delete(@RequestParam(value = "id") Integer id, @RequestParam(value = "login_token") String login_token) {
+    @RequestMapping(value = "/project_delete", method = POST)
+    public String project_delete(@RequestParam(value = "projectId") Integer projectId, @RequestParam(value = "login_token") String login_token) {
         String user = Cryption.decrypt(login_token.split("!")[0]);
         String password = Cryption.decrypt(login_token.split("!")[1]);
 
         if (teacherController.isUserAndPassCorrect(user,password) == 0){
-            projectController.deleteProjectById(id);
+            projectController.deleteProjectById(projectId);
             return "OK";
         }
         else

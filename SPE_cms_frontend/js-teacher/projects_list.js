@@ -133,6 +133,7 @@ const projects_list = {
           <projects_list_item
             v-for = "project in this.projectList"
             v-bind:projects = "project"
+            v-bind:list = "projectList"
             v-bind:key = "project.id"
             :priority = "currPriority">
           </projects_list_item>
