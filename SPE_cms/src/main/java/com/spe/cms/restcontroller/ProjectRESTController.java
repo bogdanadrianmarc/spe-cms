@@ -15,6 +15,7 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
@@ -66,6 +67,21 @@ public class ProjectRESTController {
             return projectController.getProjectById(id);
         else
             return new Project(-1,"","","",-1,"","","","");
+    }
+
+//   ### DELETE PROJECT BY ID ###
+    @CrossOrigin
+    @RequestMapping(value = "/projects", method = GET)
+    public String project_delete(@RequestParam(value = "id") Integer id, @RequestParam(value = "login_token") String login_token) {
+        String user = Cryption.decrypt(login_token.split("!")[0]);
+        String password = Cryption.decrypt(login_token.split("!")[1]);
+
+        if (teacherController.isUserAndPassCorrect(user,password) == 0){
+            projectController.deleteProjectById(id);
+            return "OK";
+        }
+        else
+            return "NOT LOGGED IN";
     }
 
 }

@@ -29,4 +29,6 @@ public class ProjectController {
     {
         return (List<Project>) projectDBRepo.findAllByClientId(id);
     }
+
+    public void deleteProjectById(Integer Id){ projectDBRepo.delete(Id);}
 }
