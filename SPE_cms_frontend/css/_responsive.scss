@@ -1,0 +1,13 @@
+// RESPONSIVE
+@media screen
+and (min-device-width: 1200px)
+and (max-device-width: 1600px)
+{
+  .project-list-item-image{
+    width: 400px !important;
+    height: 410px !important;
+  }
+  .project-list-item-content{
+    width: calc(100% - 500px) !important;
+  }
+}

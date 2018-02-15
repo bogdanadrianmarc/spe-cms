@@ -1,0 +1,130 @@
+@import "_colors";
+@@import "_fonts";
+
+// SELECTIONS PAGE
+#selections-page{
+  width: 65vw;
+  margin: 1.25em auto 3em;
+  h1{
+    font-family: $font-primary;
+    color: $sky-white;
+    font-size: 1.25em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+    margin: 0 auto;
+    padding-bottom: 0.5em;
+  }
+  p{
+    margin: 0;
+    padding: 0;
+    padding-bottom: 1em;
+    font-family: $font-secondary;
+    font-size: 1em;
+    line-height: 1.5em;
+    color: $light-grey;
+  }
+  #items{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    counter-reset: elementcounter;
+    padding-left: 0;
+    li:before{
+      content: "Choice #" counter(elementcounter);
+      counter-increment:elementcounter;
+      font-family: $font-primary;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-right: 1px solid $dark-grey;
+      display: inline-block;
+      padding: 0.5em 0;
+      text-align: center;
+      width:10em;
+      margin-right: 1em;
+    }
+    li{
+      font-size: 1.25em;
+      margin: 0 auto;
+      border-bottom: 2px solid $dark-grey;
+      padding: 1em 2em 1em 0;
+      background-color: $sky-white;
+      color: $dark-grey;
+      &:nth-child(3){
+        border-bottom: 5px solid $bristol-red;
+      }
+      button{
+        margin-top: 0.25em;
+        float: right;
+        display: inline-block;
+        padding: 0.5em 0.75em;
+        background: $bristol-red;
+        border: none;
+        text-transform: uppercase;
+        font-family: $font-primary;
+        color: $sky-white;
+        font-size: 0.75em;
+        font-weight: 600;
+        border-radius: 10px;
+        &:hover{
+          cursor: pointer;
+          cursor: hand;
+        }
+      }
+      &:hover{
+        cursor: move; /* fallback if grab cursor is unsupported */
+        cursor: grab;
+        cursor: -moz-grab;
+        cursor: -webkit-grab;
+      }
+
+      /* (Optional) Apply a "closed-hand" cursor during drag operation. */
+      &:active {
+        cursor: grabbing;
+        cursor: -moz-grabbing;
+        cursor: -webkit-grabbing;
+      }
+    }
+    .sortable-chosen{
+      background-color: #ccc;
+    }
+  }
+
+}
+
+// SELECTIONS BIG + BUTTON
+.add{
+  text-align: center;
+  background-color: $transparent;
+  border: 3px dashed $sky-white;
+  padding: 1em 2em 1em 0;
+  margin: 0.5em auto 0;
+  font-size: 1.5em;
+  transition: all 0.15s ease-in-out;
+  i{
+    float: none;
+    color: $sky-white;
+  }
+  &:hover{
+    background-color: $bristol-red;
+    border-style: solid;
+    cursor: pointer;
+    cursor: hand;
+    border-color: $bristol-red;
+  }
+}
+
+// SELECTIONS ANIMATIONS
+.slide-leave-active,
+.slide-enter-active {
+  transition: all 1s ease;
+}
+.slide-enter {
+  transform: translateY(-20px);
+  opacity: 0;
+}
+.slide-leave-to {
+  transform: translate(5%, 0);
+  opacity: 0;
+}

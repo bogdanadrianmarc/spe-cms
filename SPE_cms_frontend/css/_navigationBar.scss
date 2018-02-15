@@ -1,0 +1,59 @@
+@import "_colors";
+@import "_fonts";
+
+// NAVIGATION BAR
+#navigation-bar{
+  background-color : $bristol-red;
+  height: 100px;
+  width: 100%;
+  padding: 0px !important;
+  margin: 0px !important;
+
+  // IMAGES
+  img {
+    max-height: 100%;
+    height: 40px;
+    margin-top: 25px;
+    margin-left: 50px;
+    float: left;
+  }
+
+  // NAVIGATION BUTTONS
+  .navigation-items{
+    a{
+      text-decoration: none;
+    }
+    float: right;
+    span{
+      text-transform: uppercase;
+      color: $sky-white;
+      line-height: 100px;
+      margin-right: 50px;
+      font-family: $font-primary;
+      font-weight: 400;
+      letter-spacing: 3px;
+      font-size: 0.75em;
+      padding: 0.5em 1em;
+      border: 2px solid $bristol-red;
+      &:hover{
+        cursor: pointer;
+        cursor: hand;
+        color: $dark-black;
+      }
+    }
+
+    // WHEN YOU CLICK A BUTTON
+    .router-link-active > span {
+      border: 2px solid $sky-white;
+      transition-duration: 0.25s !important;
+
+      // ON BUTTON HOVER
+      &:hover{
+        cursor: pointer;
+        cursor: hand;
+        color: $dark-black;
+        border: 2px solid $dark-black;
+      }
+    }
+  }
+}
