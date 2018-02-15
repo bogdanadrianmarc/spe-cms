@@ -25,6 +25,7 @@ public class StudentRESTController {
     @PostConstruct
     public void initialize() {
         studentController = new StudentController();
+        teacherController = new TeacherController();
     }
 
     //    ### ALL STUDENTS ###
