@@ -17,7 +17,7 @@ const single_project = {
       method: 'POST',
       data: {
         id: self.id,
-        login_token: "whvwbvwxghqw!whvwbvwxghqw"
+        login_token: "whvwbwhdfkhu!whvwbwhdfkhu"
       },
       success: function (data) {
         self.project = data;
@@ -61,7 +61,7 @@ mounted: function(){
           <div v-for="line in project.lines">{{line}}<br /></div>
         </div>
         <div class = "single-project-CTA">
-          <h1>Looking for more?</h1>
+          <h1>This one looks nice? Go back.</h1>
           <router-link to="/projects">
           <div class = "CTA-btn">All Projects</div>
         </router-link>

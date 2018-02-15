@@ -4,10 +4,10 @@
 const selections = {
   template: `
   <div id = "selections-page">
-  <h1>Project selection</h1>
+  <h1>sc16913's project selections</h1>
   <p>
-  Sort projects you would like to work on in your preferred order.<br />
-  The first three projects will have the highest priority, but all other submitted choices will be taken into account as well.
+  These are student sc16913's project selections.<br />
+  The first three projects have the highest priority, but all other submitted choices could be taken into account as well.
   </p>
   <ol id="items">
   <li v-for = "selection in selections" v-bind:key = "selection.priority">

@@ -15,7 +15,7 @@ Vue.component('projects_list_item', {
       method: 'POST',
       data: {
         id: this.projects.id,
-        login_token: "whvwbvwxghqw!whvwbvwxghqw"
+        login_token: "whvwbwhdfkhu!whvwbwhdfkhu"
       },
       error: function (error) {
         console.log(error);
@@ -23,16 +23,15 @@ Vue.component('projects_list_item', {
     });
   },
   methods: {
-    clickBTN: function(index){
+    clickBTN: function(index, id){
       let self = this;
-      this.times += 1;
-      this.$delete(this.list, index - 1); //-1 because projects start at 0.
+      this.$delete(this.list, index-1); //-1 because projects start at 0.
       $.ajax({
         url: 'http://localhost:8080/project_delete',
         method: 'POST',
         data: {
-          projectId: index-1,
-          login_token: "whvwbvwxghqw!whvwbvwxghqw"
+          projectId: index,
+          login_token: "whvwbwhdfkhu!whvwbwhdfkhu"
         },
         error: function (error) {
           console.log(error);
