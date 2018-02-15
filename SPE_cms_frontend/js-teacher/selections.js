@@ -1,12 +1,9 @@
-
-
-
 const selections = {
   template: `
   <div id = "selections-page">
-  <h1>sc16913's project selections</h1>
+  <h1>test_student's project selections</h1>
   <p>
-  These are student sc16913's project selections.<br />
+  These are student test_student's project selections.<br />
   The first three projects have the highest priority, but all other submitted choices could be taken into account as well.
   </p>
   <ol id="items">

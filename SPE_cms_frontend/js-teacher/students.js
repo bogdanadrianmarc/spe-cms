@@ -10,6 +10,7 @@ const students = {
   },
   created: function(){
     let self = this;
+    self.$parent.loading = true;
     $.ajax({
       url: 'http://localhost:8080/login',
       method: 'POST',
@@ -26,13 +27,14 @@ const students = {
           data: {
             login_token: data
           },
-          success: function (dataStudents) {
-            self.studentList = dataStudents;
-            self.studentListCopy = dataStudents;
-            console.log(dataStudents);
+          success: function (data) {
+            self.studentList = data;
+            self.studentListCopy = data;
+            self.$parent.loading = false;
           },
           error: function (error) {
             console.log(error);
+            self.$parent.loading = false;
           }
         });
       },
@@ -44,9 +46,9 @@ const students = {
   methods: {
     sortStudents: function() {
       if(this.sortOrder === 1)
-      this.projectList.sort(this.studentsAscending);
+      this.studentList.sort(this.studentsAscending);
       else
-      this.projectList.sort(this.studentsDescending);
+      this.studentList.sort(this.studentsDescending);
       this.sortOrder = this.sortOrder * (-1);
     },
     studentsAscending(a, b){
@@ -60,10 +62,10 @@ const students = {
       this.studentList = this.studentListCopy.filter(function(student){
         if(field === "")
         return student;
-        let title = student.title.replace(/ /g,'');
+        let title = student.id.replace(/ /g,'');
         title = title.toLowerCase();
         if(title.startsWith(field))
-        return project;
+        return student;
       });
     },
     incrementPriority: function(){
@@ -87,12 +89,19 @@ const students = {
       <div v-else key="loaded">
       <students_list_filters></students_list_filters>
       <div id = "students-list">
-      <ol id = "usernames">
-        <li><router-link to ="/selections"><span>sc16913</span></router-link></li>
-        <li><router-link to ="/selections"><span>Other students...</span></router-link></li>
-      </ol>
-      </div>
-    </div>
+      <transition-group name="sort-list">
+        <div
+          v-for = "student in this.studentList"
+          v-bind:key = "student.id"
+          :priority = "currPriority">
+          <ol id = "usernames">
+            <li><router-link to ="/selections"><span>{{student.id}}</span></router-link></li>
+            <li><span>Other students...</span></li>
+          </ol>
+        </div>
+     </transition-group>
+     </div>
+     </div>
    </transition>
   </div>`
 };

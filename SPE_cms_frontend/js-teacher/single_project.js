@@ -61,7 +61,7 @@ mounted: function(){
           <div v-for="line in project.lines">{{line}}<br /></div>
         </div>
         <div class = "single-project-CTA">
-          <h1>This one looks nice? Go back.</h1>
+          <h1>Looks good? Go back and browse the others.</h1>
           <router-link to="/projects">
           <div class = "CTA-btn">All Projects</div>
         </router-link>
