@@ -3,7 +3,7 @@
 @import "_colors.scss";
 @import "_singleProject.scss";
 @import "_studentDashboard.scss";
-
+@import "_studentHomepage.scss";
 *{
   color: $sky-white;
   font-family: $font-primary;
@@ -476,7 +476,7 @@ a:active, a:focus {
   border: solid 2px #fff;
 
   -webkit-transform: translate(0px, 0px);
-          transform: translate(0px, 0px);
+  transform: translate(0px, 0px);
 
   transition: background-color 0.3s;
 }
@@ -527,17 +527,17 @@ a:active, a:focus {
     counter-reset: elementcounter;
     padding-left: 0;
     li:before{
-        content: "Choice #" counter(elementcounter);
-        counter-increment:elementcounter;
-        font-family: $font-primary;
-        font-weight: 700;
-        text-transform: uppercase;
-        border-right: 1px solid $dark-grey;
-        display: inline-block;
-        padding: 0.5em 0;
-        text-align: center;
-        width:10em;
-        margin-right: 1em;
+      content: "Choice #" counter(elementcounter);
+      counter-increment:elementcounter;
+      font-family: $font-primary;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-right: 1px solid $dark-grey;
+      display: inline-block;
+      padding: 0.5em 0;
+      text-align: center;
+      width:10em;
+      margin-right: 1em;
     }
     li{
       font-size: 1.25em;
@@ -568,44 +568,44 @@ a:active, a:focus {
         }
       }
       &:hover{
-      cursor: move; /* fallback if grab cursor is unsupported */
-      cursor: grab;
-      cursor: -moz-grab;
-      cursor: -webkit-grab;
+        cursor: move; /* fallback if grab cursor is unsupported */
+        cursor: grab;
+        cursor: -moz-grab;
+        cursor: -webkit-grab;
       }
 
-       /* (Optional) Apply a "closed-hand" cursor during drag operation. */
+      /* (Optional) Apply a "closed-hand" cursor during drag operation. */
       &:active {
-          cursor: grabbing;
-          cursor: -moz-grabbing;
-          cursor: -webkit-grabbing;
+        cursor: grabbing;
+        cursor: -moz-grabbing;
+        cursor: -webkit-grabbing;
       }
     }
     .sortable-chosen{
       background-color: #ccc;
     }
-    }
-
   }
-  .add{
-    text-align: center;
-    background-color: $transparent;
-    border: 3px dashed $sky-white;
-    padding: 1em 2em 1em 0;
-    margin: 0.5em auto 0;
-    font-size: 1.5em;
-    transition: all 0.15s ease-in-out;
-    i{
-      float: none;
-      color: $sky-white;
-    }
-    &:hover{
-      background-color: $bristol-red;
-      border-style: solid;
-      cursor: pointer;
-      cursor: hand;
-      border-color: $bristol-red;
-    }
+
+}
+.add{
+  text-align: center;
+  background-color: $transparent;
+  border: 3px dashed $sky-white;
+  padding: 1em 2em 1em 0;
+  margin: 0.5em auto 0;
+  font-size: 1.5em;
+  transition: all 0.15s ease-in-out;
+  i{
+    float: none;
+    color: $sky-white;
+  }
+  &:hover{
+    background-color: $bristol-red;
+    border-style: solid;
+    cursor: pointer;
+    cursor: hand;
+    border-color: $bristol-red;
+  }
 }
 
 .select-project-btn{
@@ -757,94 +757,6 @@ a:active, a:focus {
     }
   }
 }
-.default-page{
-  display: flex;
-  allign-items: center;
-}
-.welcome-image{
-  padding-top: 3em;
-  background-image: url("university-on-film.jpg");
-  height: 80%;
-  width: 100%;
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute;
-  h1 {
-    margin-top: 0em;
-    font-size: 80px;
-    padding-left: 0.5em;
-  }
-  p{
-    padding-left: 3em;
-    padding-bottom: 150px;
-    margin: 0em;
-  }
-  h2 {
-    padding-left: 2em;
-  }
-}
-.browse-students{
-  text-align: center;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  background-color: $dark-black;
-  align-items: center;
-  h2{
-    padding-left: 0;
-  }
-}
-.browse-projects{
-  text-align: center;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  background-color: $bristol-red;
-  align-items: center;
-  h2{
-    padding-left: 0;
-  }
-}
-.browse-btn{
-  display: inline-block;
-  border: 3px solid $bristol-red;
-  background-color: $bristol-red;
-  border-radius: 18px;
-  color: $sky-white;
-  padding: 0.75em 1.75em;
-  letter-spacing: 1px;
-  font-family: $font-primary;
-  text-transform: uppercase;
-  font-size: 0.8em;
-  margin-top: 1em;
-  transition-duration: 0.25s !important;
-  &:hover{
-    background-color: $dark-black;
-    color: $sky-white;
-    cursor: pointer;
-    cursor: hand;
-  }
-}
-.browse-projects-btn{
-  display: inline-block;
-  border: 3px solid $dark-black;
-  background-color: $dark-black;
-  border-radius: 18px;
-  color: $sky-white;
-  padding: 0.75em 1.75em;
-  letter-spacing: 1px;
-  font-family: $font-primary;
-  text-transform: uppercase;
-  font-size: 0.8em;
-  margin-top: 1em;
-  transition-duration: 0.25s !important;
-  &:hover{
-    background-color: $bristol-red;
-    color: $sky-white;
-    cursor: pointer;
-    cursor: hand;
-  }
-}
-
 
 
 #students-list{
