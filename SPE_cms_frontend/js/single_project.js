@@ -5,7 +5,9 @@ const single_project = {
       project: {
         tags: ""
       },
+      priority: 1,
       tagColors: [],
+      buttonText: "Select Project",
       loading: true
     }
   },
@@ -28,7 +30,25 @@ const single_project = {
         console.log(error);
       }
     });
-
+    $.ajax({
+      url: 'http://localhost:8080/selections_id',
+      method: 'POST',
+      data: {
+        id: "test_student",
+        login_token: "whvwbvwxghqw!whvwbvwxghqw"
+      },
+      success: function (dataSelections) {
+        self.priority = dataSelections.length +1;
+        dataSelections.map(obj => {
+          if(obj.projectId === self.id-1){
+            self.buttonText = "Forget Selection";
+          }
+        });
+      },
+      error: function (error) {
+        console.log(error);
+      }
+    });
   },
 mounted: function(){
     let self = this;
@@ -37,6 +57,58 @@ mounted: function(){
       self.loading = false;
     },600);
 
+  },
+  methods: {
+    incrementPriority: function(){
+      this.priority += 1;
+    },
+    decrementPriority: function(){
+      this.priority -= 1;
+    },
+    clickBTN: function(){
+      let self = this;
+      if(this.buttonText === "Select Project"){
+        $.ajax({
+          url: 'http://localhost:8080/selection_save',
+          method: 'POST',
+          data: {
+            studentId: "test_student",
+            // -1 accounts for difference in zero-indexing on backend and one-indexing on frontend
+            projectId: self.id-1,
+            priority: self.priority,
+            login_token: "whvwbvwxghqw!whvwbvwxghqw"
+          },
+          success: function (data) {
+            self.incrementPriority();
+            self.buttonText = "Forget Selection";
+            console.log(data);
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        });
+      }
+      else{
+        $.ajax({
+          url: 'http://localhost:8080/selection_delete',
+          method: 'POST',
+          data: {
+            studentId: "test_student",
+            // -1 accounts for difference in zero-indexing on backend and one-indexing on frontend
+            projectId: self.id-1,
+            login_token: "whvwbvwxghqw!whvwbvwxghqw"
+          },
+          success: function (data) {
+            self.decrementPriority();
+            self.buttonText = "Select Project";
+            console.log(data);
+          },
+          error: function (error) {
+            console.log(error);
+          }
+        });
+      }
+    }
   },
   template: `
   <transition name = "fade" mode = "out-in">
@@ -62,9 +134,10 @@ mounted: function(){
         </div>
         <div class = "single-project-CTA">
           <h1>Looking for more?</h1>
+          <button class = "CTA-btn" v-on:click="clickBTN()">{{buttonText}}</button>
           <router-link to="/projects">
           <div class = "CTA-btn">All Projects</div>
-        </router-link>
+         </router-link>
       </div>
     </div>
   </div>
