@@ -13,7 +13,7 @@ const single_project = {
     let self = this;
     console.log(self.project.tags);
     $.ajax({
-      url: 'http://localhost:8080/project',
+      url: 'http://localhost:8080/project_id',
       method: 'POST',
       data: {
         id: self.id,
@@ -61,9 +61,9 @@ mounted: function(){
           <div v-for="line in project.lines">{{line}}<br /></div>
         </div>
         <div class = "single-project-CTA">
-          <h1>Like this project?<br /> Choose it!</h1>
-          <router-link to="/dashboard">
-          <div class = "CTA-btn">Go to dashboard</div>
+          <h1>Looking for more?</h1>
+          <router-link to="/selections">
+          <div class = "CTA-btn">All Projects</div>
         </router-link>
       </div>
     </div>
