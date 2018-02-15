@@ -5,9 +5,10 @@ const single_project = {
       project: {
         tags: ""
       },
+      priority: 1,
       tagColors: [],
+      buttonText: "Select Project",
       loading: true
-      buttonText: "Select Project"
     }
   },
   created: function(){
@@ -37,8 +38,9 @@ const single_project = {
         login_token: "whvwbvwxghqw!whvwbvwxghqw"
       },
       success: function (dataSelections) {
+        self.priority = dataSelections.length +1;
         dataSelections.map(obj => {
-          if(obj.projectId === self.projects.id-1){
+          if(obj.projectId === self.id-1){
             self.buttonText = "Forget Selection";
           }
         });
@@ -57,6 +59,12 @@ mounted: function(){
 
   },
   methods: {
+    incrementPriority: function(){
+      this.priority += 1;
+    },
+    decrementPriority: function(){
+      this.priority -= 1;
+    },
     clickBTN: function(){
       let self = this;
       if(this.buttonText === "Select Project"){
@@ -71,6 +79,7 @@ mounted: function(){
             login_token: "whvwbvwxghqw!whvwbvwxghqw"
           },
           success: function (data) {
+            self.incrementPriority();
             self.buttonText = "Forget Selection";
             console.log(data);
           },
@@ -90,6 +99,7 @@ mounted: function(){
             login_token: "whvwbvwxghqw!whvwbvwxghqw"
           },
           success: function (data) {
+            self.decrementPriority();
             self.buttonText = "Select Project";
             console.log(data);
           },
@@ -99,7 +109,7 @@ mounted: function(){
         });
       }
     }
-  }
+  },
   template: `
   <transition name = "fade" mode = "out-in">
     <div v-if = "loading" class = "loader" key="loading">
@@ -125,7 +135,7 @@ mounted: function(){
         <div class = "single-project-CTA">
           <h1>Looking for more?</h1>
           <div class = "CTA-btn">
-           <button v-on:click="clickBTN(projects.id)">{{buttonText}}</button>
+           <button v-on:click="clickBTN()">{{buttonText}}</button>
           </div>
           <router-link to="/selections">
           <div class = "CTA-btn">All Projects</div>
