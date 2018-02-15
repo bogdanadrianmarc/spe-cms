@@ -2,6 +2,37 @@
 @import "_colors.scss";
 @import "_fonts.scss";
 
-.hero{
-  background-image: url("../img/hero.jpg");
+.hero
+{
+    height: 40em;
+    background: url("../img/hero.jpg") no-repeat center;
+    background-size: cover;
+    position: relative;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: center top;
+}
+.tint
+{
+    content: '';
+    position: absolute;
+    left: 0; top: 0; right: 0; bottom: 0;
+    background: rgba(55, 5, 5, 0.8);
+}
+.text
+{
+  width: 55%;
+  color:#fefefe;
+  position: relative;
+  h1{
+    font-size: 3em;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: 5px;
+  }
+  p{
+    font-size: 1.2em;
+  }
 }
