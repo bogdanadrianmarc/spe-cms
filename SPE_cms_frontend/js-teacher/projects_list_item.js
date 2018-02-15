@@ -23,9 +23,10 @@ Vue.component('projects_list_item', {
     });
   },
   methods: {
-    clickBTN: function(index, id){
+    clickBTN: function(project, index){
       let self = this;
-      this.$delete(this.list, index-1); //-1 because projects start at 0.
+      var id = this.list.indexOf(project);
+      this.$delete(this.list, id); //-1 because projects start at 0.
       $.ajax({
         url: 'http://localhost:8080/project_delete',
         method: 'POST',
@@ -37,7 +38,6 @@ Vue.component('projects_list_item', {
           console.log(error);
         }
       });
-      console.log(index);
     },
     isUndefined: function(item){
       return typeof item === "undefined";
@@ -67,7 +67,7 @@ Vue.component('projects_list_item', {
     </div>
 
     <div class = "select-project-btn">
-    <button v-on:click="clickBTN(projects.id)">Remove project</button>
+    <button v-on:click="clickBTN(projects, projects.id)">Remove project</button>
     </div>
 
     <router-link v-bind:to="projects.projectUrl">
