@@ -135,7 +135,7 @@ mounted: function(){
         <div class = "single-project-CTA">
           <h1>Looking for more?</h1>
           <button class = "CTA-btn" v-on:click="clickBTN()">{{buttonText}}</button>
-          <router-link to="/selections">
+          <router-link to="/projects">
           <div class = "CTA-btn">All Projects</div>
          </router-link>
       </div>

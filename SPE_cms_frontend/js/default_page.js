@@ -19,13 +19,13 @@ const default_page = {
   },
   template: `
   <div class = "default-page">
-    <div class = "hero">
-      <h2>Dear Student,</h2>
-      <h1>Welcome to SPE 2018</h1>
-      <p> This is the place where you can browse and select projects posted by clients,<br>
-      sort your choices in order of preference and submit your decision,</br>
-      message your clients as well as your group partners, <br>
-      and get feedback from lecturers.</p>
+    <div class="hero">
+      <div class="tint"></div>
+        <div class="text">
+        <h1>Software Product Engineering</h1>
+        <p>Lorem ipsum dolor sit amet conesectetur ceva cuvinte sa fac dracu haidi waaaaai si eu odata doua randuri de text.</p>
+        <button>Left</button><button>Right</button>
+        </div>
     </div>
        <div class = "browse-students">
          <h2>Browse projects and start deciding.</h2>

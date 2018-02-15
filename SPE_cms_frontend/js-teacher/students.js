@@ -1,30 +1,35 @@
 const students = {
   data: function () {
     return {
-      selections: []
+      studentList: [],
+      studentListCopy: [],
+      login_token: "",
+      sortOrder: 1,
+      currPriority: 1
     }
   },
   created: function(){
     let self = this;
     $.ajax({
-      url: 'http://localhost:8080/selections_id',
+      url: 'http://localhost:8080/login',
       method: 'POST',
       data: {
-        id: 0,
-        user: "test_student",
-        password: "test_student"
+        type: "teacher",
+        username: "test_teacher",
+        password: "test_teacher"
       },
-      success: function (dataSelections) {
+      success: function (data) {
+        self.login_token = data;
         $.ajax({
-          url: 'http://localhost:8080/projects',
+          url: 'http://localhost:8080/students',
           method: 'POST',
           data: {
-            user: "test_student",
-            password: "test_student"
+            login_token: data
           },
-          success: function (dataProjects) {
-            self.selections = dataSelections.map(select => dataProjects[select.projectId].title);
-            console.log(JSON.stringify(self.selections));
+          success: function (dataStudents) {
+            self.studentList = dataStudents;
+            self.studentListCopy = dataStudents;
+            console.log(dataStudents);
           },
           error: function (error) {
             console.log(error);
@@ -36,8 +41,40 @@ const students = {
       }
     });
   },
+  methods: {
+    sortStudents: function() {
+      if(this.sortOrder === 1)
+      this.projectList.sort(this.studentsAscending);
+      else
+      this.projectList.sort(this.studentsDescending);
+      this.sortOrder = this.sortOrder * (-1);
+    },
+    studentsAscending(a, b){
+      return a.studentsNr > b.studentsNr ? 1 : -1;
+    },
+    studentsDescending(a, b){
+      return a.studentsNr < b.studentsNr ? 1 : -1;
+    },
+    sortTitle: function(){
+      const field = document.querySelector("input[name=title-input]").value.replace(/ /g,'').toLowerCase();
+      this.studentList = this.studentListCopy.filter(function(student){
+        if(field === "")
+        return student;
+        let title = student.title.replace(/ /g,'');
+        title = title.toLowerCase();
+        if(title.startsWith(field))
+        return project;
+      });
+    },
+    incrementPriority: function(){
+      this.currPriority += 1;
+    },
+    decreasePriority: function(){
+      this.currPriority -= 1;
+    },
+  },
   beforeRouteLeave (to, from, next) {
-    console.log(this.selections);
+    console.log(this.studentList);
     next();
   },
   template: `
@@ -48,28 +85,11 @@ const students = {
         <loader_spinner></loader_spinner>
       </div>
       <div v-else key="loaded">
-        <div id = "students-filter-bar">
-        <h1>Student Usernames</h1>
-        <span v-if = "this.$parent.sortOrder === -1" class = "wrapperUp"  v-on:click = "this.$parent.sortStudents">
-          <button>
-            Alphabetic
-          </button>
-        </span>
-        <span v-else class = "wrapperDown"  v-on:click = "this.$parent.sortStudents">
-          <button>
-            Alphabetic
-          </button>
-        </span>
-        <span class = "wrapperSearch">
-          <input name = "title-input" v-on:input = "this.$parent.sortTitle" type = "text" placeholder = "Student Username"></input>
-        </span>
-      </div>
-
+      <students_list_filters></students_list_filters>
       <div id = "students-list">
       <ol id = "usernames">
         <li><router-link to ="/selections"><span>sc16913</span></router-link></li>
-        <li><router-link to ="/selections"><span>ri16721</span></router-link></li>
-        <li><router-link to ="/selections"><span>bv16812</span></router-link></li>
+        <li><router-link to ="/selections"><span>Other students...</span></router-link></li>
       </ol>
       </div>
     </div>

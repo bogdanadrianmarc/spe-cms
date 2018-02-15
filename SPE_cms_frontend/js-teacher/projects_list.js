@@ -16,9 +16,9 @@ const projects_list = {
      url: 'http://localhost:8080/login',
      method: 'POST',
      data: {
-       type: "student",
-       username: "test_student",
-       password: "test_student"
+       type: "teacher",
+       username: "test_teacher",
+       password: "test_teacher"
      },
      success: function (data) {
        self.login_token = data;

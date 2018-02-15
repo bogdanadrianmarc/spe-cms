@@ -1,0 +1,265 @@
+@import "_colors";
+@import "_fonts";
+
+// FILTER BAR ABOVE THE LIST
+#filter-bar{
+  margin: 0.5em 50px 2.5em;
+
+  // ANY H1
+  h1{
+    font-family: $font-primary;
+    color: $sky-white;
+    font-size: 1.25em !important;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.5em 0;
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+
+  // BUTTONS
+  button{
+    background: none;
+    padding: 0.5em 2.5em 0.5em 1em;
+    border: 2px solid $sky-white;
+    color: $sky-white;
+    font-family: $font-primary;
+    font-weight: 300;
+    border-radius: 0px 0px 0px 0px;
+    transition-duration: 0.25s !important;
+    &:hover{
+
+    }
+    &:focus{
+      outline: 0;
+      border: 2px solid $bristol-red;
+    }
+    span{
+      transition: 0s !important;
+      transition: color 0.25s ease !important;
+    }
+  }
+  .wrapperSearch:after{
+    font-family: 'FontAwesome';
+    position: relative;
+    left: -25px;
+    content: "\f002";
+    font-size: 0.9em;
+    color: $sky-white;
+  }
+  .wrapperFilter:after{
+    font-family: 'FontAwesome';
+    position: relative;
+    left: -25px;
+    content: "\f0b0";
+    font-size: 0.9em;
+    color: $sky-white;
+  }
+  .wrapperDown:hover{
+    cursor: pointer;
+    cursor: hand;
+    color: $bristol-red;
+    button{
+      cursor: pointer;
+      cursor: hand;
+      color: $bristol-red;
+      border: 2px solid $bristol-red;
+    }
+  }
+  .wrapperDown:after{
+    font-family: 'FontAwesome';
+    position: relative;
+    left: -25px;
+    content: "\f063";
+    font-size: 0.9em;
+  }
+  .wrapperUp:hover{
+    cursor: pointer;
+    cursor: hand;
+    color: $bristol-red;
+    button{
+      cursor: pointer;
+      cursor: hand;
+      color: $bristol-red;
+      border: 2px solid $bristol-red;
+    }
+  }
+  .wrapperUp:after{
+    font-family: 'FontAwesome';
+    position: relative;
+    left: -25px;
+    content: "\f062";
+    font-size: 0.9em;
+  }
+  .wrapperUp, .wrapperDown, .wrapperSearch, .wrapperFilter{
+    display: inline-block;
+    font-size: 0.9em;
+  }
+  .wrapperFilter{
+    input{
+      width: 12.5em;
+      font-family: $font-secondary;
+    }
+  }
+  .wrapperSearch{
+    input{
+      width: 5.5em;
+      font-family: $font-secondary;
+    }
+  }
+  .wrapperUp, .wrapperDown{
+    button{
+      width: 8.25em;
+      font-family: $font-secondary;
+    }
+  }
+
+  // ANY INPUT FIELD
+  input{
+    margin-left: -0.5em;
+    background: none;
+    padding: 0.5em 2em 0.5em 1em;
+    border: 2px solid $sky-white;
+    color: $sky-white;
+    font-family: 'FontAwesome',$font-primary;
+    text-transform: uppercase;
+    font-weight: 300;
+    transition-duration: 0.25s !important;
+
+    &:hover{
+      cursor: pointer;
+      cursor: hand;
+      color: $bristol-red;
+      border: 2px solid $bristol-red;
+    }
+    &:focus{
+      outline: 0;
+      border: 2px solid $bristol-red;
+    }
+    &::placeholder{
+      color: $light-grey;
+      text-transform: none;
+    }
+  }
+}
+
+// EACH PROJECT FROM THE LIST
+.project-list-item{
+  background-color: $sky-white;
+  overflow:auto;
+  margin: 0 50px 2em;
+
+  // IMAGE PART
+  .project-list-item-image{
+    float: left;
+    display: inline-block;
+    width: 350px;
+    height: 375px;
+  }
+
+  // CONTENT PART
+  .project-list-item-content{
+    display: inline-block;
+    float: right;
+    width: calc(100% - 450px);
+    height: 100%;
+    padding: 35px 50px 35px 50px;
+
+    h1{
+      font-family: $font-primary;
+      font-size: 1.75em;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: $dark-black;
+      margin-bottom: 0.5em;
+    }
+    p{
+      font-family: $font-secondary;
+      font-size: 0.75em;
+      line-height: 1.5em;
+      color: $light-grey;
+      margin-bottom: 1.5em;
+    }
+    hr{
+      margin-top: 1.5em;
+    }
+
+    .project-list-item-id {
+      line-height: 1em;
+      float: right;
+      display: block;
+      font-family: $font-primary;
+      font-size: 1.75em;
+      color: $dark-black;
+    }
+    .project-list-item-license{
+      display: inline-block;
+      float: left;
+      p{
+        display: inline-block;
+        margin-top: 1.3em;
+        font-family: $font-primary;
+        color: $light-grey;
+        font-weight: 300;
+        font-size: 0.9em;
+        padding-bottom: 0.5em;
+        margin-left: 1em;
+      }
+      img{
+        vertical-align: middle;
+        height: 20px;
+        display: inline-block;
+      }
+    }
+    .learn-more-btn{
+      display: inline-block;
+      float: right;
+      border: 2px solid $bristol-red;
+      border-radius: 5px;
+      color: $dark-black;
+      padding: 0.75em 1.75em;
+      letter-spacing: 1px;
+      font-family: $font-primary;
+      font-size: 0.8em;
+      margin-top: 1em;
+      margin-right: 0.5em;
+      transition-duration: 0.25s !important;
+      &:hover{
+        background-color: $bristol-red;
+        color: $sky-white;
+        cursor: pointer;
+        cursor: hand;
+      }
+    }
+  }
+}
+
+// ADD TO SELECTIONS BUTTON
+.select-project-btn{
+  button{
+    background-color: $sky-white;
+    display: inline-block;
+    float: right;
+    border: 2px solid $bristol-red;
+    border-radius: 5px;
+    background-color: $bristol-red;
+
+    color: $sky-white;
+    padding: 0.75em 1.75em;
+    letter-spacing: 1px;
+    font-family: $font-primary;
+    font-size: 0.8em;
+    margin-top: 1em;
+    transition: all 0.3s ease-in-out !important;
+    i {
+      color: $dark-black;
+    }
+    &:hover{
+      background-color: $bristol-red;
+      color: $sky-white;
+      cursor: pointer;
+      cursor: hand;
+    }
+  }
+}
