@@ -21,24 +21,18 @@ const default_page = {
   <div class = "default-page">
     <div class="hero">
       <div class="tint"></div>
-        <div class="text">
+      <div class="text">
         <h1>Software Product Engineering</h1>
-        <p>Lorem ipsum dolor sit amet conesectetur ceva cuvinte sa fac dracu haidi waaaaai si eu odata doua randuri de text.</p>
-        <button>Left</button><button>Right</button>
-        </div>
-    </div>
-       <div class = "browse-students">
-         <h2>Browse projects and start deciding.</h2>
-         <router-link to = "/projects">
-           <div class = "browse-btn">Projects</div>
-         </router-link>
-       </div>
-       <div class = "browse-projects">
-         <h2>Manage your preferences.</h2>
-         <router-link to = "/selections">
-           <div class = "browse-projects-btn">Selections</div>
-         </router-link>
-       </div>
+        <p>Nostrud
+        coniunctione est proident, laborum fore incurreret sed aute fabulas a quem
+        noster, admodum elit singulis. Cernantur labore quid ut legam.</p>
+        <router-link to="selections">
+          <button>Selections</button>
+        </router-link>
+        <router-link to="projects">
+          <button class = "right">Projects</button>
+        </router-link>
+      </div>
     </div>
   </div>`
 };

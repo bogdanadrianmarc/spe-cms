@@ -4,7 +4,8 @@
 
 .hero
 {
-    height: 40em;
+    height: calc(100vh - 100px);
+    width: 100vw;
     background: url("../img/hero.jpg") no-repeat center;
     background-size: cover;
     position: relative;
@@ -13,26 +14,69 @@
     align-items: center;
     justify-content: center;
     background-position: center top;
+    button{
+      background: none;
+      padding: 1em 2em;
+      border: 1px solid $sky-white;
+      color: $sky-white;
+      font-family: $font-primary;
+      font-weight: 500;
+      letter-spacing: 2px;
+      border-radius: 0px 0px 0px 0px;
+      transition-duration: 0.25s !important;
+      text-transform: uppercase;
+      &:hover{
+        cursor: pointer;
+        cursor: hand;
+        background-color: $bristol-red;
+        border-color: $bristol-red;
+      }
+      &:focus{
+        outline: 0;
+        border: 1px solid $bristol-red;
+      }
+      span{
+        transition: 0s !important;
+        transition: color 0.25s ease !important;
+      }
+    }
+    .right{
+      margin-left: 1em;
+      background-color: $bristol-red;
+      border-color: $bristol-red;
+      &:hover{
+        border-color: $sky-white;
+      }
+    }
 }
 .tint
 {
     content: '';
     position: absolute;
     left: 0; top: 0; right: 0; bottom: 0;
-    background: rgba(55, 5, 5, 0.8);
+    background: rgba(55, 11, 11, 0.75);
 }
 .text
 {
-  width: 55%;
+  width: 48%;
   color:#fefefe;
   position: relative;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.20);
   h1{
-    font-size: 3em;
+    font-size: 2.5em;
     text-transform: uppercase;
     font-weight: 300;
     letter-spacing: 5px;
+    padding: 0;
+    margin: 0;
   }
   p{
     font-size: 1.2em;
+    line-height: 1.5;
+    font-family: $font-secondary;
+    font-weight: 300;
+    padding: 0 5em;
+    margin: 1em 0 1.5em;
+    color: hsl(0,17%,99%);
   }
 }

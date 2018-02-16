@@ -29,7 +29,8 @@
     border-radius: 0px 0px 0px 0px;
     transition-duration: 0.25s !important;
     &:hover{
-
+      cursor: pointer;
+      cursor: hand;
     }
     &:focus{
       outline: 0;
