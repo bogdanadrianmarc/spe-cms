@@ -15,4 +15,4 @@ $ cd SPE_cms
 $ mvn spring-boot:run
 ```
 
-After executing, open up SPE_cms_frontend/index.html for the demo.
+After executing, open up the HTML files in `/SPE_cms_frontend` for the demo.
