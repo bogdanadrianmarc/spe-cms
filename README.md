@@ -5,14 +5,12 @@ Main repository for SPE CMS Project.
 
 # Installing
 ```shell
-$ cd SPE_cms_frontend 
-$ npm install
+$ cd SPE_cms_frontend && npm install
 ```
 
 # Running locally
 ```shell
-$ cd SPE_cms
-$ mvn spring-boot:run
+$ cd SPE_cms && mvn spring-boot:run
 ```
 
 After executing, open up the HTML files in `/SPE_cms_frontend` for the demo.
