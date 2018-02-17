@@ -1,9 +1,10 @@
+// main: styles.scss
 @import "_colors";
 @import "_fonts";
 
 // SELECTIONS PAGE
 #selections-page{
-  width: 65vw;
+  width: 85vw;
   margin: 1.25em auto 3em;
   h1{
     font-family: $font-primary;
@@ -43,6 +44,12 @@
       text-align: center;
       width:10em;
       margin-right: 1em;
+    }
+
+    .no-hover{
+      &:hover{
+        cursor:default !important;
+      }
     }
     li{
       font-size: 1.25em;

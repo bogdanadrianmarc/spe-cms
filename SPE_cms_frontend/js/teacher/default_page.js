@@ -19,25 +19,20 @@ const default_page = {
   },
   template: `
   <div class = "default-page">
-    <div class = "welcome-image">
-      <h2>Dear Lecturer,</h2>
-      <h1>Welcome to SPE 2018</h1>
-      <p> This is the place where you can view and approve projects posted by clients,<br>
-      look at students' choices and get help for allocating them into groups,
-      </br> view messages between clients and students in order to help when assessing, <br>
-       and give feedback to students.</p>
-       <div class = "browse-students">
-         <h2>Browse students and their choices.</h2>
-         <router-link to = "/students">
-           <div class = "browse-btn">Students</div>
-         </router-link>
-       </div>
-       <div class = "browse-projects">
-         <h2>Browse and delete projects.</h2>
-         <router-link to = "/projects">
-           <div class = "browse-projects-btn">Projects</div>
-         </router-link>
-       </div>
+    <div class="hero">
+      <div class="tint"></div>
+      <div class="text">
+        <h1>Software Product Engineering</h1>
+        <p>Nostrud
+        coniunctione est proident, laborum fore incurreret sed aute fabulas a quem
+        noster, admodum elit singulis.</p>
+        <router-link to="students">
+          <button>Students</button>
+        </router-link>
+        <router-link to="projects">
+          <button class = "right">Projects</button>
+        </router-link>
+      </div>
     </div>
   </div>`
 };

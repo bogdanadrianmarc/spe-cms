@@ -96,7 +96,6 @@ const students = {
           :priority = "currPriority">
           <ol id = "usernames">
             <router-link to ="/selections"><li><span>{{student.id}}</span></li></router-link>
-            <li><span>Other students...</span></li>
           </ol>
         </div>
      </transition-group>
