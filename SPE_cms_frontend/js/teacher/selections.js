@@ -9,7 +9,6 @@ const selections = {
   <ol id="items">
   <li v-for = "selection in selections" v-bind:key = "selection.priority">
   {{ selection.title }}
-  <button  v-on:click = "removeSelection(selection.id)"><i class="fa fa-times" aria-hidden="true"></i></button>
   </li>
   </ol>
   <router-link to = "/projects">

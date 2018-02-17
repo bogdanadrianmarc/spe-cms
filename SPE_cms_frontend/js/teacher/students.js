@@ -95,7 +95,7 @@ const students = {
           v-bind:key = "student.id"
           :priority = "currPriority">
           <ol id = "usernames">
-            <li><router-link to ="/selections"><span>{{student.id}}</span></router-link></li>
+            <router-link to ="/selections"><li><span>{{student.id}}</span></li></router-link>
             <li><span>Other students...</span></li>
           </ol>
         </div>
