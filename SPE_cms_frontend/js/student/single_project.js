@@ -124,7 +124,10 @@ mounted: function(){
               <div class = "tag" v-bind:class="tagColors[index]"> {{tag}} </div>
             </span>
           </div>
-          <h1>Project #{{project.id}} : {{project.title}}</h1>
+          <div class = "line">
+            <button class = "CTA-btn" style = "float: right" v-on:click="clickBTN()">{{buttonText}}</button>
+            <h1>Project #{{project.id}} : {{project.title}}</h1>
+          </div>
           <div class = "project-list-item-applicants">
             No. of applicants <span class = "applicants"> {{ project.applicantsNr }}</span>
           </div>
@@ -134,9 +137,8 @@ mounted: function(){
         </div>
         <div class = "single-project-CTA">
           <h1>Looking for more?</h1>
-          <button class = "CTA-btn" v-on:click="clickBTN()">{{buttonText}}</button>
           <router-link to="/projects">
-          <div class = "CTA-btn">All Projects</div>
+          <div class = "CTA-btn red">All Projects</div>
          </router-link>
       </div>
     </div>

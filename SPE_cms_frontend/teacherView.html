@@ -5,18 +5,20 @@
   <script src="https://unpkg.com/vue"></script>
   <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
   <link rel="stylesheet" href="css/font-awesome.min.css">
-  <link rel = "stylesheet" type = "text/css" href = "css/styles.min.css" />
+    <link rel = "stylesheet" type = "text/css" href = "css/styles.min.css" />
   <link rel = "stylesheet" type = "text/css" href = "css/normalize.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
+</html>
+
 <body>
   <div id = "app">
     <!-- This needs to be a big component with a lot of v-ifs for permissions -->
     <div id = "navigation-bar">
-      <router-link to = "/"><img alt = "University of Bristol logo" src = "img/logo-white.png" /></router-link>
+      <router-link to = "/default_page"><img alt = "University of Bristol logo" src = "img/logo-white.png" /></router-link>
       <div class = "navigation-items">
         <router-link to = "/default_page"><span>Home</span></router-link>
-        <router-link to = "/selections"><span>My Selections</span></router-link>
+        <router-link to = "/students"><span>Students</span></router-link>
         <router-link to = "/projects"><span class = "navigation-items-selected">Projects</span></router-link>
       </div>
     </div>
@@ -27,14 +29,16 @@
 
 
 <script src="js/loader_spinner.js"></script>
-<script src="js/default_page.js"></script>
-<script src="js/projects_list.js"></script>
-<script src="js/projects_list_filters.js"></script>
-<script src="js/projects_list_item.js"></script>
-<script src="js/single_project.js"></script>
+<script src="js/teacher/default_page.js"></script>
+<script src="js/teacher/projects_list.js"></script>
+<script src="js/teacher/projects_list_filters.js"></script>
+<script src="js/teacher/students_list_filters.js"></script>
+<script src="js/teacher/projects_list_item.js"></script>
+<script src="js/teacher/single_project.js"></script>
 <script src="http://rubaxa.github.io/Sortable/Sortable.js"></script>
-<script src="js/selections.js"></script>
-<script src="js/view_student_before.js"></script>
+<script src="js/teacher/selections.js"></script>
+<script src="js/teacher/students.js"></script>
+<script src="js/teacher/projects.js"></script>
+
 
 </body>
-</html>

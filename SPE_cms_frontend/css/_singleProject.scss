@@ -47,35 +47,41 @@
     background-color: $bristol-red;
     padding: 2em 4em 0px 4em;
     text-align: center;
-
-    .CTA-btn{
-      display: inline-block;
-      border: 3px solid $sky-white;
-      border-radius: 18px;
-      color: $sky-white;
-      background-color: $bristol-red;
-      padding: 0.75em 1.75em;
-      letter-spacing: 1px;
-      font-family: $font-primary;
-      text-transform: uppercase;
-      margin-top: 0px;
-      margin-bottom: 47px;
-      font-size: 0.8em;
-      transition-duration: 0.25s !important;
-      &:hover{
-        background-color: $sky-white;
-        color: $bristol-red;
-        cursor: pointer;
-        cursor: hand;
-      }
-      .button{
-        background-color: $bristol-red;
-      }
-    }
     h1{
       font-weight: 300;
       color: $sky-white;
       margin-bottom: 10px;
     }
   }
+}
+.CTA-btn{
+  display: inline-block;
+  border: 1px solid $sky-white;
+  background-color: $dark-black;
+  border-radius: 5px;
+  color: $sky-white;
+  padding: 0.75em 1.75em;
+  letter-spacing: 1px;
+  font-family: $font-primary;
+  text-transform: uppercase;
+  margin-top: 0px;
+  margin-bottom: 47px;
+  font-size: 0.8em;
+  transition-duration: 0.25s !important;
+  &:hover{
+    background-color: $sky-white;
+    color: $bristol-red;
+    cursor: pointer;
+    cursor: hand;
+  }
+  .button{
+    background-color: $bristol-red;
+  }
+}
+.red{
+  background-color: $bristol-red;
+}
+.line{
+  width: 100%;
+  display: block;
 }
