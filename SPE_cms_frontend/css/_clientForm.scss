@@ -9,15 +9,15 @@
 	position: relative;
 }
 #msform fieldset {
-	background: white;
+	background: $sky-white;
 	border: 0 none;
-	border-radius: 3px;
+	border-radius: 6px;
 	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
-	padding: 20px 30px;
+	padding: 2em 3em;
 	box-sizing: border-box;
 	width: 80%;
 	margin: 0 10%;
-
+	text-align: left;
 	/*stacking fieldsets above each other*/
 	position: relative;
 }
@@ -25,6 +25,7 @@
 #msform fieldset:not(:first-of-type) {
 	display: none;
 }
+
 /*inputs*/
 #msform input, #msform textarea {
 	padding: 15px;
@@ -34,42 +35,84 @@
 	width: 100%;
 	box-sizing: border-box;
 	font-family: montserrat;
-	color: #2C3E50;
+	color: $light-black;
 	font-size: 13px;
+	background-color: #EEE;
+}
+#msform .half{
+	width: 49.5%;
+	margin-left: 0px;
+	margin-right: 0px;
+	float: left;
+}
+#msform .half:nth-child(2n+1){
+	margin-right: 1%;
+}
+#msform .third{
+	width: 32.5%;
+	margin-left: 0px;
+	margin-right: 0px;
+	float: left;
+}
+#msform .third:nth-child(3n){
+	margin-right: 1.25%;
+	margin-left: 1.25%;
+}
+#msform .big{
+	height: 40vh;
+}
+#msform textarea{
+	resize: none;
+}
+.line{
+	width: 100%;
+	text-align: center;
 }
 /*buttons*/
 #msform .action-button {
-	width: 100px;
+	width: 10em;
 	background: $bristol-red;
-	font-weight: bold;
-	color: white;
-	border: 0 none;
-	border-radius: 1px;
+	font-weight: 600;
+	letter-spacing: 2px;
+	color: $sky-white;
+	border: none;
+	text-transform: uppercase;
 	cursor: pointer;
-	padding: 10px 5px;
-	margin: 10px 5px;
+	margin: 10px 0px;
+	border-radius: 5px;
+	font-size: 0.8em;
 }
 #msform .action-button:hover, #msform .action-button:focus {
-	box-shadow: 0 0 0 2px white, 0 0 0 3px $bristol-red;
+	background-color: $light-black;
+}
+#msform .previous{
+	background-color: $light-grey;
 }
 /*headings*/
 .fs-title {
-	font-size: 15px;
+	font-size: 1.1em;
+	letter-spacing: 2px;
 	text-transform: uppercase;
-	color: #2C3E50;
-	margin-bottom: 10px;
+	color: $dark-grey;
+	margin-bottom: 0em;
+	padding-bottom: 0em;
+	display: block;
 }
 .fs-subtitle {
 	font-weight: normal;
-	font-size: 13px;
+	font-size: 1em;
+	font-family: $font-secondary;
 	color: #666;
-	margin-bottom: 20px;
+	margin-top: 0.5em;
+	margin-bottom: 1em;
+	display: block;
 }
 /*progressbar*/
 #progressbar {
 	margin-bottom: 30px;
 	overflow: hidden;
 	counter-reset: step;
+	padding-left: 0;
 }
 #progressbar li {
 	list-style-type: none;
@@ -121,4 +164,7 @@
 	font-family: FontAwesome;
 	font-weight: 400;
 	content: '\f00c';
+}
+#progressbar li.visited, #progressbar li.active{
+	color: $bristol-red;
 }
