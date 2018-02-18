@@ -19,7 +19,7 @@ const form_project = {
 
       //activate next step on progressbar using the index of next_fs
       $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-
+      $("#progressbar li").eq($("fieldset").index(current_fs)).addClass("visited");
       //show the next fieldset
       next_fs.show();
       //hide the current fieldset with style
@@ -57,7 +57,7 @@ const form_project = {
 
       //de-activate current step on progressbar
       $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-
+      $("#progressbar li").eq($("fieldset").index(previous_fs)).removeClass("visited");
       //show the previous fieldset
       previous_fs.show();
       //hide the current fieldset with style
