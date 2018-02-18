@@ -6,16 +6,10 @@ const default_page = {
     }
   },
   created: function(){
-    let self = this;
+
   },
   methods: {
-    clickBTN: function(username, password){
-      let self = this;
-      console.log(username, password)
-    },
-    isUndefined: function(item){
-      return typeof item === "undefined";
-    }
+
   },
   template: `
   <div class = "default-page">

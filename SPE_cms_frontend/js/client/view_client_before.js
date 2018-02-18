@@ -4,7 +4,7 @@ const routes = [
   { path: '/',            component: default_page},
   { path: '/home',component: default_page},
   { path: '/project/:id', component: single_project, props: true},
-  { path: '/selections',  component: selections},
+  { path: '/newProject',  component: form_project},
 ];
 
 const router = new VueRouter({
