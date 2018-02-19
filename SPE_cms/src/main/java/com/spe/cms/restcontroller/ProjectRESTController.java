@@ -50,6 +50,20 @@ public class ProjectRESTController {
             return new ArrayList<>();
     }
 
+//   ### CLIENT'S PROJECTS ###
+    @CrossOrigin
+    @RequestMapping(value = "/projects_by_client", method = POST)
+    public List<Project> projects_by_client(@RequestParam(value = "client_id") String client_id, @RequestParam(value = "login_token") String login_token) {
+        String user = Cryption.decrypt(login_token.split("!")[0]);
+        String password = Cryption.decrypt(login_token.split("!")[1]);
+        if (clientController.isUserAndPassCorrect(user,password) == 0)
+            return projectController.getAllByClientId(client_id);
+        else
+        if (teacherController.isUserAndPassCorrect(user,password) == 0)
+            return projectController.getAllByClientId(client_id);
+        else
+            return new ArrayList<>();
+    }
 
 //   ### PROJECT BY ID ###
     @CrossOrigin
