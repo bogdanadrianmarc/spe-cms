@@ -83,6 +83,22 @@ public class ProjectRESTController {
             return new Project(-1,"","","",-1,"","","","");
     }
 
+//   ### SAVE PROJECT ###
+    @CrossOrigin
+    @RequestMapping(value = "/project_save", method = POST)
+    public String project_save(@RequestParam(value = "tags") String tags,@RequestParam(value = "title") String title,@RequestParam(value = "content") String content,@RequestParam(value = "imgUrl") String imgUrl,@RequestParam(value = "projectUrl") String projectUrl,@RequestParam(value = "clientId") String clientId,@RequestParam(value = "license") String license, @RequestParam(value = "login_token") String login_token) {
+        String user = Cryption.decrypt(login_token.split("!")[0]);
+        String password = Cryption.decrypt(login_token.split("!")[1]);
+        if (clientController.isUserAndPassCorrect(user,password) == 0){
+            Integer maxId = projectController.getSize();
+            Project p = new Project(maxId+1,tags,title,content,0,imgUrl,projectUrl,clientId,license);
+            projectController.setProject(p);
+            return "OK";
+        }
+        else
+            return "NOT LOGGED IN";
+    }
+
 //   ### DELETE PROJECT BY ID ###
     @CrossOrigin
     @RequestMapping(value = "/project_delete", method = POST)
