@@ -90,7 +90,7 @@ public class ProjectRESTController {
         String user = Cryption.decrypt(login_token.split("!")[0]);
         String password = Cryption.decrypt(login_token.split("!")[1]);
         if (clientController.isUserAndPassCorrect(user,password) == 0){
-            Integer maxId = projectController.getSize();
+            Integer maxId = projectController.getLastProject().getId();
             Project p = new Project(maxId+1,tags,title,content,0,imgUrl,projectUrl,clientId,license);
             projectController.setProject(p);
             return "OK";

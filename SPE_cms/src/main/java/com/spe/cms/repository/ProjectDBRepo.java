@@ -111,6 +111,32 @@ public class ProjectDBRepo implements IDBRepo<Integer, Project> {
         return null;
     }
 
+    public Project findLastOne(){
+        Connection con = dbUtils.getConnection();
+
+        try (PreparedStatement preStmt = con.prepareStatement("SELECT * FROM Projects ORDER BY id DESC LIMIT 1;")) {
+            try (ResultSet result = preStmt.executeQuery()) {
+                if (result.next()) {
+                    int id = result.getInt("id");
+                    String tags = result.getString("tags");
+                    String title = result.getString("title");
+                    String content = result.getString("content");
+                    int applicantsNr = result.getInt("applicantsNr");
+                    String imgUrl = result.getString("imgUrl");
+                    String projectUrl = result.getString("projectUrl");
+                    String clientId = result.getString("clientId");
+                    String license = result.getString("license");
+                    Project p = new Project(id, tags, title, content, applicantsNr, imgUrl, projectUrl, clientId, license);
+                    return p;
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error DB " + ex);
+        }
+        return null;
+
+    }
+
     @Override
     public Iterable<Project> findAll() {
         Connection con = dbUtils.getConnection();

@@ -25,12 +25,12 @@ public class ProjectController {
         return projectDBRepo.findOne(id);
     }
 
+    public Project getLastProject(){return projectDBRepo.findLastOne();}
+
     public List<Project> getAllByClientId(String id)
     {
         return (List<Project>) projectDBRepo.findAllByClientId(id);
     }
-
-    public Integer getSize(){return projectDBRepo.size();}
 
     public void setProject(Project p){
         projectDBRepo.save(p);
