@@ -34,6 +34,7 @@ public class PreferenceController {
         preferenceDBRepo.save(p);
     }
 
+//    ### + REPRIORITIZING ###
     public void deletePreferenceByStudentAndProjectId(String studentId, Integer projectId)
     {
         Preference x = getPreferenceByStudentAndProjectId(studentId, projectId);
@@ -48,6 +49,7 @@ public class PreferenceController {
         }
     }
 
+//    ### + REPRIORITIZING ###
     public void updatePreferenceByStudentAndProjectId(String studentId, Integer projectId, Integer oldPriority, Integer newPriority)
     {
         List<Preference> preferences = getPreferencesByStudentId(studentId);
