@@ -11,8 +11,7 @@ public class PreferenceController {
     private PreferenceDBRepo preferenceDBRepo;
 
     public PreferenceController() {
-        DBInit dbInit = new DBInit();
-        preferenceDBRepo = new PreferenceDBRepo(dbInit.getProps());
+        preferenceDBRepo = new PreferenceDBRepo(DBInit.getProps());
     }
 
     public List<Preference> getAllPreferences()

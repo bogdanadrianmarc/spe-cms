@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public class DBInit {
 
-    public Properties getProps()
+    public static Properties getProps()
     {
         //repo
         Properties serverProps = new Properties();

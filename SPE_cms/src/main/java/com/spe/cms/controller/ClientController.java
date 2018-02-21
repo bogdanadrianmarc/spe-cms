@@ -11,8 +11,7 @@ public class ClientController {
     private ClientDBRepo clientDBRepo;
 
     public ClientController() {
-        DBInit dbInit = new DBInit();
-        clientDBRepo = new ClientDBRepo(dbInit.getProps());
+        clientDBRepo = new ClientDBRepo(DBInit.getProps());
     }
 
     public List<Client> getAllClients()

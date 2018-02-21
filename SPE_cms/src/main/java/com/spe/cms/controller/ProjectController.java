@@ -11,8 +11,7 @@ public class ProjectController {
     private ProjectDBRepo projectDBRepo;
 
     public ProjectController() {
-        DBInit dbInit = new DBInit();
-        projectDBRepo = new ProjectDBRepo(dbInit.getProps());
+        projectDBRepo = new ProjectDBRepo(DBInit.getProps());
     }
 
     public List<Project> getAllProjects()

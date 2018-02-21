@@ -11,8 +11,7 @@ public class TeacherController {
     private TeacherDBRepo teacherDBRepo;
 
     public TeacherController() {
-        DBInit dbInit = new DBInit();
-        teacherDBRepo = new TeacherDBRepo(dbInit.getProps());
+        teacherDBRepo = new TeacherDBRepo(DBInit.getProps());
     }
 
     public List<Teacher> getAllTeachers()

@@ -11,8 +11,7 @@ public class StudentController {
     private StudentDBRepo studentDBRepo;
 
     public StudentController() {
-        DBInit dbInit = new DBInit();
-        studentDBRepo = new StudentDBRepo(dbInit.getProps());
+        studentDBRepo = new StudentDBRepo(DBInit.getProps());
     }
 
     public List<Student> getAllStudents()
