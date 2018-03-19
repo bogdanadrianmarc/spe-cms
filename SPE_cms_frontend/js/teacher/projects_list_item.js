@@ -26,22 +26,64 @@ Vue.component('projects_list_item', {
     clickBTN: function(project, index){
       let self = this;
       var id = this.list.indexOf(project);
-      this.onConfirm();
-      this.$delete(this.list, id); //-1 because projects start at 0.
-      $.ajax({
-        url: 'http://localhost:8080/project_delete',
-        method: 'POST',
-        data: {
-          projectId: index,
-          login_token: "whvwbwhdfkhu!whvwbwhdfkhu"
-        },
-        error: function (error) {
-          console.log(error);
+      swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be recover this project!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal("This projects has been unpublished!", {
+            icon: "success",
+          });
+          this.$delete(this.list, id); //-1 because projects start at 0.
+          $.ajax({
+            url: 'http://localhost:8080/project_delete',
+            method: 'POST',
+            data: {
+              projectId: index,
+              login_token: "whvwbwhdfkhu!whvwbwhdfkhu"
+            },
+            error: function (error) {
+              console.log(error);
+            }
+          });
+        } else {
+          swal("The project is still in the game!");
         }
       });
     },
     isUndefined: function(item){
       return typeof item === "undefined";
+    },
+    confirm: function(){
+      $.notify.addStyle('foo', {
+        html:
+          "<div>" +
+            "<div class='clearfix'>" +
+              "<div class='title' data-notify-html='title'/>" +
+              "<div class='buttons'>" +
+                "<button class='no'>Cancel</button>" +
+                "<button class='yes' data-notify-text='button'></button>" +
+              "</div>" +
+            "</div>" +
+          "</div>"
+      });
+    },
+    listenForClick: function(){
+      //listen for click events from this style
+      $(document).on('click', '.notifyjs-foo-base .no', function() {
+        //programmatically trigger propogating hide event
+        $(this).trigger('notify-hide');
+      });
+      $(document).on('click', '.notifyjs-foo-base .yes', function() {
+        //show button text
+        alert($(this).text() + " clicked!");
+        //hide notification
+        $(this).trigger('notify-hide');
+      });
     }
   },
   template: `<div class = "project-list-item">

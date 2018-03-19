@@ -76,6 +76,10 @@ const selections = {
       animation: 0,
       sort: true,
       onEnd: function (evt) {
+        $.notify("Selection saved!", {
+          className: "success",
+          autoHideDelay: 2000
+        })
         console.log("ProjectID:" + (evt.item.attributes.id.value - 1) + " Old:" + evt.oldIndex + " New:" + evt.newIndex);
         $.ajax({
           url: 'http://localhost:8080/selection_update',
@@ -174,6 +178,9 @@ const selections = {
   },
   methods: {
     removeSelection: function(id){
+      $.notify("Selection deleted.", {
+        autoHideDelay: 2000
+      });
       this.selections = this.selections.filter(function(project){
         if(project.id !== id){
           return project;
