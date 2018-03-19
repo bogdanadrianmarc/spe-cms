@@ -6,7 +6,7 @@ const default_page = {
     }
   },
   created: function(){
-
+    
   },
   methods: {
 

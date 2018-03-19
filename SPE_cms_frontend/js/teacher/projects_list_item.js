@@ -28,14 +28,14 @@ Vue.component('projects_list_item', {
       var id = this.list.indexOf(project);
       swal({
         title: "Are you sure?",
-        text: "Once deleted, you will not be recover this project!",
+        text: "Once deleted, you will not be able to recover this project!",
         icon: "warning",
         buttons: true,
         dangerMode: true,
       })
       .then((willDelete) => {
         if (willDelete) {
-          swal("This projects has been unpublished!", {
+          swal("This project has been unpublished!", {
             icon: "success",
           });
           this.$delete(this.list, id); //-1 because projects start at 0.
