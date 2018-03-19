@@ -32,6 +32,10 @@ Vue.component('projects_list_item', {
     clickBTN: function(index){
       let self = this;
       if(this.buttonText === "Select Project"){
+        $.notify("Project selected!", {
+          className: "success",
+          autoHideDelay: 2000
+        });
         $.ajax({
           url: 'http://localhost:8080/selection_save',
           method: 'POST',
@@ -53,6 +57,9 @@ Vue.component('projects_list_item', {
         });
       }
       else{
+        $.notify("Selection removed.", {
+          autoHideDelay: 2000
+        });
         $.ajax({
           url: 'http://localhost:8080/selection_delete',
           method: 'POST',
@@ -102,7 +109,7 @@ Vue.component('projects_list_item', {
   </div>
 
   <div class = "select-project-btn">
-  <button v-on:click="clickBTN(projects.id)">{{buttonText}}</button>
+    <button v-on:click="clickBTN(projects.id)">{{buttonText}}</button>
   </div>
 
   <router-link v-bind:to="projects.projectUrl">

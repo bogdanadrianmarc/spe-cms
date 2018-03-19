@@ -26,6 +26,7 @@ Vue.component('projects_list_item', {
     clickBTN: function(project, index){
       let self = this;
       var id = this.list.indexOf(project);
+      this.onConfirm();
       this.$delete(this.list, id); //-1 because projects start at 0.
       $.ajax({
         url: 'http://localhost:8080/project_delete',
@@ -67,7 +68,7 @@ Vue.component('projects_list_item', {
     </div>
 
     <div class = "select-project-btn">
-    <button v-on:click="clickBTN(projects, projects.id)">Remove project</button>
+    <button v-on:click="clickBTN(projects, projects.id)">Unpublish project</button>
     </div>
 
     <router-link v-bind:to="projects.projectUrl">

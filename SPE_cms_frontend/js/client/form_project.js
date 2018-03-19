@@ -107,7 +107,7 @@ const form_project = {
         <input type="text" class = "half" name="industry" placeholder="Industry" />
         <input type="text" class = "third" name="country" placeholder="Country" />
         <input type="text" class = "third" name="city" placeholder="City" />
-        <input type="text" class = "third" name="zipcode" placeholder="Zip Code" />
+        <input type="text" class = "third" name="zipcode" placeholder="Postcode" />
         <textarea name="address" placeholder="Address"></textarea>
         <div class = "line">
           <input type="button" class = "half" name="previous" class="previous action-button" value="Previous" />

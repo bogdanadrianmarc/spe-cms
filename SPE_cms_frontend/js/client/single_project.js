@@ -125,7 +125,7 @@ mounted: function(){
             </span>
           </div>
           <div class = "line">
-            <button class = "CTA-btn" style = "float: right" v-on:click="clickBTN()">{{buttonText}}</button>
+            <button class = "CTA-btn" style = "float: right"">Edit Project</button>
             <h1>Project #{{project.id}} : {{project.title}}</h1>
           </div>
           <div class = "project-list-item-applicants">
@@ -136,9 +136,9 @@ mounted: function(){
           <div v-for="line in project.lines">{{line}}<br /></div>
         </div>
         <div class = "single-project-CTA">
-          <h1>Looking for more?</h1>
+          <h1>This one looks alright?</h1>
           <router-link to="/projects">
-          <div class = "CTA-btn red">All Projects</div>
+          <div class = "CTA-btn red">My Projects</div>
          </router-link>
       </div>
     </div>

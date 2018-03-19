@@ -118,7 +118,7 @@ const projects_list = {
         if(!notFound)
         return project;
       });
-    }
+    },
   },
   template: `
   <div id = "projects-list">

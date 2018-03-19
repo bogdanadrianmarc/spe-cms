@@ -263,5 +263,8 @@
       cursor: pointer;
       cursor: hand;
     }
+    &:active{
+      background-color: $sky-white;
+    }
   }
 }

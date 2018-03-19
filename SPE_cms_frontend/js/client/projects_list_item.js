@@ -101,12 +101,9 @@ Vue.component('projects_list_item', {
   <p>MIT License</p>
   </div>
 
-  <div class = "select-project-btn">
-  <button v-on:click="clickBTN(projects.id)">{{buttonText}}</button>
-  </div>
 
   <router-link v-bind:to="projects.projectUrl">
-  </i><div class = "learn-more-btn">Details</div>
+  </i><div class = "learn-more-btn">Change Project</div>
   </router-link>
   </div>
   </div>`
