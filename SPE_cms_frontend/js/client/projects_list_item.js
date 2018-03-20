@@ -87,9 +87,6 @@ Vue.component('projects_list_item', {
   <h1>  {{ projects.title }}  </h1>
   <!-- truncate string -->
   <p> {{ projects.content.substring(0,500) + "..." }} </p>
-  <div class = "project-list-item-applicants">
-  No. of applicants <span class = "applicants"> {{ projects.applicantsNr }}</span>
-  </div>
   <div class = "project-list-item-id">
   Project #{{ projects.id }}
   </div>

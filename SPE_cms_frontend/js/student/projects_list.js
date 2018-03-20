@@ -78,7 +78,7 @@ const projects_list = {
         return project;
         let title = project.title.replace(/ /g,'');
         title = title.toUpperCase();
-        if(title.startsWith(field))
+        if(title.indexOf(field) != -1)
         return project;
       });
     },
