@@ -24,7 +24,7 @@ const default_page = {
         <input type="text" id="firstname" placeholder="Username" />
         <input type="password" id="password" placeholder="Password" />
         </form>
-        <button v-on:click="getLoginDetails()">Log in</button>
+        <button class="start" v-on:click="getLoginDetails()">Log in</button>
       </div>
     </div>
   </div>`
