@@ -91,7 +91,7 @@ Vue.component('projects_list_item', {
   <div class = "tag-container" v-for = "(tag, index) in projects.tags.split(',')">
   <div class = "tag" v-bind:class="tagColors[index]"> {{tag}} </div>
   </div>
-  <h1>  {{ projects.title }}  </h1>
+  <router-link v-bind:to="projects.projectUrl"><h1>  {{ projects.title }}  </h1></router-link>
   <!-- truncate string -->
   <p> {{ projects.content.substring(0,500) + "..." }} </p>
   <div class = "project-list-item-applicants">
