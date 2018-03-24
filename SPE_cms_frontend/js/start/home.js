@@ -42,10 +42,24 @@ const default_page = {
       <div class="text">
         <h1>Software Product Engineering</h1>
         <form id="login" onsubmit="return false;">
-        <input type="text" id="username" placeholder="Username" />
-        <input type="password" id="password" placeholder="Password" />
+          <input type="text" id="username" placeholder="Username" />
+          <input type="password" id="password" placeholder="Password" />
         </form>
         <button class = "start" v-on:click = "check()">Log in</button>
+      </div>
+      <div class = "registration">
+        <h2>Not registered yet?</h2>
+        <form id="register" onsubmit="return false;">
+          <h3>Enter a username*</h3>
+          <input type="text" id="username" placeholder="Username" />
+          <h3>Enter a password*</h3>
+          <input type="password" id="password" placeholder="Password" />
+          <input type="password" id="password" placeholder="Confirm Password" />
+          <h3>Enter your email*</h3>
+          <input type="email" id="password" placeholder="Email" />
+          <h4>* Field is required.</h4>
+          <button v-on:click = "check()">Register</button>
+        </form>
       </div>
     </div>
   </div>`
