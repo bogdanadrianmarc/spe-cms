@@ -35,27 +35,18 @@ public class AuthenticationRESTController {
 //   ### LOGIN ###
     @CrossOrigin
     @RequestMapping(value = "/login", method = POST)
-    public String login(@RequestParam(value = "type") String type, @RequestParam(value = "username") String username, @RequestParam(value = "password") String password)
+    public String login(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password)
     {
-        if (type.equals("student"))
-            if (studentController.isUserAndPassCorrect(username,password) == 0)
-                return Cryption.encrypt(username)+"!"+Cryption.encrypt(password);
-            else
-                return "INCORRECT DETAILS";
+        if (studentController.isUserAndPassCorrect(username,password) == 0)
+            return Cryption.encrypt(username)+"!"+Cryption.encrypt(password)+";"+"student";
         else
-        if (type.equals("teacher"))
-            if (teacherController.isUserAndPassCorrect(username,password) == 0)
-                return Cryption.encrypt(username)+"!"+Cryption.encrypt(password);
-            else
-                return "INCORRECT DETAILS";
+        if (teacherController.isUserAndPassCorrect(username,password) == 0)
+            return Cryption.encrypt(username)+"!"+Cryption.encrypt(password)+";"+"teacher";
         else
-        if (type.equals("client"))
-            if (clientController.isUserAndPassCorrect(username,password) == 0)
-                return Cryption.encrypt(username)+"!"+Cryption.encrypt(password);
-            else
-                return "INCORRECT DETAILS";
+        if (clientController.isUserAndPassCorrect(username,password) == 0)
+            return Cryption.encrypt(username)+"!"+Cryption.encrypt(password)+";"+"client";
         else
-            return "INCORRECT TYPE";
+            return "INCORRECT DETAILS";
     }
 
 
