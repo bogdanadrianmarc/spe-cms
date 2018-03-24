@@ -1,38 +1,48 @@
 const default_page = {
   data: function () {
     return {
+      username: "",
+      password: "",
       type: ""
     }
   },
   created: function(){
-
   },
   methods: {
     check: function() {
-      var username = document.getElementById('username').value;
-      var password = document.getElementById('password').value;
-      if (username == "sc" && password == "hey"){
-        type = "student";
-      }
-      if (username == "ab" && password == "hey"){
-        type = "teacher";
-      }
-      if (username == "cd" && password == "hey"){
-        type = "client";
-      }
-
-      if (type == "student"){
-        window.open("studentView.html", "_self");
-      }
-      else if (type == "teacher"){
-        window.open("teacherView.html", "_self");
-      }
-      else if (type == "client"){
-        window.open("clientView.html", "_self");
-      }
-      else{
-        swal({text:"Incorrect details", dangerMode: true});
-      }
+      let self = this;
+      self.username = document.getElementById('username').value;
+      self.password = document.getElementById('password').value;
+      console.log(self.username, self.password);
+      $.ajax({
+       url: 'http://localhost:8080/login',
+       method: 'POST',
+       data: {
+         username: self.username,
+         password: self.password
+       },
+       success: function(data){
+         $.ajax({
+          url: 'http://localhost:8080/login',
+          method: 'POST',
+          data: {
+            type: data
+          },
+          success: function(data){
+            self.type = data;
+            if (self.type == "student"){
+              window.open("studentView.html", "_self");
+            }
+          },
+          error: function(data){
+            swal({text:"Incorrect details", dangerMode: true});
+          }
+        });
+       },
+       error: function(error){
+         console.log(error);
+       }
+     });
     }
   },
   template: `
@@ -50,14 +60,14 @@ const default_page = {
       <div class = "registration">
         <h2>Not registered yet?</h2>
         <form id="register" onsubmit="return false;">
-          <h3>Enter a username*</h3>
+          <h3>Pick a fancy username*</h3>
           <input type="text" id="username" placeholder="Username" />
-          <h3>Enter a password*</h3>
+          <h3>Come up with a strong password*</h3>
           <input type="password" id="password" placeholder="Password" />
           <input type="password" id="password" placeholder="Confirm Password" />
-          <h3>Enter your email*</h3>
+          <h3>Enter your email address*</h3>
           <input type="email" id="password" placeholder="Email" />
-          <h4>* Field is required.</h4>
+          <h4>* All fields marked with this symbol are required.</h4>
           <button v-on:click = "check()">Register</button>
         </form>
       </div>
