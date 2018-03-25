@@ -3,6 +3,7 @@ const default_page = {
     return {
       username: "",
       password: "",
+      login_token: "",
       type: ""
     }
   },
@@ -13,7 +14,6 @@ const default_page = {
       let self = this;
       self.username = document.getElementById('username').value;
       self.password = document.getElementById('password').value;
-      console.log(self.username, self.password);
       $.ajax({
        url: 'http://localhost:8080/login',
        method: 'POST',
@@ -22,28 +22,35 @@ const default_page = {
          password: self.password
        },
        success: function(data){
-         $.ajax({
-          url: 'http://localhost:8080/login',
-          method: 'POST',
-          data: {
-            type: data
-          },
-          success: function(data){
-            self.type = data;
-            if (self.type == "student"){
-              window.open("studentView.html", "_self");
+            var token_and_type = data.split(";");
+            self.login_token = token_and_type[0];
+            self.type = token_and_type[1];
+            console.log(self.login_token);
+            switch (self.type) {
+              case "student":
+                window.open("studentView.html", "_self");
+                break;
+              case "teacher":
+                window.open("teacherView.html", "_self");
+                break;
+              case "client":
+                window.open("clientView.html", "_self");
+                break;
+              default:
+                swal({text:"Incorrect details", dangerMode: true});
+                break;
             }
-          },
-          error: function(data){
-            swal({text:"Incorrect details", dangerMode: true});
-          }
-        });
-       },
-       error: function(error){
-         console.log(error);
-       }
-     });
-    }
+      },
+      error: function(data){
+        swal({text:"Incorrect details", dangerMode: true});
+      }
+      });
+   },
+   decryptToken: function(token){
+     token_and_type = token.split(";");
+     self.login_token = token_and_type[0];
+     self.type = token_and_type[1];
+   }
   },
   template: `
   <div class = "default-page">

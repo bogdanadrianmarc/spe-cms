@@ -16,18 +16,18 @@ const projects_list = {
      url: 'http://localhost:8080/login',
      method: 'POST',
      data: {
-       type: "teacher",
        username: "test_teacher",
        password: "test_teacher"
      },
      success: function (data) {
-       self.login_token = data;
+       var token_and_type = data.split(";");
+       self.login_token = token_and_type[0];
        // console.log(data);
        $.ajax({
          url: 'http://localhost:8080/projects',
          method: 'POST',
          data: {
-           login_token: data
+           login_token: token_and_type[0]
          },
          success: function (data) {
            self.projectList = data;
