@@ -4,13 +4,16 @@ const default_page = {
       username: "",
       password: "",
       login_token: "",
-      type: ""
+      type: "",
+      attributes: [],
+      types: ["student", "teacher", "client"],
+      showDropDown: false
     }
   },
   created: function(){
   },
   methods: {
-    check: function() {
+    login: function() {
       let self = this;
       self.username = document.getElementById('username').value;
       self.password = document.getElementById('password').value;
@@ -46,10 +49,26 @@ const default_page = {
       }
       });
    },
-   decryptToken: function(token){
-     token_and_type = token.split(";");
-     self.login_token = token_and_type[0];
-     self.type = token_and_type[1];
+   register: function (){
+     let self = this;
+     this.attributes.push(document.getElementById('user').value,
+                    document.getElementById('pass').value,
+                    document.getElementById('email').value);
+    $.ajax({
+     url: 'http://localhost:8080/register',
+     method: 'POST',
+     data: {
+       type: "student",
+       attributes: self.attributes
+     },
+     success: function(){
+       swal({text:"You've registered successfully!"});
+     },
+     error: function(error){
+       console.log(this.attributes);
+       console.log(error);
+     }
+     });
    }
   },
   template: `
@@ -62,22 +81,37 @@ const default_page = {
           <input type="text" id="username" placeholder="Username" />
           <input type="password" id="password" placeholder="Password" />
         </form>
-        <button class = "start" v-on:click = "check()">Log in</button>
+        <button class = "start" v-on:click = "login()">Log in</button>
       </div>
       <div class = "registration">
-        <h2>Not registered yet?</h2>
+        <h2>Just getting started? Register here.</h2>
         <form id="register" onsubmit="return false;">
           <h3>Pick a fancy username*</h3>
-          <input type="text" id="username" placeholder="Username" />
+            <input type="text" id="user" placeholder="Username" />
           <h3>Come up with a strong password*</h3>
-          <input type="password" id="password" placeholder="Password" />
-          <input type="password" id="password" placeholder="Confirm Password" />
+            <input type="password" id="pass" placeholder="Password" />
+            <input type="password" id="pass" placeholder="Confirm Password" />
           <h3>Enter your email address*</h3>
-          <input type="email" id="password" placeholder="Email" />
+            <input type="email" id="email" placeholder="Email" />
+
+          <div class = "menu">
+            <a href="#" v-on:click.prevent="showDropDown=!showDropDown">
+            <h3>I'm a:*</h3>
+            <i :class="{ 'fa-caret-up': showDropDown, 'fa-caret-down': !showDropDown }" class="fa" aria-hidden="true"></i>
+            </a>
+            <div v-if="showDropDown">
+              <ul class="menu list pl0 pa0 ma0">
+                <li v-for="type in types" class="list">
+                <a href="#" class="dd-type pointer hover-bg-moon-gray">{{type}}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
           <h4>* All fields marked with this symbol are required.</h4>
-          <button v-on:click = "check()">Register</button>
+          <button v-on:click = "register()">Register</button>
         </form>
+        </div>
       </div>
-    </div>
   </div>`
 };
