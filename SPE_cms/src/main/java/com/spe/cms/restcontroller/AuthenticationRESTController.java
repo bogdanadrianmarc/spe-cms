@@ -7,10 +7,7 @@ import com.spe.cms.domain.Client;
 import com.spe.cms.domain.Student;
 import com.spe.cms.domain.Teacher;
 import com.spe.cms.restcontroller.utils.Cryption;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
@@ -53,25 +50,28 @@ public class AuthenticationRESTController {
 //   ### REGISTER ###
     @CrossOrigin
     @RequestMapping(value = "/register", method = POST)
-    public String register(@RequestParam(value = "type") String type, @RequestParam(value = "attributes") List<String> attributes)
+    public String register(@RequestParam(value = "type") String type, @RequestParam(value= "attributes") String attributes)
     {
+        String studentId = Cryption.decrypt(attributes.split(";")[0]);
+        String password = Cryption.decrypt(attributes.split(";")[1]);
+        String fullName = Cryption.decrypt(attributes.split(";")[2]);
         if (type.equals("student"))
         {
-            Student s = new Student(attributes.get(0), attributes.get(1), attributes.get(2));
+            Student s = new Student(studentId, password, fullName);
             studentController.setStudent(s);
             return "OK";
         }
         else
         if (type.equals("teacher"))
         {
-            Teacher t = new Teacher(attributes.get(0), attributes.get(1), attributes.get(2), attributes.get(3));
+            Teacher t = new Teacher(studentId, password, fullName, studentId);
             teacherController.setTeacher(t);
             return "OK";
         }
         else
         if (type.equals("client"))
         {
-            Client c = new Client(attributes.get(0), attributes.get(1), attributes.get(2), attributes.get(3), attributes.get(4), attributes.get(5), attributes.get(6), attributes.get(7));
+            Client c = new Client(studentId, password, fullName, studentId, password, fullName, studentId, password);
             clientController.setClient(c);
             return "OK";
         }

@@ -51,9 +51,10 @@ const default_page = {
    },
    register: function (){
      let self = this;
-     this.attributes.push(document.getElementById('user').value,
-                    document.getElementById('pass').value,
-                    document.getElementById('email').value);
+     this.attributes = document.getElementById('user').value + ";"
+                     + document.getElementById('pass').value + ";"
+                     + document.getElementById('email').value;
+     console.log(this.attributes);
     $.ajax({
      url: 'http://localhost:8080/register',
      method: 'POST',
@@ -61,11 +62,11 @@ const default_page = {
        type: "student",
        attributes: self.attributes
      },
-     success: function(){
+     success: function(data){
+       console.log(data);
        swal({text:"You've registered successfully!"});
      },
      error: function(error){
-       console.log(this.attributes);
        console.log(error);
      }
      });
