@@ -57,7 +57,7 @@ const default_page = {
    },
    register: function (){
      let self = this;
-     this.type = document.getElementById('user-type').value;
+     this.type = document.getElementById('type').value;
      var user = document.getElementById('user').value;
      var pass = document.getElementById('pass').value;
      var confirm_pass = document.getElementById('pass-confirm').value;
@@ -117,12 +117,14 @@ const default_page = {
           <h3>*Enter your email address</h3>
             <input type="email" id="email" placeholder="Email" />
           <h3>*I'm a:</h3>
-            <input list="type" id="user-type" placeholder="Choose your type"/>
-            <datalist id="type">
-              <option value = "student"></option>
-              <option value = "teacher"></option>
-              <option value = "client"></option>
-            </datalist>
+            <div class = "dropdown">
+            <select id="type">
+              <option disable hidden value = "">Type of user</option>
+              <option value = "student">Student</option>
+              <option value = "teacher">Teacher</option>
+              <option value = "client">Client</option>
+            </select>
+            </div>
           <h4>* All fields marked with this symbol are required.</h4>
           <button v-on:click = "register()">Register</button>
         </form>

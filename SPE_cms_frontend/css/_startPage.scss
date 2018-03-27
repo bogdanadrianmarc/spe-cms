@@ -76,7 +76,7 @@
     background-color: rgba(51,51,51, 0.8);
   }
   h2{
-    margin: 2em;
+    margin: 1.5em;
     font-size: 20px;
     text-shadow: 0 1px 2px rgba(0,0,0,0.20);
   }
@@ -116,6 +116,50 @@
 	box-sizing: border-box;
 	font-family: montserrat;
 	color: $light-black;
-	font-size: 8px;
+	font-size: 10px;
 	background-color: #EEE;
+}
+
+#register select, #register option {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  display: block;
+  padding: 4px;
+  margin-left: 35px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-family: montserrat;
+  color: $light-black;
+  font-size: 10px;
+  background-color: #EEE;
+}
+
+#register select{
+  -webkit-appearance: none;
+  &:hover{
+    background-color: $bristol-red;
+    border-color: $bristol-red;
+  }
+}
+
+.dropdown::after{
+  content: "";
+  display: inline-block;
+  border: 5px solid $dark-black;
+  border-bottom: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  position: absolute;
+  top: 14.5em;
+  left: 8em;
+}
+
+#type option {
+  color: $sky-white;
+  background-color: $light-black;
+  font-family: montserrat !important;
 }
