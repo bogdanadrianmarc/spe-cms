@@ -49,27 +49,49 @@ const default_page = {
       }
       });
    },
+   checkEmpty(username, password, email){
+     return username == "" || password == "" || email == "";
+   },
+   isTypeCorrect: function(element){
+     return this.type === element;
+   },
    register: function (){
      let self = this;
-     this.attributes = document.getElementById('user').value + ";"
-                     + document.getElementById('pass').value + ";"
-                     + document.getElementById('email').value;
-     console.log(this.attributes);
-    $.ajax({
-     url: 'http://localhost:8080/register',
-     method: 'POST',
-     data: {
-       type: "student",
-       attributes: self.attributes
-     },
-     success: function(data){
-       console.log(data);
-       swal({text:"You've registered successfully!"});
-     },
-     error: function(error){
-       console.log(error);
+     this.type = document.getElementById('user-type').value;
+     var user = document.getElementById('user').value;
+     var pass = document.getElementById('pass').value;
+     var confirm_pass = document.getElementById('pass-confirm').value;
+     var email = document.getElementById('email').value;
+     if (this.checkEmpty(user, pass, email)){
+       swal("Please fill in all fields.", {dangerMode: true});
      }
-     });
+     else if (pass != confirm_pass ){
+       console.log(pass);
+       console.log(confirm_pass);
+       swal("Passwords don't match.", {dangerMode: true});
+     }
+     else if (!this.types.some(this.isTypeCorrect)){
+       swal("Choose an user from the dropdown menu.", {dangerMode: true});
+     }
+     else {
+       this.attributes = user + ";"
+                       + pass + ";"
+                       + email ;
+       $.ajax({
+         url: 'http://localhost:8080/register',
+         method: 'POST',
+         data: {
+           type: this.type,
+           attributes: this.attributes
+         },
+         success: function(data){
+           swal("You've registered successfully!", {icon: "success"});
+         },
+         error: function(error){
+           console.log(error);
+         }
+       });
+     }
    }
   },
   template: `
@@ -87,28 +109,20 @@ const default_page = {
       <div class = "registration">
         <h2>Just getting started? Register here.</h2>
         <form id="register" onsubmit="return false;">
-          <h3>Pick a fancy username*</h3>
+          <h3>*Pick a fancy username</h3>
             <input type="text" id="user" placeholder="Username" />
-          <h3>Come up with a strong password*</h3>
+          <h3>*Come up with a strong password</h3>
             <input type="password" id="pass" placeholder="Password" />
-            <input type="password" id="pass" placeholder="Confirm Password" />
-          <h3>Enter your email address*</h3>
+            <input type="password" id="pass-confirm" placeholder="Confirm Password" />
+          <h3>*Enter your email address</h3>
             <input type="email" id="email" placeholder="Email" />
-
-          <div class = "menu">
-            <a href="#" v-on:click.prevent="showDropDown=!showDropDown">
-            <h3>I'm a:*</h3>
-            <i :class="{ 'fa-caret-up': showDropDown, 'fa-caret-down': !showDropDown }" class="fa" aria-hidden="true"></i>
-            </a>
-            <div v-if="showDropDown">
-              <ul class="menu list pl0 pa0 ma0">
-                <li v-for="type in types" class="list">
-                <a href="#" class="dd-type pointer hover-bg-moon-gray">{{type}}</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
+          <h3>*I'm a:</h3>
+            <input list="type" id="user-type" placeholder="Choose your type"/>
+            <datalist id="type">
+              <option value = "student"></option>
+              <option value = "teacher"></option>
+              <option value = "client"></option>
+            </datalist>
           <h4>* All fields marked with this symbol are required.</h4>
           <button v-on:click = "register()">Register</button>
         </form>
