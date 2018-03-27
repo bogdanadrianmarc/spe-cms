@@ -52,26 +52,38 @@ public class AuthenticationRESTController {
     @RequestMapping(value = "/register", method = POST)
     public String register(@RequestParam(value = "type") String type, @RequestParam(value= "attributes") String attributes)
     {
-        String studentId = Cryption.decrypt(attributes.split(";")[0]);
-        String password = Cryption.decrypt(attributes.split(";")[1]);
-        String fullName = Cryption.decrypt(attributes.split(";")[2]);
         if (type.equals("student"))
         {
-            Student s = new Student(studentId, password, fullName);
+            String id = attributes.split(";")[0];
+            String password = attributes.split(";")[1];
+            String fullName = attributes.split(";")[2];
+            Student s = new Student(id, password, fullName);
             studentController.setStudent(s);
             return "OK";
         }
         else
         if (type.equals("teacher"))
         {
-            Teacher t = new Teacher(studentId, password, fullName, studentId);
+            String id = attributes.split(";")[0];
+            String password = attributes.split(";")[1];
+            String fullName = attributes.split(";")[2];
+            String email = attributes.split(";")[3];
+            Teacher t = new Teacher(id, password, fullName, email);
             teacherController.setTeacher(t);
             return "OK";
         }
         else
         if (type.equals("client"))
         {
-            Client c = new Client(studentId, password, fullName, studentId, password, fullName, studentId, password);
+            String id = attributes.split(";")[0];
+            String password = attributes.split(";")[1];
+            String orgName = attributes.split(";")[2];
+            String orgAddress = attributes.split(";")[3];
+            String orgPhone = attributes.split(";")[4];
+            String persName = attributes.split(";")[5];
+            String persPhone = attributes.split(";")[6];
+            String persEmail = attributes.split(";")[7];
+            Client c = new Client(id, password, orgName, orgAddress, orgPhone, persName, persPhone, persEmail);
             clientController.setClient(c);
             return "OK";
         }
