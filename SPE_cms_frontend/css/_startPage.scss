@@ -3,6 +3,8 @@
 @import "_fonts";
 
 .hero{
+  background-position: center;
+  height: 100%;
   h1{
     font-size: 60px;
   }
@@ -65,7 +67,8 @@
 
 .registration{
   float:right;
-  background-size: cover;
+  margin-top: 100px;
+  margin-bottom: 100px;
   border-radius: 5px;
   box-sizing:border-box;
   color:#fefefe;
@@ -109,6 +112,7 @@
 
 #register input, #register textarea {
 	padding: 10px;
+  max-width: 300px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
 	margin-bottom: 5px;
@@ -129,6 +133,7 @@
   display: block;
   padding: 4px;
   margin-left: 35px;
+  margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
   box-sizing: border-box;
@@ -146,20 +151,34 @@
   }
 }
 
-.dropdown::after{
-  content: "";
-  display: inline-block;
-  border: 5px solid $dark-black;
-  border-bottom: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
-  position: absolute;
-  top: 14.5em;
-  left: 8em;
-}
+// .dropdown::after{
+//   content: "";
+//   display: inline-block;
+//   border: 5px solid $dark-black;
+//   border-bottom: 4px solid transparent;
+//   border-right: 4px solid transparent;
+//   border-left: 4px solid transparent;
+//   position: absolute;
+//   top: 14.5em;
+//   left: 8em;
+// }
 
 #type option {
   color: $sky-white;
   background-color: $light-black;
   font-family: montserrat !important;
+}
+
+#clientFields {
+
+  margin: 0;
+}
+#clientFields input{
+  max-width: 200px;
+}
+
+.leftField{
+  float:left;
+  width: 50%;
+  text-align: center;
 }
