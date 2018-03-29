@@ -138,7 +138,7 @@ const default_page = {
   },
   template: `
   <div class = "default-page">
-    <div class="hero">
+    <div class="back">
       <div class="tint"></div>
       <div class="text">
         <h1>Software Product Engineering</h1>
