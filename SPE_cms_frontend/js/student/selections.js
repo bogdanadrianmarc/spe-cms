@@ -27,7 +27,7 @@ const selections = {
   ,
   data: function () {
     return {
-      selections: []
+      selections: [],
     }
   },
   created: function(){

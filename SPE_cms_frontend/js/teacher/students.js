@@ -87,19 +87,19 @@ const students = {
         <loader_spinner></loader_spinner>
       </div>
       <div v-else key="loaded">
-      <students_list_filters></students_list_filters>
-      <div id = "students-list">
-      <transition-group name="sort-list">
-        <div
-          v-for = "student in this.studentList"
-          v-bind:key = "student.id"
-          :priority = "currPriority">
-          <ol id = "usernames">
-            <router-link to ="/selections"><li><span>{{student.id}}</span></li></router-link>
-          </ol>
-        </div>
-     </transition-group>
-     </div>
+        <students_list_filters></students_list_filters>
+        <div id = "students-list">
+          <transition-group name="sort-list">
+            <div
+              v-for = "student in this.studentList"
+              v-bind:key = "student.id"
+              :priority = "currPriority">
+              <ol id = "usernames">
+                <router-link to ="/selections/student.id"><li><span>{{student.id}}</span></li></router-link>
+              </ol>
+            </div>
+         </transition-group>
+       </div>
      </div>
    </transition>
   </div>`

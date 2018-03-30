@@ -1,27 +1,12 @@
-const selections = {
-  template: `
-  <div id = "selections-page">
-  <h1>test_student's project selections</h1>
-  <p>
-  These are student test_student's project selections.<br />
-  The first three projects have the highest priority, but all other submitted choices could be taken into account as well.
-  </p>
-  <ol id="items">
-  <transition-group name="slide" id="items-transition">
-  <li v-for = "selection in selections" v-bind:key = "selection.priority" class = "no-hover">
-  {{ selection.title }}
-  </li>
-  </transition-group>
-  </ol>
-  <router-link to = "/projects">
-  </router-link>
-  </div>`,
+const single_selections = {
+  props: ['id'],
   data: function () {
     return {
-      selections: []
+      selections: [],
+      username: ""
     }
   },
-  created: function(){
+  mounted: function(){
     let self = this;
     $.ajax({
       url: 'http://localhost:8080/selections_id',
@@ -38,6 +23,8 @@ const selections = {
             login_token: "whvwbvwxghqw!whvwbvwxghqw"
           },
           success: function (dataProjects) {
+            var studentData = dataSelections[0];
+            this.username = studentData.studentId;
             // sort based on priority
             dataSelections = dataSelections.sort(function(a, b){
               return a.priority - b.priority;
@@ -58,9 +45,22 @@ const selections = {
         console.log(error);
       }
     });
-
   },
-  methods: {
-
-  }
+  template: `
+  <div id = "selections-page">
+  <h1>{{this.username}}'s selections</h1>
+  <p>
+  These are {{this.username}}'s project selections.<br />
+  The first three projects have the highest priority, but all other submitted choices could be taken into account as well.
+  </p>
+  <ol id="items">
+  <transition-group name="slide" id="items-transition">
+  <li v-for = "selection in selections" v-bind:key = "selection.priority" class = "no-hover">
+  {{ selection.title }}
+  </li>
+  </transition-group>
+  </ol>
+  <router-link to = "/projects">
+  </router-link>
+  </div>`
 };

@@ -3,7 +3,7 @@ const routes = [
   { path: '/',            component: default_page},
   { path: '/home',component: default_page},
   { path: '/project/:id', component: single_project, props: true},
-  { path: '/selections',  component: selections},
+  { path: '/selections/:id',  component: single_selections, props: true},
   { path: '/students',    component: students}
 ];
 
