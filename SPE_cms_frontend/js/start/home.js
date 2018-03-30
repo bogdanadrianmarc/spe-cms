@@ -8,9 +8,7 @@ const default_page = {
       attributes: [],
       types: ["student", "teacher", "client"],
       clientDetails: "",
-      teacherDetails: "",
       showFieldsClient: false,
-      showFieldTeacher: false
     }
   },
   methods: {
@@ -18,9 +16,6 @@ const default_page = {
         var selectedType = document.getElementById('type').value;
         if (selectedType == this.types[2]){
           this.showFieldsClient = true;
-        }
-        else if (selectedType == this.types[1]){
-          this.showFieldTeacher = true;
         }
         else {
           this.showFieldsClient = false;
@@ -65,21 +60,16 @@ const default_page = {
    },
    checkDetailsEmpty(array){
      for (var i=0; i<array.length; i++){
-       console.log(this.type);
        if (array[i] == "" && this.type == "client"){
-         console.log("here");
          return true;
        }
-     }
-     if (this.type == "teacher" && this.teacherDetails == ""){
-       return true;
-     }
-     else {
-       return false;
+       else {
+         return false;
+       }
      }
    },
-   checkEmpty(username, password, email, details){
-     return username == "" || password == "" || email == "";
+   checkEmpty(username, name, password){
+     return username == "" || name == "" || password == "";
    },
    isTypeCorrect: function(element){
      return this.type === element;
@@ -91,17 +81,15 @@ const default_page = {
        document.getElementById('orgAddress').value + ";" + document.getElementById('persName').value + ";" +
        document.getElementById('persEmail').value + ";" + document.getElementById('persPhone').value;
      }
-     else if (this.type == "teacher"){
-       this.teacherDetails = document.getElementById('email').value;
-     }
    },
    register: function (){
      let self = this;
      var user = document.getElementById('user').value;
+     var name = document.getElementById('fullname').value;
      var pass = document.getElementById('pass').value;
      var confirm_pass = document.getElementById('pass-confirm').value;
      this.getDetails();
-     if (this.checkEmpty(user, pass) || this.checkDetailsEmpty(this.clientDetails.split(";"))){
+     if (this.checkEmpty(user, fullname, pass) || this.checkDetailsEmpty(this.clientDetails.split(";"))){
        console.log("enter");
        swal("Please fill in all fields.", {dangerMode: true});
      }
@@ -115,7 +103,8 @@ const default_page = {
      }
      else {
 
-       this.attributes = "0;" + user + ";"
+       this.attributes = name + ";"
+                       + user + ";"
                        + pass + ";"
                        + this.clientDetails + ";"
                        + this.teacherDetails;
@@ -153,6 +142,8 @@ const default_page = {
         <form id="register" onsubmit="return false;">
           <h3>Pick a fancy username</h3>
             <input type="text" id="user" placeholder="Username" />
+          <h3>Enter your full name</h3>
+            <input type="text" id="fullname" placeholder="Full Name" />
           <h3>Come up with a strong password</h3>
             <input type="password" id="pass" placeholder="Password" />
             <input type="password" id="pass-confirm" placeholder="Confirm Password" />
@@ -164,7 +155,8 @@ const default_page = {
             <div class = "dropdown">
             <select id="type" @change="onChange(this)">
               <option disable hidden value = "">Type of user</option>
-              <option v-for="type in types"> {{ type }}</option>
+              <option value = "student">Student</option>
+              <option value = "client">Client</option>
             </select>
             </div>
             <div id = "clientFields" v-if="this.showFieldsClient">
