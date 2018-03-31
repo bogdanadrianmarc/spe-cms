@@ -45,7 +45,7 @@ const projects_list = {
          method: 'POST',
          data: {
            id: "test_student",
-           login_token: "whvwbvwxghqw!whvwbvwxghqw"
+           login_token: self.login_token
          },
          success: function (dataSelections) {
            self.currPriority = dataSelections.length +1;
