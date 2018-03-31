@@ -23,8 +23,7 @@ const single_selections = {
             login_token: "whvwbvwxghqw!whvwbvwxghqw"
           },
           success: function (dataProjects) {
-            var studentData = dataSelections[0];
-            this.username = studentData.studentId;
+            this.username = dataSelections.studentId;
             // sort based on priority
             dataSelections = dataSelections.sort(function(a, b){
               return a.priority - b.priority;
