@@ -16,18 +16,18 @@ const projects_list = {
      url: 'http://localhost:8080/login',
      method: 'POST',
      data: {
-       username: "test_client",
-       password: "test_client"
+       username: "test_student",
+       password: "test_student"
      },
      success: function (data) {
        var token_and_type = data.split(";");
        self.login_token = token_and_type[0];
-       // console.log(data);
+       //  console.log(self.login_token);
        $.ajax({
          url: 'http://localhost:8080/projects',
          method: 'POST',
          data: {
-           login_token: token_and_type[0]
+           login_token: self.login_token
          },
          success: function (data) {
            self.projectList = data;
@@ -54,7 +54,10 @@ const projects_list = {
            console.log(error);
          }
        });
- }
+     },
+     error: function(error){
+       console.log(error);
+     }
 });
   },
   methods: {
