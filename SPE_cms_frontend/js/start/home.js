@@ -5,21 +5,23 @@ const default_page = {
       password: "",
       login_token: "",
       type: "",
-      attributes: [],
+      attributes: "",
       types: ["student", "teacher", "client"],
       clientDetails: "",
       showFieldsClient: false,
+      showFieldStudent: true
     }
   },
   methods: {
     onChange : function(data){
         var selectedType = document.getElementById('type').value;
-        if (selectedType == this.types[2]){
+        if (selectedType === this.types[2]){
           this.showFieldsClient = true;
+          this.showFieldStudent = false;
         }
         else {
           this.showFieldsClient = false;
-          this.showFieldTeacher = false;
+          this.showFieldStudent = true;
         }
     },
     login: function() {
@@ -37,7 +39,7 @@ const default_page = {
             var token_and_type = data.split(";");
             self.login_token = token_and_type[0];
             self.type = token_and_type[1];
-            console.log(self.login_token);
+            console.log(data);
             switch (self.type) {
               case "student":
                 window.open("studentView.html", "_self");
@@ -53,61 +55,70 @@ const default_page = {
                 break;
             }
       },
-      error: function(data){
+      error: function(error){
         swal({text:"Incorrect details", dangerMode: true});
       }
       });
    },
    checkDetailsEmpty(array){
+     console.log(array.length);
      for (var i=0; i<array.length; i++){
-       if (array[i] == "" && this.type == "client"){
+       console.log(array[i]);
+       if (array[i] == ""){
          return true;
        }
-       else {
-         return false;
-       }
      }
-   },
-   checkEmpty(username, name, password){
-     return username == "" || name == "" || password == "";
+     return false;
    },
    isTypeCorrect: function(element){
      return this.type === element;
    },
-   getDetails: function() {
+   getDetails: function (){
      this.type = document.getElementById('type').value;
-     if (this.type == "client"){
-       this.clientDetails = document.getElementById('orgName').value + ";" + document.getElementById('orgPhone').value + ";" +
-       document.getElementById('orgAddress').value + ";" + document.getElementById('persName').value + ";" +
-       document.getElementById('persEmail').value + ";" + document.getElementById('persPhone').value;
+     if (this.type == "student"){
+       this.getStudentDetails();
+     }
+     else {
+       this.getClientDetails();
      }
    },
-   register: function (){
-     let self = this;
+   getClientDetails: function() {
      var user = document.getElementById('user').value;
-     var name = document.getElementById('fullname').value;
      var pass = document.getElementById('pass').value;
-     var confirm_pass = document.getElementById('pass-confirm').value;
+     this.clientDetails = document.getElementById('orgName').value + ";" + document.getElementById('orgPhone').value + ";" +
+     document.getElementById('orgAddress').value + ";" + document.getElementById('persName').value + ";" +
+     document.getElementById('persEmail').value + ";" + document.getElementById('persPhone').value;
+
+     this.attributes = user + ";"
+                     + pass + ";"
+                     + this.clientDetails;
+   },
+   getStudentDetails: function() {
+     var user = document.getElementById('user').value;
+     var pass = document.getElementById('pass').value;
+     var name = document.getElementById('fullname').value;
+
+     this.attributes = user + ";"
+                     + pass + ";"
+                     + name;
+   },
+   register: function (){
+      let self = this;
+      var pass = document.getElementById('pass').value;
+      var confirm_pass = document.getElementById('pass-confirm').value;
+
      this.getDetails();
-     if (this.checkEmpty(user, fullname, pass) || this.checkDetailsEmpty(this.clientDetails.split(";"))){
-       console.log("enter");
+
+     if (this.checkDetailsEmpty(this.attributes.split(";"))){
        swal("Please fill in all fields.", {dangerMode: true});
      }
-     else if (pass != confirm_pass ){
-       console.log(pass);
-       console.log(confirm_pass);
+     else if (pass != confirm_pass){
        swal("Passwords don't match.", {dangerMode: true});
      }
      else if (!this.types.some(this.isTypeCorrect)){
        swal("Choose an user from the dropdown menu.", {dangerMode: true});
      }
      else {
-
-       this.attributes = name + ";"
-                       + user + ";"
-                       + pass + ";"
-                       + this.clientDetails + ";"
-                       + this.teacherDetails;
        $.ajax({
          url: 'http://localhost:8080/register',
          method: 'POST',
@@ -142,15 +153,13 @@ const default_page = {
         <form id="register" onsubmit="return false;">
           <h3>Pick a fancy username</h3>
             <input type="text" id="user" placeholder="Username" />
-          <h3>Enter your full name</h3>
+          <div id = "nameField" v-if="this.showFieldStudent">
+            <h3>Enter your full name</h3>
             <input type="text" id="fullname" placeholder="Full Name" />
+          </div>
           <h3>Come up with a strong password</h3>
             <input type="password" id="pass" placeholder="Password" />
             <input type="password" id="pass-confirm" placeholder="Confirm Password" />
-          <div v-if="this.showFieldTeacher">
-          <h3>Enter your email address</h3>
-            <input type="email" id="email" placeholder="Email" />
-          </div>
           <h3>I'm a:</h3>
             <div class = "dropdown">
             <select id="type" @change="onChange(this)">

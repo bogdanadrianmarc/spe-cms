@@ -1,0 +1,117 @@
+// main: styles.scss
+@import "_colors";
+@import "_fonts";
+
+#allocate{
+  h1{
+    font-family: $font-primary;
+    color: $sky-white;
+    font-size: 1.5em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 1em 0 0 3em;
+    padding-bottom: 0.5em;
+  }
+  p{
+    font-family: $font-primary;
+    color: $light-grey;
+    margin: 0 0 0 3em;
+  }
+}
+
+.acc_list {
+  width: 80%;
+  margin: 2em;
+}
+.accordion {
+    background-color: $sky-white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: 1px solid;
+    text-align: left;
+    outline: none;
+    font-size: 20px;
+    transition: 0.4s;
+    span{
+      color: $light-black;
+    }
+}
+
+.active, .accordion:hover {
+    background-color: $bristol-red;
+}
+
+.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: $sky-white;
+    overflow: hidden;
+}
+
+#studentslist{
+  width: 100%;
+  margin: 1.25em auto 3em;
+  h1{
+    font-family: $font-primary;
+    color: $sky-white;
+    font-size: 1.25em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+    margin: 0 auto;
+    padding-bottom: 0.5em;
+  }
+  #usernames{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    border: 2px solid $dark-grey;
+    counter-reset: elementcounter;
+    padding-left: 0;
+    li{
+      text-align: center;
+      font-size: 1.25em;
+      margin: 0 auto;
+      border-bottom: 1.5px solid $dark-grey;
+      padding: 1em 2em 1em 0;
+      background-color: $sky-white;
+      color: $dark-grey;
+      &:nth-child(3){
+        border-bottom: 5px solid $bristol-red;
+      }
+      span{
+        color: $bristol-red;
+      }
+      &:hover{
+        cursor: pointer;
+        cursor: hand;
+      }
+    }
+  }
+}
+
+#drop-container{
+  width: 50%;
+  float: right;
+  h1{
+    margin: 0;
+    text-align: left;
+  }
+}
+
+#drop-box{
+  margin: 2em;
+  margin-left: 4em;
+  width: 350px;
+  height: 300px;
+  padding: 20px;
+  border: 2px solid $sky-white;
+  background-color: $bristol-red;
+}
+#students-container{
+  width: 50%;
+  float: left;
+}

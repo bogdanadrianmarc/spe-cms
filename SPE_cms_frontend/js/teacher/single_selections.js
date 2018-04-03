@@ -2,6 +2,9 @@ const single_selections = {
   props: ['id'],
   data: function () {
     return {
+      student: {
+        id: ""
+      },
       selections: [],
       username: ""
     }
@@ -12,7 +15,7 @@ const single_selections = {
       url: 'http://localhost:8080/selections_id',
       method: 'POST',
       data: {
-        id: "test_student",
+        id: self.id,
         login_token: "whvwbvwxghqw!whvwbvwxghqw"
       },
       success: function (dataSelections) {
@@ -24,6 +27,8 @@ const single_selections = {
           },
           success: function (dataProjects) {
             this.username = dataSelections.studentId;
+            this.selections = dataSelections;
+            console.log(this.selections);
             // sort based on priority
             dataSelections = dataSelections.sort(function(a, b){
               return a.priority - b.priority;

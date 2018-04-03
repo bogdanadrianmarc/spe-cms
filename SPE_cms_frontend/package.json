@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/bogdanadrianmarc/spe-cms#readme",
   "dependencies": {
-    "sortablejs": "^1.7.0"
+    "@shopify/draggable": "^1.0.0-beta.5",
+    "draggable": "^4.2.0"
   }
 }

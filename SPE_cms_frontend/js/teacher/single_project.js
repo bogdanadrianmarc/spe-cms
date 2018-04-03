@@ -52,7 +52,10 @@ mounted: function(){
               <div class = "tag" v-bind:class="tagColors[index]"> {{tag}} </div>
             </span>
           </div>
-          <h1>Project #{{project.id}} : {{project.title}}</h1>
+          <div class = "line">
+            <router-link to = "/allocation"><button class = "CTA-btn" style = "float: right"">Allocate group</button></router-link>
+            <h1>Project #{{project.id}} : {{project.title}}</h1>
+          </div>
           <div class = "project-list-item-applicants">
             No. of applicants <span class = "applicants"> {{ project.applicantsNr }}</span>
           </div>

@@ -27,7 +27,7 @@ const projects_list = {
          url: 'http://localhost:8080/projects',
          method: 'POST',
          data: {
-           login_token: token_and_type[0]
+           login_token: self.login_token
          },
          success: function (data) {
            self.projectList = data;

@@ -25,7 +25,7 @@ const students = {
           url: 'http://localhost:8080/students',
           method: 'POST',
           data: {
-            login_token: token_and_type[0]
+            login_token: self.login_token
           },
           success: function (data) {
             self.studentList = data;
@@ -92,6 +92,7 @@ const students = {
           <transition-group name="sort-list">
             <div
               v-for = "student in this.studentList"
+              v-bind:students = "student"
               v-bind:key = "student.id"
               :priority = "currPriority">
               <ol id = "usernames">
