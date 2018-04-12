@@ -30,7 +30,7 @@ public class PreferenceDBRepoTests {
         assert (repo.size() == siz+1);
         assert (repo.findOneByStudentAndProjectId("-1",3).getPriority().equals(4));
         assert (((List<Preference>) repo.findAll()).get(siz).getStudentId().equals("-1"));
-        assert (((List<Preference>) repo.findAllByStudentId("-1")).get(siz).getStudentId().equals("-1"));
+        assert (((List<Preference>) repo.findAllByStudentId("-1")).get(0).getStudentId().equals("-1"));
         repo.deleteByStudentAndProjectId("-1",3);
         assert (repo.size() == siz);
     }
