@@ -77,7 +77,7 @@ const form_project = {
 
   },
   methods: {
-
+    
   },
   template: `
   <div class = "project-submit">
@@ -118,9 +118,9 @@ const form_project = {
       <fieldset>
         <h2 class="fs-title">Project Brief</h2>
         <h3 class="fs-subtitle">Details regarding the project, that will be showcased to students.</h3>
-        <input type="text" class = "half" name="projname" placeholder="Project Name" />
-        <input type="text" class = "half" name="tags" placeholder="Tags separated by commas" />
-        <textarea name="projdesc" class = "big" placeholder="Detailed project description"></textarea>
+        <input type="text" class = "half" name="projname" id="projname" placeholder="Project Name" />
+        <input type="text" class = "half" name="tags" id="tags" placeholder="Tags separated by commas" />
+        <textarea name="projdesc" class = "big" id="projdesc" placeholder="Detailed project description"></textarea>
         <div class = "line">
           <input type="button" class = "half" name="previous" class="previous action-button" value="Previous" />
           <input type="submit" class = "half" name="submit" class="submit action-button" value="Submit" />
