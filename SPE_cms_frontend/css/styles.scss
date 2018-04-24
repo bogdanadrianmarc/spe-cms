@@ -28,3 +28,24 @@ a:active, a:focus {
   border: none;
   -moz-outline-style: none
 }
+.notifyjs-corner{
+  margin-top: 7em !important;
+}
+.notifyjs-bootstrap-success, .notifyjs-bootstrap-removed{
+  width: 10em;
+  text-align: center;
+  background-color: #2ecc71 !important;
+  padding: 1em 2em !important;
+  background-image: none !important;
+  border: none !important;
+  border-radius: 0px !important;
+  span{
+    border: none !important;
+    font-family: $font-primary !important;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+  }
+}
+.notifyjs-bootstrap-removed{
+  background-color: #e74c3c !important;
+}

@@ -4,7 +4,10 @@
 
 
 #students{
-  margin: 0.5em 50px 2.5em;
+  margin: 8em 50px 2.5em;
+  #student-filter-bar{
+    text-align: center;
+  }
   h1{
     font-family: $font-primary;
     color: $sky-white;

@@ -1,7 +1,7 @@
 
 
 
-const selections = {
+const selections_student = {
   template: `
 
   <div id = "selections-page">
@@ -18,7 +18,7 @@ const selections = {
   </li>
   </transition-group>
   </ol>
-  <router-link to = "/projects">
+  <router-link to = "./projects">
   <div class = "add">
   <i class="fa fa-plus" aria-hidden="true"></i>
   </div>
@@ -72,13 +72,15 @@ const selections = {
   mounted: function(){
     var el = document.getElementById('items-transition');
     let self = this;
+    console.log(self.$parent.loggedIn);
     var sortable = Sortable.create(el,{
       animation: 0,
       sort: true,
       onEnd: function (evt) {
-        $.notify("Selection saved!", {
+        $.notify("Selections saved!", {
           className: "success",
-          autoHideDelay: 2000
+          autoHideDelay: 1500,
+          globalPosition: 'top center'
         })
         console.log("ProjectID:" + (evt.item.attributes.id.value - 1) + " Old:" + evt.oldIndex + " New:" + evt.newIndex);
         $.ajax({
@@ -179,7 +181,9 @@ const selections = {
   methods: {
     removeSelection: function(id){
       $.notify("Selection deleted.", {
-        autoHideDelay: 2000
+        className: "removed",
+        autoHideDelay: 1500,
+        globalPosition: 'top center'
       });
       this.selections = this.selections.filter(function(project){
         if(project.id !== id){

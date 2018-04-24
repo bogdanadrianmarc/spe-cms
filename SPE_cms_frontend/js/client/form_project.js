@@ -1,4 +1,4 @@
-const form_project = {
+const form_project_client = {
   data: function () {
     return {
       username: null,
@@ -77,7 +77,7 @@ const form_project = {
 
   },
   methods: {
-    
+
   },
   template: `
   <div class = "project-submit">
@@ -95,8 +95,8 @@ const form_project = {
         <input type="text" class = "half" name="lastname" placeholder="Last Name" />
         <input type="text" class = "half" name="phone" placeholder="Phone" />
         <input type="text" class = "half" name="email" placeholder="E-mail" />
-        <div class = "line">
-          <input type="button" class = "half" name="next" class="next action-button" value="Next" />
+        <div class = "line" style = "text-align: center;">
+          <input type="button" class = "next action-button" name="next"  value="Next" />
         </div>
       </fieldset>
 
@@ -109,9 +109,9 @@ const form_project = {
         <input type="text" class = "third" name="city" placeholder="City" />
         <input type="text" class = "third" name="zipcode" placeholder="Postcode" />
         <textarea name="address" placeholder="Address"></textarea>
-        <div class = "line">
-          <input type="button" class = "half" name="previous" class="previous action-button" value="Previous" />
-          <input type="button" class = "half" name="next" class="next action-button" value="Next" />
+        <div class = "line" style = "text-align: center;">
+          <input type="button" class = "previous action-button" name="previous"  value="Previous" />
+          <input type="button" class = "next action-button" name="next"  value="Next" />
         </div>
       </fieldset>
 
@@ -121,9 +121,9 @@ const form_project = {
         <input type="text" class = "half" name="projname" id="projname" placeholder="Project Name" />
         <input type="text" class = "half" name="tags" id="tags" placeholder="Tags separated by commas" />
         <textarea name="projdesc" class = "big" id="projdesc" placeholder="Detailed project description"></textarea>
-        <div class = "line">
-          <input type="button" class = "half" name="previous" class="previous action-button" value="Previous" />
-          <input type="submit" class = "half" name="submit" class="submit action-button" value="Submit" />
+        <div class = "line" style = "text-align: center;">
+          <input type="button" class = "previous action-button" name="previous"  value="Previous" />
+          <input type="submit" class = "submit action-button" name="submit"  value="Submit" />
         </div>
       </fieldset>
     </form>

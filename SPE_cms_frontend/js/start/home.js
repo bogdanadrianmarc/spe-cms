@@ -1,4 +1,4 @@
-const default_page = {
+const home_page = {
   data: function () {
     return {
       username: "",
@@ -11,6 +11,10 @@ const default_page = {
       showFieldsClient: false,
       showFieldStudent: true
     }
+  },
+  beforeCreate: function () {
+    this.$parent.username = "Nobody";
+    this.$parent.type = "None";
   },
   methods: {
     onChange : function(data){
@@ -39,16 +43,17 @@ const default_page = {
             var token_and_type = data.split(";");
             self.login_token = token_and_type[0];
             self.type = token_and_type[1];
-            console.log(data);
+            self.$parent.username=self.username;
+            self.$parent.type=self.type;
             switch (self.type) {
               case "student":
-                window.open("studentView.html", "_self");
+                router.push('student/home');
                 break;
               case "teacher":
-                window.open("teacherView.html", "_self");
+                router.push('teacher/home');
                 break;
               case "client":
-                window.open("clientView.html", "_self");
+                router.push('client/home');
                 break;
               default:
                 swal({text:"Incorrect details", dangerMode: true});

@@ -9,7 +9,9 @@
   width: 100%;
   padding: 0px !important;
   margin: 0px !important;
-
+  position:fixed;
+  top: 0px;
+  z-index: 999999;
   // IMAGES
   img {
     max-height: 100%;

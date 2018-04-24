@@ -1,4 +1,4 @@
-const projects_list = {
+const projects_list_teacher = {
   data:function(){
     return {
       projectList: [],
@@ -128,15 +128,15 @@ const projects_list = {
         <loader_spinner></loader_spinner>
       </div>
       <div v-else key="loaded">
-        <projects_list_filters></projects_list_filters>
+        <projects_list_filters_teacher></projects_list_filters_teacher>
         <transition-group name="sort-list">
-          <projects_list_item
+          <projects_list_item_teacher
             v-for = "project in this.projectList"
             v-bind:projects = "project"
             v-bind:list = "projectList"
             v-bind:key = "project.id"
             :priority = "currPriority">
-          </projects_list_item>
+          </projects_list_item_teacher>
         </transition-group>
       </div>
     </transition>

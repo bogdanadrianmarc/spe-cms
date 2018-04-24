@@ -1,4 +1,4 @@
-Vue.component('students_list_filters', {
+Vue.component('students_list_filters_teacher', {
   template: `<div id = "student-filter-bar">
   <h1>Filter Results</h1>
   <span v-if = "this.$parent.sortOrder === -1" class = "wrapperUp"  v-on:click = "this.$parent.sortStudents">

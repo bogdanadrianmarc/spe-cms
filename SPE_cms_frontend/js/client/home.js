@@ -1,4 +1,4 @@
-const default_page = {
+const default_page_client = {
   data: function () {
     return {
       username: null,
@@ -6,7 +6,7 @@ const default_page = {
     }
   },
   created: function(){
-    
+
   },
   methods: {
 

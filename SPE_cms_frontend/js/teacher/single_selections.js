@@ -1,4 +1,4 @@
-const single_selections = {
+const single_selections_teacher = {
   props: ['id'],
   data: function () {
     return {

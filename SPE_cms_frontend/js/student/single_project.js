@@ -1,4 +1,4 @@
-const single_project = {
+const single_project_student = {
   props: ['id'],
   data: function(){
     return {
@@ -126,7 +126,7 @@ mounted: function(){
           </div>
           <div class = "line">
             <button class = "CTA-btn" style = "float: right" v-on:click="clickBTN()">{{buttonText}}</button>
-            <h1>Project #{{project.id}} : {{project.title}}</h1>
+            <h1 style = "float:left">Project #{{project.id}} : {{project.title}}</h1>
           </div>
           <div class = "project-list-item-applicants">
             No. of applicants <span class = "applicants"> {{ project.applicantsNr }}</span>
@@ -137,7 +137,7 @@ mounted: function(){
         </div>
         <div class = "single-project-CTA">
           <h1>Looking for more?</h1>
-          <router-link to="/projects">
+          <router-link to="./projects">
           <div class = "CTA-btn red">All Projects</div>
          </router-link>
       </div>

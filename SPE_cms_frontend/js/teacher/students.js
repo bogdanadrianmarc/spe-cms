@@ -1,4 +1,4 @@
-const students = {
+const students_teacher = {
   data: function () {
     return {
       studentList: [],
@@ -44,6 +44,9 @@ const students = {
     });
   },
   methods: {
+    getLink: function(name){
+      return "./selections" + name;
+    },
     sortStudents: function() {
       if(this.sortOrder === 1)
       this.studentList.sort(this.studentsAscending);
@@ -87,7 +90,7 @@ const students = {
         <loader_spinner></loader_spinner>
       </div>
       <div v-else key="loaded">
-        <students_list_filters></students_list_filters>
+        <students_list_filters_teacher></students_list_filters_teacher>
         <div id = "students-list">
           <transition-group name="sort-list">
             <div
@@ -96,7 +99,7 @@ const students = {
               v-bind:key = "student.id"
               :priority = "currPriority">
               <ol id = "usernames">
-                <router-link to ="/selections/student.id"><li><span>{{student.id}}</span></li></router-link>
+                <router-link :to ="getLink(student.id)"><li><span>{{student.id}}</span></li></router-link>
               </ol>
             </div>
          </transition-group>

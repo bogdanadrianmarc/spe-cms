@@ -1,4 +1,4 @@
-Vue.component('projects_list_item', {
+Vue.component('projects_list_item_teacher', {
   props: ['projects','priority', 'list'],
   data: function(){
 

@@ -3,6 +3,7 @@
 @import "_fonts";
 
 #allocate{
+  margin-top: 8em;
   h1{
     font-family: $font-primary;
     color: $sky-white;
@@ -39,7 +40,7 @@
     }
 }
 
-.active, .accordion:hover {
+.accordion:hover {
     background-color: $bristol-red;
 }
 

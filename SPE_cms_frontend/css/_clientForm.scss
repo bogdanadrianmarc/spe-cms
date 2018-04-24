@@ -4,7 +4,7 @@
 
 #msform {
 	width: 80vw;
-	margin: 50px auto;
+	margin: 8em auto 50px;
 	text-align: center;
 	position: relative;
 }
@@ -158,7 +158,7 @@
 
 #progressbar li.active:before,  #progressbar li.active:after{
 	background: $bristol-red;
-	color: $sky-white;
+	color: $sky-white !important;
 }
 #progressbar li.visited:before{
 	font-family: FontAwesome;

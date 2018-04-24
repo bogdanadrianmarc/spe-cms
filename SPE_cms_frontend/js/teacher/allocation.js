@@ -1,4 +1,4 @@
-const allocation = {
+const allocation_teacher = {
   props: ['id'],
   data: function(){
     return {

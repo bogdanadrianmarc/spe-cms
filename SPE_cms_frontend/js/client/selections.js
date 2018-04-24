@@ -1,7 +1,7 @@
 
 
 
-const selections = {
+const selections_client = {
   template: `
 
   <div id = "selections-page">
@@ -18,7 +18,7 @@ const selections = {
   </li>
   </transition-group>
   </ol>
-  <router-link to = "/projects">
+  <router-link to = "./projects">
   <div class = "add">
   <i class="fa fa-plus" aria-hidden="true"></i>
   </div>

@@ -1,4 +1,4 @@
-const default_page = {
+const default_page_student = {
   data: function () {
     return {
       username: null,

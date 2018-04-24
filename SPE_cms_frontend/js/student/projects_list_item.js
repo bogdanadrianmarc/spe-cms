@@ -1,4 +1,4 @@
-Vue.component('projects_list_item', {
+Vue.component('projects_list_item_student', {
   props: ['projects','priority'],
   data: function(){
     return {
@@ -34,7 +34,8 @@ Vue.component('projects_list_item', {
       if(this.buttonText === "Select Project"){
         $.notify("Project selected!", {
           className: "success",
-          autoHideDelay: 2000
+          autoHideDelay: 1500,
+          globalPosition: 'top center'
         });
         $.ajax({
           url: 'http://localhost:8080/selection_save',
@@ -58,7 +59,9 @@ Vue.component('projects_list_item', {
       }
       else{
         $.notify("Selection removed.", {
-          autoHideDelay: 2000
+          className: "removed",
+          autoHideDelay: 1500,
+          globalPosition: 'top center'
         });
         $.ajax({
           url: 'http://localhost:8080/selection_delete',
