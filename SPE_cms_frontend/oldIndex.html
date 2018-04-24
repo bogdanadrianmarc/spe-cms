@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Start Page</title>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel = "stylesheet" type = "text/css" href = "css/styles.min.css" />
+  <link rel = "stylesheet" type = "text/css" href = "css/normalize.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+</html>
+
+<body>
+  <div id = "app">
+    <!-- This needs to be a big component with a lot of v-ifs for permissions -->
+    <div id = "navigation-bar">
+      <router-link to = "/"><img alt = "University of Bristol logo" src = "img/logo-white.png" /></router-link>
+    </div>
+
+    <router-view></router-view>
+
+</div>
+
+
+<script src="js/loader_spinner.js"></script>
+<script src="js/start/home.js"></script>
+<script src="http://rubaxa.github.io/Sortable/Sortable.js"></script>
+<script src="https://rawgit.com/notifyjs/notifyjs/master/dist/notify.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="js/start/view_before.js"></script>
+
+
+</body>
