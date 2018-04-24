@@ -13,4 +13,4 @@ $ cd SPE_cms_frontend && npm install
 $ cd SPE_cms && mvn spring-boot:run
 ```
 
-After executing, open up the HTML files in `/SPE_cms_frontend` for the demo.
+After executing, open up index.html in `/SPE_cms_frontend` for the demo.
