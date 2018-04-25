@@ -12,22 +12,15 @@ const projects_list_client = {
   created: function(){
     let self = this;
     self.$parent.loading = true;
-    $.ajax({
-     url: 'http://localhost:8080/login',
-     method: 'POST',
-     data: {
-       username: "test_student",
-       password: "test_student"
-     },
-     success: function (data) {
-       var token_and_type = data.split(";");
-       self.login_token = token_and_type[0];
-       //  console.log(self.login_token);
+
+    if (this.$parent.token != "None")
+    {
        $.ajax({
-         url: 'http://localhost:8080/projects',
+         url: 'http://localhost:8080/projects_by_client',
          method: 'POST',
          data: {
-           login_token: self.login_token
+           client_id: this.$parent.username,
+           login_token: this.$parent.token
          },
          success: function (data) {
            self.projectList = data;
@@ -40,25 +33,25 @@ const projects_list_client = {
          }
        });
 
-       $.ajax({
-         url: 'http://localhost:8080/selections_id',
-         method: 'POST',
-         data: {
-           id: "test_student",
-           login_token: "whvwbvwxghqw!whvwbvwxghqw"
-         },
-         success: function (dataSelections) {
-           self.currPriority = dataSelections.length +1;
-         },
-         error: function (error) {
-           console.log(error);
-         }
-       });
-     },
-     error: function(error){
-       console.log(error);
+       // ??????????????????????????
+       // $.ajax({
+       //   url: 'http://localhost:8080/selections_id',
+       //   method: 'POST',
+       //   data: {
+       //     id: "test_student",
+       //     login_token: "whvwbvwxghqw!whvwbvwxghqw"
+       //   },
+       //   success: function (dataSelections) {
+       //     self.currPriority = dataSelections.length +1;
+       //   },
+       //   error: function (error) {
+       //     console.log(error);
+       //   }
+       // });
      }
-});
+     else {
+       console.log("Not Logged In");
+     }
   },
   methods: {
     sortApplicants: function() {

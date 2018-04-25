@@ -15,7 +15,7 @@ const home_page = {
   beforeCreate: function () {
     this.$parent.username = "Nobody";
     this.$parent.type = "None";
-    this.$parent.token = "";
+    this.$parent.token = "None";
   },
   methods: {
     onChange : function(data){

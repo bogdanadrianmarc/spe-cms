@@ -59,6 +59,22 @@ mounted: function(){
 
   },
   methods: {
+    deleteProj: function(){
+      $.ajax({
+        url: 'http://localhost:8080/project_delete',
+        method: 'POST',
+        data: {
+          projectId: this.id,
+          login_token: this.$parent.token
+        },
+        success: function(data){
+          console.log(data);
+        },
+        error: function(error){
+          console.log(error);
+        }
+      });
+    },
     incrementPriority: function(){
       this.priority += 1;
     },
@@ -125,7 +141,7 @@ mounted: function(){
             </span>
           </div>
           <div class = "line">
-            <button class = "CTA-btn" style = "float: right"">Edit Project</button>
+            <button class = "CTA-btn" v-on:click = "deleteProj()" style = "float: right">Delete Project</button>
             <h1 style = "float:left">Project #{{project.id}} : {{project.title}}</h1>
           </div>
           <div class = "project-list-item-applicants">

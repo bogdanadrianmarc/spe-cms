@@ -38,7 +38,7 @@ const app = new Vue({
       loading: false,
       username: "Nobody",
       type: "None",
-      token: ""
+      token: "None"
     }
   },
   methods:{
