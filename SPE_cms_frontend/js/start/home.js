@@ -15,6 +15,7 @@ const home_page = {
   beforeCreate: function () {
     this.$parent.username = "Nobody";
     this.$parent.type = "None";
+    this.$parent.token = "";
   },
   methods: {
     onChange : function(data){
@@ -45,6 +46,7 @@ const home_page = {
             self.type = token_and_type[1];
             self.$parent.username=self.username;
             self.$parent.type=self.type;
+            self.$parent.token = self.login_token;
             switch (self.type) {
               case "student":
                 router.push('student/home');
