@@ -86,12 +86,12 @@ public class ProjectRESTController {
 //   ### SAVE PROJECT ###
     @CrossOrigin
     @RequestMapping(value = "/project_save", method = POST)
-    public String project_save(@RequestParam(value = "tags") String tags,@RequestParam(value = "title") String title,@RequestParam(value = "content") String content,@RequestParam(value = "imgUrl") String imgUrl,@RequestParam(value = "projectUrl") String projectUrl,@RequestParam(value = "clientId") String clientId,@RequestParam(value = "license") String license, @RequestParam(value = "login_token") String login_token) {
+    public String project_save(@RequestParam(value = "tags") String tags,@RequestParam(value = "title") String title,@RequestParam(value = "content") String content,@RequestParam(value = "imgUrl") String imgUrl,@RequestParam(value = "clientId") String clientId,@RequestParam(value = "license") String license, @RequestParam(value = "login_token") String login_token) {
         String user = Cryption.decrypt(login_token.split("!")[0]);
         String password = Cryption.decrypt(login_token.split("!")[1]);
         if (clientController.isUserAndPassCorrect(user,password) == 0){
             Integer maxId = projectController.getLastProject().getId();
-            Project p = new Project(maxId+1,tags,title,content,0,imgUrl,projectUrl,clientId,license);
+            Project p = new Project(maxId+1,tags,title,content,0,imgUrl,"./project"+Integer.toString(maxId+1),clientId,license);
             projectController.setProject(p);
             return "OK";
         }
@@ -106,10 +106,17 @@ public class ProjectRESTController {
         String user = Cryption.decrypt(login_token.split("!")[0]);
         String password = Cryption.decrypt(login_token.split("!")[1]);
 
-        if (teacherController.isUserAndPassCorrect(user,password) == 0){
+        if (teacherController.isUserAndPassCorrect(user,password) == 0)
+        {
             projectController.deleteProjectById(projectId);
             return "OK";
         }
+        else
+            if (clientController.isUserAndPassCorrect(user,password) == 0)
+            {
+                projectController.deleteProjectById(projectId);
+                return "OK";
+            }
         else
             return "NOT LOGGED IN";
     }

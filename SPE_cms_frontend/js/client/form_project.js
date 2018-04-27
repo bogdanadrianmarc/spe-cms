@@ -133,7 +133,6 @@ const form_project_client = {
         var title = document.getElementById('title').value;
         var content = document.getElementById('content').value;
         var imgUrl = document.getElementById('imgUrl').value;
-        var projectUrl = document.getElementById('projectUrl').value;
         var license = document.getElementById('license').value;
 
         //submitting
@@ -145,7 +144,6 @@ const form_project_client = {
             tags: tags,
             content: content,
             imgUrl: imgUrl,
-            projectUrl: projectUrl,
             license: license,
             clientId: this.$parent.username,
             login_token: this.$parent.token
@@ -195,8 +193,7 @@ const form_project_client = {
         <h2 class="fs-title">Project Brief</h2>
         <h3 class="fs-subtitle">Details regarding the project, that will be showcased to students.</h3>
         <input type="text" class = "full" name="title" id="title" placeholder="Project Name" />
-        <input type="text" class = "half" name="tags" id="tags" placeholder="Tags separated by commas" />
-        <input type="text" class = "half" name="projectUrl" id="projectUrl" placeholder="Project URL" />
+        <input type="text" class = "full" name="tags" id="tags" placeholder="Tags separated by commas" />
         <textarea name="projdesc" class = "big full" id="content" placeholder="Detailed project description"></textarea>
         <input type="text" class = "half" name="imgUrl" id="imgUrl" placeholder="Image url" />
         <input type="text" class = "half" name="license" id="license" placeholder="Type of license" />
