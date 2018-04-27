@@ -17,7 +17,7 @@ const single_project_teacher = {
       method: 'POST',
       data: {
         id: self.id,
-        login_token: "whvwbwhdfkhu!whvwbwhdfkhu"
+        login_token: self.$parent.token
       },
       success: function (data) {
         self.project = data;

@@ -135,6 +135,13 @@ const form_project_client = {
         var imgUrl = document.getElementById('imgUrl').value;
         var license = document.getElementById('license').value;
 
+        //alert
+        $.notify("Project added!", {
+          className: "success",
+          autoHideDelay: 1500,
+          globalPosition: 'top center'
+        });
+
         //submitting
         $.ajax({
           url: 'http://localhost:8080/project_save',

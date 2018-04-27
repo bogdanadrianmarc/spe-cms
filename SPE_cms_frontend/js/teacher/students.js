@@ -11,21 +11,13 @@ const students_teacher = {
   created: function(){
     let self = this;
     self.$parent.loading = true;
-    $.ajax({
-      url: 'http://localhost:8080/login',
-      method: 'POST',
-      data: {
-        username: "test_teacher",
-        password: "test_teacher"
-      },
-      success: function (data) {
-        var token_and_type = data.split(";");
-        self.login_token = token_and_type[0];
+
+    //getting the students
         $.ajax({
           url: 'http://localhost:8080/students',
           method: 'POST',
           data: {
-            login_token: self.login_token
+            login_token: self.$parent.token
           },
           success: function (data) {
             self.studentList = data;
@@ -37,11 +29,6 @@ const students_teacher = {
             self.$parent.loading = false;
           }
         });
-      },
-      error: function (error) {
-        console.log(error);
-      }
-    });
   },
   methods: {
     getLink: function(name){

@@ -15,7 +15,7 @@ Vue.component('projects_list_item_teacher', {
       method: 'POST',
       data: {
         id: this.projects.id,
-        login_token: "whvwbwhdfkhu!whvwbwhdfkhu"
+        login_token: self.$parent.$parent.$parent.token
       },
       error: function (error) {
         console.log(error);
@@ -44,7 +44,7 @@ Vue.component('projects_list_item_teacher', {
             method: 'POST',
             data: {
               projectId: index,
-              login_token: "whvwbwhdfkhu!whvwbwhdfkhu"
+              login_token: self.$parent.$parent.$parent.token
             },
             error: function (error) {
               console.log(error);
