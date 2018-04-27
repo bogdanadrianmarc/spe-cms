@@ -12,22 +12,13 @@ const projects_list_student = {
   created: function(){
     let self = this;
     self.$parent.loading = true;
-    $.ajax({
-     url: 'http://localhost:8080/login',
-     method: 'POST',
-     data: {
-       username: "test_student",
-       password: "test_student"
-     },
-     success: function (data) {
-       var token_and_type = data.split(";");
-       self.login_token = token_and_type[0];
-       // console.log(data);
+
+    //getting the projects
        $.ajax({
          url: 'http://localhost:8080/projects',
          method: 'POST',
          data: {
-           login_token: self.login_token
+           login_token: self.$parent.token
          },
          success: function (data) {
            self.projectList = data;
@@ -44,8 +35,8 @@ const projects_list_student = {
          url: 'http://localhost:8080/selections_id',
          method: 'POST',
          data: {
-           id: "test_student",
-           login_token: self.login_token
+           id: self.$parent.username,
+           login_token: self.$parent.token
          },
          success: function (dataSelections) {
            self.currPriority = dataSelections.length +1;
@@ -54,8 +45,6 @@ const projects_list_student = {
            console.log(error);
          }
        });
- }
-});
   },
   methods: {
     sortApplicants: function() {

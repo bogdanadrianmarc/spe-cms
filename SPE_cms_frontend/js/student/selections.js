@@ -36,15 +36,15 @@ const selections_student = {
       url: 'http://localhost:8080/selections_id',
       method: 'POST',
       data: {
-        id: "test_student",
-        login_token: "whvwbvwxghqw!whvwbvwxghqw"
+        id: self.$parent.username,
+        login_token: self.$parent.token
       },
       success: function (dataSelections) {
         $.ajax({
           url: 'http://localhost:8080/projects',
           method: 'POST',
           data: {
-            login_token: "whvwbvwxghqw!whvwbvwxghqw"
+            login_token: self.$parent.token
           },
           success: function (dataProjects) {
             // sort based on priority
@@ -87,9 +87,9 @@ const selections_student = {
           url: 'http://localhost:8080/selection_update',
           method: 'POST',
           data: {
-            studentId: "test_student",
+            studentId: self.$parent.username,
             projectId: evt.item.attributes.id.value - 1,
-            login_token: "whvwbvwxghqw!whvwbvwxghqw",
+            login_token: self.$parent.token,
             oldPriority: evt.oldIndex + 1,
             newPriority: evt.newIndex + 1
           },
@@ -195,10 +195,10 @@ const selections_student = {
         url: 'http://localhost:8080/selection_delete',
         method: 'POST',
         data: {
-          studentId: "test_student",
+          studentId: self.$parent.username,
           // -1 accounts for difference in zero-indexing on backend and one-indexing on frontend
           projectId: id-1,
-          login_token: "whvwbvwxghqw!whvwbvwxghqw"
+          login_token: self.$parent.token
         },
         success: function (data) {
           console.log(data);

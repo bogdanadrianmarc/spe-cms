@@ -13,8 +13,8 @@ Vue.component('projects_list_item_student', {
       url: 'http://localhost:8080/selections_id',
       method: 'POST',
       data: {
-        id: "test_student",
-        login_token: "whvwbvwxghqw!whvwbvwxghqw"
+        id: self.$parent.$parent.$parent.username,
+        login_token: self.$parent.$parent.$parent.token
       },
       success: function (dataSelections) {
         dataSelections.map(obj => {
@@ -41,11 +41,11 @@ Vue.component('projects_list_item_student', {
           url: 'http://localhost:8080/selection_save',
           method: 'POST',
           data: {
-            studentId: "test_student",
+            studentId: self.$parent.$parent.$parent.username,
             // -1 accounts for difference in zero-indexing on backend and one-indexing on frontend
             projectId: index-1,
             priority: self.priority,
-            login_token: "whvwbvwxghqw!whvwbvwxghqw"
+            login_token: self.$parent.$parent.$parent.token
           },
           success: function (data) {
             self.$parent.$parent.incrementPriority();
@@ -67,10 +67,10 @@ Vue.component('projects_list_item_student', {
           url: 'http://localhost:8080/selection_delete',
           method: 'POST',
           data: {
-            studentId: "test_student",
+            studentId: self.$parent.$parent.$parent.username,
             // -1 accounts for difference in zero-indexing on backend and one-indexing on frontend
             projectId: index-1,
-            login_token: "whvwbvwxghqw!whvwbvwxghqw"
+            login_token: self.$parent.$parent.$parent.token
           },
           success: function (data) {
             self.$parent.$parent.decreasePriority();

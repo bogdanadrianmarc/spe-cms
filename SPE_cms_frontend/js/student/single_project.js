@@ -19,7 +19,7 @@ const single_project_student = {
       method: 'POST',
       data: {
         id: self.id,
-        login_token: "whvwbvwxghqw!whvwbvwxghqw"
+        login_token: self.$parent.token
       },
       success: function (data) {
         self.project = data;
@@ -34,8 +34,8 @@ const single_project_student = {
       url: 'http://localhost:8080/selections_id',
       method: 'POST',
       data: {
-        id: "test_student",
-        login_token: "whvwbvwxghqw!whvwbvwxghqw"
+        id: self.$parent.username,
+        login_token: self.$parent.token
       },
       success: function (dataSelections) {
         self.priority = dataSelections.length +1;
@@ -72,11 +72,11 @@ mounted: function(){
           url: 'http://localhost:8080/selection_save',
           method: 'POST',
           data: {
-            studentId: "test_student",
+            studentId: self.$parent.username,
             // -1 accounts for difference in zero-indexing on backend and one-indexing on frontend
             projectId: self.id-1,
             priority: self.priority,
-            login_token: "whvwbvwxghqw!whvwbvwxghqw"
+            login_token: self.$parent.token
           },
           success: function (data) {
             self.incrementPriority();
@@ -93,10 +93,10 @@ mounted: function(){
           url: 'http://localhost:8080/selection_delete',
           method: 'POST',
           data: {
-            studentId: "test_student",
+            studentId: self.$parent.username,
             // -1 accounts for difference in zero-indexing on backend and one-indexing on frontend
             projectId: self.id-1,
-            login_token: "whvwbvwxghqw!whvwbvwxghqw"
+            login_token: self.$parent.token
           },
           success: function (data) {
             self.decrementPriority();
