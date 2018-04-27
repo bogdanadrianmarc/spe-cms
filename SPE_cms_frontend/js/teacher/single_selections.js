@@ -16,14 +16,14 @@ const single_selections_teacher = {
       method: 'POST',
       data: {
         id: self.id,
-        login_token: "whvwbvwxghqw!whvwbvwxghqw"
+        login_token: self.$parent.token
       },
       success: function (dataSelections) {
         $.ajax({
           url: 'http://localhost:8080/projects',
           method: 'POST',
           data: {
-            login_token: "whvwbvwxghqw!whvwbvwxghqw"
+            login_token: self.$parent.token
           },
           success: function (dataProjects) {
             this.username = dataSelections.studentId;
@@ -52,7 +52,7 @@ const single_selections_teacher = {
   },
   template: `
   <div id = "selections-page">
-  <h1>{{this.username}}'s selections</h1>
+  <h1>{{this.id}}'s selections</h1>
   <p>
   These are {{this.username}}'s project selections.<br />
   The first three projects have the highest priority, but all other submitted choices could be taken into account as well.
