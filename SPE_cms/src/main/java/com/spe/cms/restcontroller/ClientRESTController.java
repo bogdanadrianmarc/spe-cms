@@ -34,15 +34,10 @@ public class ClientRESTController {
         String password = Cryption.decrypt(login_token.split("!")[1]);
 
         if (clientController.isUserAndPassCorrect(user,password) == 0){
-            if(projectController.getAllByClientId(id).isEmpty()){
-                return new Client("id","password","orgName","ordAddress","orgPhone","persName","persPhone","persEmail");
-            }
-            else{
-                return clientController.getClientById(id);
-            }
+            return clientController.getClientById(id);
         }
         else {
-            return new Client("x", "x", "x", "x", "x", "x", "x", "x");
+            return new Client("", "", "", "", "", "", "", "");
         }
     }
 
