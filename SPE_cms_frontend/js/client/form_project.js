@@ -157,6 +157,7 @@ const form_project_client = {
           },
           success: function(data){
             console.log(data);
+            router.push('./projects');
           },
           error: function(error){
             console.log(error);

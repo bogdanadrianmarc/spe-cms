@@ -19,7 +19,7 @@ const single_project_client = {
       method: 'POST',
       data: {
         id: self.id,
-        login_token: "whvwbvwxghqw!whvwbvwxghqw"
+        login_token: self.$parent.token
       },
       success: function (data) {
         self.project = data;
@@ -69,11 +69,18 @@ mounted: function(){
         },
         success: function(data){
           console.log(data);
+          $.notify("Deleted!", {
+            className: "removed",
+            autoHideDelay: 1500,
+            globalPosition: 'top center'
+          });
+          router.push('./projects');
         },
         error: function(error){
           console.log(error);
         }
       });
+
     },
     incrementPriority: function(){
       this.priority += 1;

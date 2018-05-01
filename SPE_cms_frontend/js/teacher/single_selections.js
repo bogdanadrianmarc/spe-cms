@@ -54,7 +54,7 @@ const single_selections_teacher = {
   <div id = "selections-page">
   <h1>{{this.id}}'s selections</h1>
   <p>
-  These are {{this.username}}'s project selections.<br />
+  These are {{this.id}}'s project selections.<br />
   The first three projects have the highest priority, but all other submitted choices could be taken into account as well.
   </p>
   <ol id="items">
