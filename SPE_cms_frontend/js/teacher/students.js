@@ -21,6 +21,14 @@ const students_teacher = {
           },
           success: function (data) {
             self.studentList = data;
+            let i = 0;
+            const candidates = ["28755", "55310", "33989", "70123", "24343"];
+            const studentNo = ["sl13783", "sc16244", "mt16435", "ma16222", "az16761"];
+            for(i = 0; i < self.studentList.length; i++){
+              self.studentList[i].candidateId = candidates[i];
+              self.studentList[i].studentNo = studentNo[i];
+            }
+            console.log(self.studentList);
             self.studentListCopy = data;
             self.$parent.loading = false;
           },
@@ -79,17 +87,24 @@ const students_teacher = {
       <div v-else key="loaded">
         <students_list_filters_teacher></students_list_filters_teacher>
         <div id = "students-list">
+
+          <ol id = "usernames" :key = "01">
           <transition-group name="sort-list">
-            <div
+            <li style = "padding-left: 20px;"
               v-for = "student in this.studentList"
               v-bind:students = "student"
               v-bind:key = "student.id"
               :priority = "currPriority">
-              <ol id = "usernames">
-                <router-link :to ="getLink(student.id)"><li><span>{{student.id}}</span></li></router-link>
-              </ol>
-            </div>
-         </transition-group>
+
+                <router-link :to ="getLink(student.id)" style = "padding-left: 20px;">
+                  <span class = "name">{{student.fullName}}</span>
+                  (<span class = "candidate">{{student.candidateId}}</span>)
+                </router-link>
+
+            </li>
+             </transition-group>
+            </ol>
+
        </div>
      </div>
    </transition>

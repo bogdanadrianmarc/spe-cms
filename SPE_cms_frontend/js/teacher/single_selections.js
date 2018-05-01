@@ -28,7 +28,7 @@ const single_selections_teacher = {
           success: function (dataProjects) {
             this.username = dataSelections.studentId;
             this.selections = dataSelections;
-            console.log(this.selections);
+            console.log(this.username);
             // sort based on priority
             dataSelections = dataSelections.sort(function(a, b){
               return a.priority - b.priority;

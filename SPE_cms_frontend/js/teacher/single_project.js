@@ -53,7 +53,6 @@ mounted: function(){
             </span>
           </div>
           <div class = "line">
-            <router-link to = "./allocation"><button class = "CTA-btn" style = "float: right"">Allocate group</button></router-link>
             <h1 style = "float:left">Project #{{project.id}} : {{project.title}}</h1>
           </div>
           <div class = "project-list-item-applicants">

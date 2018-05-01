@@ -156,36 +156,31 @@ const home_page = {
         <button class = "start" v-on:click = "login()">Log in</button>
       </div>
       <div class = "registration">
-        <h2>Just getting started? Register here.</h2>
         <form id="register" onsubmit="return false;">
-          <h3>Pick a fancy username</h3>
-            <input type="text" id="user" placeholder="Username" />
+          <h3>Username</h3>
+            <input type="text" id="user" placeholder="Pick a username" />
           <div id = "nameField" v-if="this.showFieldStudent">
-            <h3>Enter your full name</h3>
-            <input type="text" id="fullname" placeholder="Full Name" />
+            <h3>Full name</h3>
+            <input type="text" id="fullname" placeholder="Your full name" />
           </div>
-          <h3>Come up with a strong password</h3>
-            <input type="password" id="pass" placeholder="Password" />
+          <h3>Password</h3>
+            <input type="password" id="pass" placeholder="Create a password" style = "margin-bottom: 5px !important;"/>
             <input type="password" id="pass-confirm" placeholder="Confirm Password" />
           <h3>I'm a:</h3>
             <div class = "dropdown">
             <select id="type" @change="onChange(this)">
-              <option disable hidden value = "">Type of user</option>
+              <option disable hidden value = "">Select user type</option>
               <option value = "student">Student</option>
               <option value = "client">Client</option>
             </select>
             </div>
             <div id = "clientFields" v-if="this.showFieldsClient">
-              <div class = "leftField">
               <input type="text" id="orgName" placeholder="Organisation Name" />
               <input type="text" id="orgAddress" placeholder="Organisation Address" />
               <input type="tel" id="orgPhone" placeholder="Organisation Number" />
-              </div>
-              <div class = "rightField">
               <input type="text" id="persName" placeholder="Personal Name" />
               <input type="tel" id="persPhone" placeholder="Personal Number" />
               <input type="text" id="persEmail" placeholder="Personal Email" />
-              </div>
             </div>
           <h4>* All fields are required.</h4>
           <button v-on:click = "register()">Register</button>
