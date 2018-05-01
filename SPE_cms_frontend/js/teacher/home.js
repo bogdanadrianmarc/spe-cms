@@ -17,11 +17,7 @@ const default_page_teacher = {
       <div class="tint"></div>
       <div class="text">
         <h1>Software Product Engineering</h1>
-        <p>Welcome to the Software Project Engineering unit webpage.
-        Here you can view students' choices, assign them to groups
-        and later on assess their work. So what are you waiting for?
-        Start looking at what projects are on offer
-        by clicking the button.</p>
+        <p>Nostrud coniunctione est proident, laborum fore incurreret sed aute fabulas a quem noster, admodum elit singulis.</p>
         <router-link to="students">
           <button>Students</button>
         </router-link>

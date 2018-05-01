@@ -195,3 +195,19 @@
   width: 50%;
   text-align: center;
 }
+
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+  .registration{
+    h2,h3,h4{
+      font-size: 12px;
+    }
+  }
+  #register{
+    select, option, input, textarea{
+      font-size: 10px;
+    }
+  }
+  #clientFields input{
+    margin-bottom: 5px;
+  }
+ }

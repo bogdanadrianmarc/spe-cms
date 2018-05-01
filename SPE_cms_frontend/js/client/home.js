@@ -17,11 +17,7 @@ const default_page_client = {
       <div class="tint"></div>
       <div class="text">
         <h1>Software Product Engineering</h1>
-        <p>Welcome to the page where you can add projects
-        for this unit, edit them and also contact the
-        students that will be working for you in the future.
-        So what are you waiting for? Start adding projects by
-        pressing the button below.</p>
+        <p>Nostrud coniunctione est proident, laborum fore incurreret sed aute fabulas a quem noster, admodum elit singulis.</p>
         <router-link to="projects">
           <button>Projects</button>
         </router-link>
